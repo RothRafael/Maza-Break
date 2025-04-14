@@ -1,0 +1,115 @@
+[gd_scene load_steps=3 format=3 uid="uid://crakwotvwojbg"]
+
+[ext_resource type="Texture2D" uid="uid://dugfcgqrb7iet" path="res://Art/Sprites/UI/Barras/Base.png" id="1_filc1"]
+[ext_resource type="Texture2D" uid="uid://c5h2vr12acsd3" path="res://Art/Sprites/UI/Barras/Vida.png" id="1_rtouq"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BasePanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = -50.5
+offset_right = 86.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "a"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BasePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -34.0
+offset_right = 72.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="BasePanel/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+texture_under = ExtResource("1_filc1")
+texture_progress = ExtResource("1_rtouq")
+
+[node name="Label" type="Label" parent="BasePanel/VBoxContainer/TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "VIDA"
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="BasePanel/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+texture_under = ExtResource("1_filc1")
+texture_progress = ExtResource("1_rtouq")
+
+[node name="Label" type="Label" parent="BasePanel/VBoxContainer/TextureProgressBar2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "MANA"
+
+[node name="TextureProgressBar3" type="TextureProgressBar" parent="BasePanel/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+texture_under = ExtResource("1_filc1")
+texture_progress = ExtResource("1_rtouq")
+
+[node name="Label" type="Label" parent="BasePanel/VBoxContainer/TextureProgressBar3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "ESCUDO"

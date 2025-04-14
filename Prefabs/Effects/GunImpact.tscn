@@ -1,0 +1,262 @@
+[gd_scene load_steps=13 format=4 uid="uid://valyk5lctf4t"]
+
+[ext_resource type="Script" uid="uid://crdxf8oh0k7em" path="res://Code/Effects/GunImpactScript.cs" id="1_kamqx"]
+[ext_resource type="PackedScene" uid="uid://b2em4slgetw7y" path="res://Prefabs/Components/sound_component.tscn" id="1_tvlko"]
+[ext_resource type="AudioStream" uid="uid://dihhwl0ahihf1" path="res://Art/Sfx/Hit_Hurt11.wav" id="2_kamqx"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_8apvf"]
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAACMAAAAUklGRoQAAABXRUJQVlA4THgAAAAvH8AHEA8w//M///Mf8HBU23ZT3RR6VQCREAGUJ4khMyINKUhg2Mv/FA0R/Vfbtg3jNjnljl70YkzGZMqnfKuL4uiy9uji5jyd4Rt35V50/3b/eP96/2wEcR0q6aZuCkjFiYMTwAwDcMczOXECgaSSCnChQx0SMwI=")
+size_override = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_kamqx"]
+resource_name = "ExplosionTest"
+length = 0.6
+loop_mode = 1
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"callParticles",
+"time": 0.1
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 1, 2, 3]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"restart"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0666667, 0.333333, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.996078, 0.905882, 0.380392, 1), Color(0.968627, 0.462745, 0.133333, 1), Color(0.247059, 0.156863, 0.196078, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.4, 0.466294, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.996078, 0.905882, 0.380392, 1), Color(0.968627, 0.462745, 0.133333, 1), Color(0.619608, 0.156863, 0.207843, 1), Color(0.619608, 0.156863, 0.207843, 1), Color(0.247059, 0.156863, 0.196078, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qnwc2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y7qxl"]
+length = 0.6
+loop_mode = 1
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"callParticles",
+"time": 0.1
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 1, 2, 3]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"restart"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.996078, 0.905882, 0.380392, 1), Color(0.968627, 0.462745, 0.133333, 1), Color(0.247059, 0.156863, 0.196078, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.4, 0.466294, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.996078, 0.905882, 0.380392, 1), Color(0.968627, 0.462745, 0.133333, 1), Color(0.619608, 0.156863, 0.207843, 1), Color(0.619608, 0.156863, 0.207843, 1), Color(0.247059, 0.156863, 0.196078, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tvlko"]
+_data = {
+&"ExplosionTest": SubResource("Animation_kamqx"),
+&"RESET": SubResource("Animation_qnwc2"),
+&"default": SubResource("Animation_y7qxl")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kamqx"]
+
+[sub_resource type="Curve" id="Curve_8apvf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.168539), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kamqx"]
+curve = SubResource("Curve_8apvf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8apvf"]
+lifetime_randomness = 0.38
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(1, 1, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 28.3
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, -12.42, 0)
+scale_min = 0.0
+scale_max = 8.9
+scale_curve = SubResource("CurveTexture_kamqx")
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_kamqx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_8apvf")
+hframes = 2
+vframes = 2
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"slice": "",
+"source": "res://Art/Anim/projectiles/impact.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "a1aaa76063ddbf47bd3b9698da18953b"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tvlko"),
+&"Impactos": SubResource("AnimationLibrary_kamqx")
+}
+autoplay = "default"
+speed_scale = 2.679
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+lifetime = 0.18
+one_shot = true
+explosiveness = 0.58
+process_material = SubResource("ParticleProcessMaterial_8apvf")
+
+[node name="SoundComponent" parent="." node_paths=PackedStringArray("_audioStreamPlayer") instance=ExtResource("1_tvlko")]
+_audioStreamPlayer = NodePath("../AudioStreamPlayer2D")
+_audioStream = Array[AudioStream]([ExtResource("2_kamqx")])
+_volumeDb = -11.84
+PitchRange = Vector2(0.8, 1.2)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

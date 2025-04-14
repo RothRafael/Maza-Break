@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://e80kjofaetpo"]
+
+[ext_resource type="Script" uid="uid://bphpo01cvm4ke" path="res://Code/Projectiles/ProjectileTypes/ExplosionStrategy.cs" id="1_1m5tg"]
+[ext_resource type="Texture2D" uid="uid://cmq3osmyv14as" path="res://Art/Sprites/Projectiles/Garrafa.png" id="2_1m5tg"]
+[ext_resource type="PackedScene" uid="uid://d4b58cu8c24u" path="res://Prefabs/Effects/explosao.tscn" id="2_6sq5w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1m5tg"]
+size = Vector2(18.5, 7)
+
+[node name="BulletBazuca" type="Area2D"]
+self_modulate = Color(2, 2, 2, 1)
+z_index = -1
+script = ExtResource("1_1m5tg")
+explosionScene = ExtResource("2_6sq5w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("2_1m5tg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, 0)
+shape = SubResource("RectangleShape2D_1m5tg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

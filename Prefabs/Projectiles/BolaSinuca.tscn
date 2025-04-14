@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0tpw4a4g6aaa"]
+
+[ext_resource type="Script" uid="uid://djycswrfr156b" path="res://Code/Projectiles/ProjectileTypes/BolaSinucaProjectile.cs" id="1_4fcp1"]
+[ext_resource type="Texture2D" uid="uid://cidi7j2686q5k" path="res://Art/Sprites/Projectiles/Bolas Sinuca/sinuca.png" id="1_stsvk"]
+[ext_resource type="PackedScene" uid="uid://valyk5lctf4t" path="res://Prefabs/Effects/GunImpact.tscn" id="2_ep63x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_stsvk"]
+radius = 3.0
+
+[node name="BolaSinuca" type="Area2D"]
+script = ExtResource("1_4fcp1")
+_ImpactEffect = ExtResource("2_ep63x")
+lifeTime = 4.0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_stsvk")
+hframes = 2
+vframes = 5
+frame = 9
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://Art/Sprites/Projectiles/Bolas Sinuca/sinuca.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "8fe61a0c1964e5a5592c3d0221e977ed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_stsvk")
+
+[node name="Muzzle" type="Node2D" parent="."]
+position = Vector2(-4.85, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

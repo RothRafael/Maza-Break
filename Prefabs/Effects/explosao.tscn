@@ -1,0 +1,138 @@
+[gd_scene load_steps=11 format=4 uid="uid://d4b58cu8c24u"]
+
+[ext_resource type="Script" uid="uid://dyboqd34fipdk" path="res://Code/Effects/EffectsScript.cs" id="1_f4g0w"]
+[ext_resource type="Texture2D" uid="uid://brg65rn40pymr" path="res://Art/Sprites/effects/Light.png" id="2_f4g0w"]
+[ext_resource type="AudioStream" uid="uid://d0sx4hphwet45" path="res://Art/Sfx/Explosion.wav" id="2_qnwc2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qnwc2"]
+radius = 24.0
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_qnwc2"]
+_data = PackedByteArray("AAADAAUAAAABAAAAkAAAAJAAAABUAwAAUklGRkwDAABXRUJQVlA4TD8DAAAvj8AjEBcgEEjyFxlzDYFAkr/nHAtIEj/3nwQERf6PFvBfBTqubTmSnPcbEaOsHCCDNk0iV/Gp/GgiXs9MWWOSvQpqZckcCksmUPW3GRG/IpPSjOj/BOD/XfJvgiSPcDeqpF7maq/ifhezB0MyGTtczYxDSLK3Ge4dOfa0kkbmZ4/wnLFDjlkjkHtKSidXsbXdAOhlMg55BVch04hv7AmA9zmAzc4CwDokOeJXewLgfqeXC44QAXx4iF9PnUKmYR++NyJX0YPcyWQcwmqNLSVlzBMA24MWSHS1kta6PEJeezkOyeuyIK9POu4K7dUWkDcjMhk7bGBoSejm7UTG3chh7gpHeLEfyOUQjw7w/+1cxDEXGTRc15M45iiOKUrndeVdLyEhdBKA0DmTZGzdvhMZUus2ACG1XrpIMs0tRmCeW9lTwMiEUBU0Q6VsSiMTmhQeResDT0lAQPAgVIUG/HBKLQEguL7QbvDnfSMRgMYRqz3B2SqNc5Wuy9y+XnC+MEIZUTMVaOwV4CW3mwXWkkbhmy4FzrxUxs0VodJDZbAPzXiBFjQzCUVfAaPhbGbcoGxpSi4Alt7A2b62skJTC4nwBuA+Ab/ah3a3grFXJDoAMAFA47bHnMSTHGVF7hVNGJd6uNbB/WB3hO6wWfXriXiHHQLhiosZgA/viXd784R43YIP7Z6IPZTZNSNfPrf6FCGUDpN4EvL24MOKEU97muannrnCh2Z2F6G9TGjsFSBvhrOZnSq0y4jFbj5sxE4OrgDgbLbgB3sNu/65mi2loT11KYDCzaxcqpxac3EVAMqL2d0qAJQtikscrDKlykmA7EO+/GJ3EY1YlVjJFdvdhQ2UVFFwfSbZyZUmjFRS0NSoiIg7AZlJxaPScUthzB0JQB6S36UUtHMECoaqRPRVIsZmV94BLhx9Di4ZogCgnh2lJ6MigNCrpxFSRddAhQQAmCrpyDVQHDE09BAI+xw8jAueHVU8k0eviJ5/z/EQcgj35JqG7Th5ZNyVMir4hssh/tKTb/Ko60oNPcUxwwEC3DLq71MPses0SHw6anhwhGEBR6ymvVSwdzjCBCDAGcYAEqEOANOAAIFzqkaGCdJRjAUA")
+size_override = Vector2(144, 144)
+
+[sub_resource type="Curve" id="Curve_qnwc2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.168539), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_y7qxl"]
+curve = SubResource("Curve_qnwc2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_50d1c"]
+lifetime_randomness = 0.96
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(1, 1, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 28.3
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -71.82
+linear_accel_max = 50.0
+radial_accel_min = -100.0
+radial_accel_max = 84.54
+scale_min = 0.0
+scale_max = 8.9
+scale_curve = SubResource("CurveTexture_y7qxl")
+color = Color(0.933333, 0.52549, 0.12549, 1)
+hue_variation_min = -0.02
+hue_variation_max = 0.03
+
+[sub_resource type="Animation" id="Animation_50d1c"]
+length = 0.8515
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.833333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qkksx"]
+_data = {
+&"default": SubResource("Animation_50d1c")
+}
+
+[node name="Explosion" type="Area2D"]
+script = ExtResource("1_f4g0w")
+explosionSound = ExtResource("2_qnwc2")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+modulate = Color(0.560955, 0.560955, 0.560955, 0.647059)
+position = Vector2(-1.52588e-05, -1.52588e-05)
+scale = Vector2(0.34, 0.34)
+color = Color(0.997748, 0.545471, 0.456999, 1)
+energy = 0.4
+texture = ExtResource("2_f4g0w")
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = -80.0
+bus = &"Sfx"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qnwc2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.818194, 0.483804, 0.164005, 1)
+self_modulate = Color(0.98446, 0.994893, 0.69378, 1)
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_qnwc2")
+hframes = 3
+vframes = 3
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"slice": "",
+"source": "res://Art/Sprites/effects/Explosao2.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "ac1e087c072c1b4013792a9c07c12c5d"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 37
+lifetime = 1.1
+one_shot = true
+explosiveness = 1.0
+randomness = 0.82
+trail_lifetime = 0.46
+trail_sections = 2
+process_material = SubResource("ParticleProcessMaterial_50d1c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qkksx")
+}
+autoplay = "default"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

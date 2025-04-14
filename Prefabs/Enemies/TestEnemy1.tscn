@@ -1,0 +1,111 @@
+[gd_scene load_steps=13 format=3 uid="uid://dwrhujgwe8acw"]
+
+[ext_resource type="Script" uid="uid://bfkg1w6sisr3s" path="res://Code/Enemies/Enemy.cs" id="1_gkosd"]
+[ext_resource type="Texture2D" uid="uid://dowhy74ww2sbj" path="res://Art/Sprites/DemoFIles/rodrigosamder.png" id="2_5yfrg"]
+[ext_resource type="PackedScene" uid="uid://08q72ehkjt83" path="res://Prefabs/Components/anim_component.tscn" id="3_gkosd"]
+[ext_resource type="PackedScene" uid="uid://corofyu066ivf" path="res://Prefabs/Components/coin_component.tscn" id="4_mpwt4"]
+[ext_resource type="PackedScene" uid="uid://b670on8yucnse" path="res://Prefabs/Components/path_finding_component.tscn" id="5_5yfrg"]
+[ext_resource type="Script" uid="uid://bdu35wg4yuuri" path="res://Code/Components/PathFindingComponent.cs" id="6_46bdm"]
+[ext_resource type="Script" uid="uid://d2thd5f5imob7" path="res://Code/Components/HitNumbersComponent.cs" id="7_46bdm"]
+[ext_resource type="PackedScene" uid="uid://cxgsn6bhrgq1g" path="res://Prefabs/Components/enemy_hit_numbers.tscn" id="8_0itnb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wy8al"]
+radius = 2.49027
+
+[sub_resource type="Animation" id="Animation_wy8al"]
+resource_name = "OnReciveDamage"
+length = 0.179
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.18, 0.88), Vector2(0.885, 1.04), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(0.435275, 1),
+"update": 0,
+"values": [Color(5, 5, 5, 0.402), Color(0.7, 0.35, 0.35, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gkosd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.425788, 0.357085, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mpwt4"]
+_data = {
+&"OnReciveDamage": SubResource("Animation_wy8al"),
+&"RESET": SubResource("Animation_gkosd")
+}
+
+[node name="Enemy11" type="CharacterBody2D"]
+up_direction = Vector2(0, 1)
+script = ExtResource("1_gkosd")
+Health = 10
+Coins = 2
+isPushable = true
+_speed = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6.425, 6.425)
+shape = SubResource("CircleShape2D_wy8al")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.425788, 0.357085, 1)
+position = Vector2(0, 1.90735e-06)
+scale = Vector2(0.0910293, 0.095114)
+texture = ExtResource("2_5yfrg")
+
+[node name="AnimationPlayer2D" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mpwt4")
+}
+
+[node name="AnimComponent" parent="." instance=ExtResource("3_gkosd")]
+
+[node name="CoinComponent" parent="." instance=ExtResource("4_mpwt4")]
+
+[node name="PathFindingComponent" parent="." node_paths=PackedStringArray("_nav") instance=ExtResource("5_5yfrg")]
+script = ExtResource("6_46bdm")
+_nav = NodePath("../NavigationAgent2D")
+
+[node name="HitNumbersComponent" type="Node" parent="."]
+script = ExtResource("7_46bdm")
+HitNumberScene = ExtResource("8_0itnb")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

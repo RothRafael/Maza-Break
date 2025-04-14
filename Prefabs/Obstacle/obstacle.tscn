@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=4 uid="uid://bssrdmpahyxqc"]
+
+[ext_resource type="Script" uid="uid://cywcs8wqpgo8k" path="res://Code/Obstacles/ExplosiveBarrelScript.cs" id="1_7l340"]
+[ext_resource type="PackedScene" uid="uid://d4b58cu8c24u" path="res://Prefabs/Effects/explosao.tscn" id="2_4pbhi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fqd1e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqd1e"]
+size = Vector2(11, 10)
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_7l340"]
+_data = PackedByteArray("AAADAAUAAAABAAAAEAAAABAAAAA0AQAAUklGRiwBAABXRUJQVlA4TB8BAAAvD8ADEFfCoG0kR8neF/5s+wwNt5EkKVJXLxyq57959zLj7DhsI0mRqub4Lv9Q8WGaINumIvMHO8gD4ejrj+OgFVo7bGXFwBQDWlh1jMrvPwqU4lZiKCCKIKoACQBIAAAAwGD2avRFX9E1HqU2wdIoLVBQhDEuRtH6WxNYB1ptAIi2vZ3bx3d55P5j/nc9tryuBPn+NdqKQSMYIEOVjD8SZLTgOU9wYNu2kryPLWJLN9jd3e38Z/S5MoWI/k8AERHDFMnckD9s9yzKm65Wq9V6swOVIOQPPkiWGrKmW2YaJKRCuSarXhX8nrdzZ9hrKSD3vJ7G8+XEQh9uNbVjOSD/iiM+4kj363E0WwwsIL6/l2a331aAkM0U64alpMC/RAA=")
+size_override = Vector2(16, 16)
+
+[node name="Obstacle" type="StaticBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_fqd1e")
+script = ExtResource("1_7l340")
+_explosionEffectScene = ExtResource("2_4pbhi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 3)
+shape = SubResource("RectangleShape2D_fqd1e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_7l340")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://Art/Sprites/DemoFIles/caixaTEste.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "517b603526b1269616eeed805e9bd243"

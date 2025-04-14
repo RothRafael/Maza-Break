@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=4 uid="uid://byldhfkwpsfsg"]
+
+[ext_resource type="PackedScene" uid="uid://b2em4slgetw7y" path="res://Prefabs/Components/sound_component.tscn" id="2_f61sj"]
+[ext_resource type="PackedScene" uid="uid://blgvgx1rw4un8" path="res://Prefabs/Projectiles/melle_projectile.tscn" id="3_em11s"]
+[ext_resource type="Script" uid="uid://cksjgv5uq7iv0" path="res://Code/Guns/MeleeScript.cs" id="4_f61sj"]
+[ext_resource type="AudioStream" uid="uid://b7jxae655m773" path="res://Art/Sfx/Randomize3.wav" id="5_ydik1"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_8m3mk"]
+_data = PackedByteArray("AAADAAUAAAABAAAABQAAACAAAACGAAAAUklGRn4AAABXRUJQVlA4THIAAAAvBMAHEC+gpm0DNhYQHTT6VTEjSXByMMbg2v2uwSoNQIDNaZKsr/kPAOJL0qO9fQMMIUl2NWuwLwH8BPAQIsH//jSBIaL/CtO2YbLbUxCOuOD8H+/j866ZlqhTdchLbaglWqQltkSN34i4y12+5Ue+5AQ=")
+size_override = Vector2(5, 32)
+
+[sub_resource type="Animation" id="Animation_ydik1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_f61sj"]
+resource_name = "atack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ydik1"]
+_data = {
+&"RESET": SubResource("Animation_ydik1"),
+&"atack": SubResource("Animation_f61sj")
+}
+
+[node name="Melee" type="Node2D"]
+script = ExtResource("4_f61sj")
+_bulletScene = ExtResource("3_em11s")
+isAutomatic = true
+EnergyCost = 0
+BulletSpeed = 300
+pushForce = 700.0
+isMelee = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5708
+texture = SubResource("PortableCompressedTexture2D_8m3mk")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://Art/Sprites/Guns/Taco.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "9244005a3e1f4bb5764a2e1dfc317a18"
+
+[node name="SoundComponent" parent="." node_paths=PackedStringArray("_audioStreamPlayer") instance=ExtResource("2_f61sj")]
+_audioStreamPlayer = NodePath("../AudioStreamPlayer2D")
+_audioStream = Array[AudioStream]([ExtResource("5_ydik1")])
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -80.0
+
+[node name="Muzzle" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ydik1")
+}

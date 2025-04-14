@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dgsqdc66scsk8"
+path="res://.godot/imported/BaseProjectile.aseprite-44e0f978aa74604cb03ac6533cff364d.res"
+
+[deps]
+
+source_file="res://Art/Sprites/Projectiles/BaseProjectile.aseprite"
+dest_files=["res://.godot/imported/BaseProjectile.aseprite-44e0f978aa74604cb03ac6533cff364d.res"]
+
+[params]
+

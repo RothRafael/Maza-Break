@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://08q72ehkjt83"]
+
+[ext_resource type="Script" uid="uid://cnofrthkyqewq" path="res://Code/Components/AnimComponent.cs" id="1_au1x1"]
+
+[node name="AnimComponent" type="Node"]
+script = ExtResource("1_au1x1")
+animationPlayerPath = NodePath("../AnimationPlayer2D")

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://btcob5y25j25y"
+path="res://.godot/imported/Barrasvida.aseprite-31a9e1232479dff35561e7c610f48fa1.res"
+
+[deps]
+
+source_file="res://Art/Sprites/UI/Barras/Barrasvida.aseprite"
+dest_files=["res://.godot/imported/Barrasvida.aseprite-31a9e1232479dff35561e7c610f48fa1.res"]
+
+[params]
+

@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://be52dd46y7xbh"]
+
+[ext_resource type="Script" uid="uid://bs6e11r0782ml" path="res://Code/Guns/GunBazucaLitrao.cs" id="1_r8tcy"]
+[ext_resource type="Texture2D" uid="uid://cwj8s0mc25jb6" path="res://Art/Sprites/Guns/CasoCevaBazuca.png" id="2_2eyko"]
+[ext_resource type="AudioStream" uid="uid://bcek8k6r4tjjm" path="res://Art/Sfx/Laser_Shoot14.wav" id="2_ttvhm"]
+[ext_resource type="Script" uid="uid://75cch7s74s7w" path="res://Code/Projectiles/ProjectileFactory.cs" id="3_2eyko"]
+[ext_resource type="PackedScene" uid="uid://e80kjofaetpo" path="res://Prefabs/Projectiles/BulletBazuca.tscn" id="3_mthp2"]
+
+[node name="BazucaDeLitrao" type="Node2D"]
+script = ExtResource("1_r8tcy")
+ShotSounds = ExtResource("2_ttvhm")
+_bulletScene = ExtResource("3_mthp2")
+isAutomatic = true
+fireRate = 0.47
+Damage = 3
+BulletSpeed = 500
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_2eyko")
+
+[node name="Muzzle" type="Node2D" parent="."]
+position = Vector2(4, 0)
+scale = Vector2(4, 4)
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+bus = &"Sfx"
+
+[node name="Node" type="Node" parent="."]
+
+[node name="ProjectileFactory" type="Node" parent="."]
+script = ExtResource("3_2eyko")

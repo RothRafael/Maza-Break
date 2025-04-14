@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c3el7fnvrom2r"
+path="res://.godot/imported/Explosao2.aseprite-be2d9f8185517bbf619920d69c3a850d.res"
+
+[deps]
+
+source_file="res://Art/Sprites/effects/Explosao2.aseprite"
+dest_files=["res://.godot/imported/Explosao2.aseprite-be2d9f8185517bbf619920d69c3a850d.res"]
+
+[params]
+

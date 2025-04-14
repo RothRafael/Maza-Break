@@ -1,0 +1,131 @@
+[gd_scene load_steps=10 format=4 uid="uid://dftrtb1xu0haa"]
+
+[ext_resource type="Script" uid="uid://b8ynd08yp6lu3" path="res://Code/Coin&Drops/Coin.cs" id="1_fd6bt"]
+[ext_resource type="PackedScene" uid="uid://b2em4slgetw7y" path="res://Prefabs/Components/sound_component.tscn" id="2_k0qa3"]
+[ext_resource type="AudioStream" uid="uid://by4dwijgfhn7b" path="res://Art/Sfx/Coins/video-game-coin-pickup-sfx-319169.wav" id="3_qn15n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5bjby"]
+radius = 1.41421
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_5bjby"]
+_data = PackedByteArray("AAADAAUAAAABAAAAGAAAABAAAAC6AAAAUklGRrIAAABXRUJQVlA4TKUAAAAvF8ADED9AJmDhE0D/CvpYGTUUBSAD+cmogMR2pZmaSFKYb/EvCR85tThAQFDk/2ghwP83CQm7xYqIq284aiTJkUqNZCyB0QLwf9v/1UIwd8d/u24wRPRfbds2DMf0vIEQACcUd2Mj6CNQPNZx9G5qBCWa5KZR0JPspp1cqtmpvhLc7ydYM0x9ECA1xwlbS7+1hRbYbyyxef2zs/WlKlSyZovXBwEA")
+size_override = Vector2(24, 16)
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_fd6bt"]
+_data = PackedByteArray("AAADAAUAAAABAAAAGAAAABAAAACmAAAAUklGRp4AAABXRUJQVlA4TJIAAAAvF8ADEC+gIJIN6v3QvxiR1FDUthHTX/njLIJxg0zAYu8iSaK7MgQERf6PFgD+/1Dn2IzVwCCSpEZbSOANkAREAVEAhX81fwsaIvqvtm0bhmN63oBzgFEUN+VTyBYSH6VYUyXlhTe1KAwSTJ1srWDW+gXcCyT+HgSol30AzX8halogvzHP2rhMNjzv3QfXX+9BAA==")
+size_override = Vector2(24, 16)
+
+[sub_resource type="Animation" id="Animation_k0qa3"]
+resource_name = "SetParameters"
+
+[sub_resource type="Animation" id="Animation_fd6bt"]
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Silver:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gold:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k0qa3"]
+_data = {
+&"SetParameters": SubResource("Animation_k0qa3"),
+&"default": SubResource("Animation_fd6bt")
+}
+
+[node name="RigidBody2D" type="RigidBody2D"]
+z_index = 10
+collision_layer = 2
+collision_mask = 2
+gravity_scale = 0.0
+angular_velocity = 0.0174533
+angular_damp = 39.738
+script = ExtResource("1_fd6bt")
+Amount = 1
+_idleTime = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5bjby")
+
+[node name="Silver" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_5bjby")
+hframes = 3
+vframes = 2
+frame = 3
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": true,
+"player": "AnimationPlayer",
+"slice": "",
+"source": "res://Art/Anim/Coin/Silver.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "bbb0d1cb380458de9f7d6703e412f641"
+
+[node name="Gold" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_fd6bt")
+hframes = 3
+vframes = 2
+frame = 3
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": true,
+"player": "AnimationPlayer",
+"slice": "",
+"source": "res://Art/Anim/Coin/gold.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "5716e70d3052e4bd9f3cc32db60cfe70"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_k0qa3")
+}
+autoplay = "default"
+
+[node name="SoundComponent" parent="." node_paths=PackedStringArray("_audioStreamPlayer") instance=ExtResource("2_k0qa3")]
+_audioStreamPlayer = NodePath("../AudioStreamPlayer2D")
+_audioStream = Array[AudioStream]([ExtResource("3_qn15n")])
+PitchRange = Vector2(0.8, 1.2)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://corofyu066ivf"]
+
+[ext_resource type="Script" uid="uid://cwhsblud05w0k" path="res://Code/Coin&Drops/CoinComponent.cs" id="1_y5nyl"]
+[ext_resource type="PackedScene" uid="uid://dftrtb1xu0haa" path="res://Prefabs/Coins/Coin.tscn" id="2_ougc0"]
+
+[node name="CoinComponent" type="Node"]
+script = ExtResource("1_y5nyl")
+_coinScene = ExtResource("2_ougc0")

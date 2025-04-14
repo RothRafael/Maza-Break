@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://10ne3lbocf3n"
+path="res://.godot/imported/Taco.aseprite-ed4158457a8bf5c96025e98af956ddc3.res"
+
+[deps]
+
+source_file="res://Art/Sprites/Guns/Taco.aseprite"
+dest_files=["res://.godot/imported/Taco.aseprite-ed4158457a8bf5c96025e98af956ddc3.res"]
+
+[params]
+

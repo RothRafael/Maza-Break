@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2em4slgetw7y"]
+
+[ext_resource type="Script" uid="uid://2qdfjuwlfc2k" path="res://Code/Components/SoundComponent.cs" id="1_m33v2"]
+[ext_resource type="AudioStream" uid="uid://bfnfu1qf0khng" path="res://Art/Sfx/Laser.wav" id="2_e20y1"]
+
+[node name="SoundComponent" type="Node" node_paths=PackedStringArray("_audioStreamPlayer")]
+script = ExtResource("1_m33v2")
+_audioStreamPlayer = NodePath("")
+_audioStream = ExtResource("2_e20y1")
+_volumeDb = -20.0

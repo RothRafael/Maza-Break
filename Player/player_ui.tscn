@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://d1tq8xhxd7bby"]
+
+[node name="PlayerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.135417
+offset_right = 88.0
+offset_bottom = 127.0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.5
+offset_top = -49.0
+offset_right = 35.5
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VidaLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "VIDA:"
+
+[node name="ManaLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "MANA:"
+
+[node name="ArmorLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "ARMOR:"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
