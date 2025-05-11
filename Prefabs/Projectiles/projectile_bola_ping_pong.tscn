@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=4 uid="uid://dqtsdx0w8q5ax"]
+
+[ext_resource type="Script" uid="uid://c730sape7wrnt" path="res://Code/Projectiles/ProjectileTypes/ProjectileBolaPingPong.cs" id="1_ok6vx"]
+[ext_resource type="PackedScene" uid="uid://valyk5lctf4t" path="res://Prefabs/Effects/GunImpact.tscn" id="2_rsqoq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q10we"]
+radius = 4.0
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_q10we"]
+_data = PackedByteArray("AAADAAUAAAABAAAAEAAAABAAAABuAAAAUklGRmYAAABXRUJQVlA4TFoAAAAvD8ADEC9AFmAy+UF2BhBDGgSSNqu0Iu9/HuYK2UiC1t9iJVbpO4gTEBT5P1oA/H93UpvMaCiKJKm5AEaSAgof0b8Z5nUKIvo/ARJ5Zeo7fauWDINkXsGXKSg=")
+size_override = Vector2(16, 16)
+
+[node name="ProjectileBolaPingPong" type="Area2D"]
+script = ExtResource("1_ok6vx")
+impactParticles = ExtResource("2_rsqoq")
+speedLimit = 600.0
+lifeTime = 10000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_q10we")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_q10we")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://Art/Sprites/Projectiles/BolaPingPong.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "1d1720feb16ce0dc0d736a8dc89aec6a"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://b670on8yucnse"]
+[gd_scene load_steps=2 format=3 uid="uid://b670on8yucnse"]
+
+[ext_resource type="Script" uid="uid://bdu35wg4yuuri" path="res://Code/Components/PathFindingComponent.cs" id="1_3wcuj"]
 
 [node name="PathFindingComponent" type="Node"]
+script = ExtResource("1_3wcuj")

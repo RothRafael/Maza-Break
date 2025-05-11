@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bdh7lkpxcxjsl"
+path="res://.godot/imported/Sprite_MainChar.aseprite-a4eb0c753092bd2cb9f425942cbd4475.res"
+
+[deps]
+
+source_file="res://Art/Anim/Player/Sprite_MainChar.aseprite"
+dest_files=["res://.godot/imported/Sprite_MainChar.aseprite-a4eb0c753092bd2cb9f425942cbd4475.res"]
+
+[params]
+

@@ -244,7 +244,7 @@ libraries = {
 &"Impactos": SubResource("AnimationLibrary_kamqx")
 }
 autoplay = "default"
-speed_scale = 2.679
+speed_scale = 1.591
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false

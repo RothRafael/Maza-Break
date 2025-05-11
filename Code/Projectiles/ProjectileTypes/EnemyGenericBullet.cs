@@ -10,13 +10,19 @@ public partial class EnemyGenericBullet : ProjectileBase
     }
     private void _on_body_entered(Node2D body)
     {
-        if(body.Name == "Player" || !isCollisionEnabled) return;
+        if(body is Enemy enemy) return;
+
+        if(body.Name ==  "Player")
+        {
+            GD.Print("Player hit");
+            PlayerStatus.Instance.TakeDamage(Damage, isCrit);
+        }
+        
         base.OnHit(body);
         OnWallHit();
     }
     public void OnWallHit()
     {
-        GD.Print("Enemy bullet hit a wall");
         SpawnParticles();
         CameraShakeComponent.Instance.Shake(0.6f, 0.1f);
         QueueFree();
@@ -28,7 +34,9 @@ public partial class EnemyGenericBullet : ProjectileBase
             var impactEffect = _ImpactEffect.Instantiate<Node2D>();
             impactEffect.GlobalPosition = GlobalPosition;
             GetParent().AddChild(impactEffect);
-        } else {
+        }
+        else
+        {
             GD.Print("Impact effect not set");
         }
     }

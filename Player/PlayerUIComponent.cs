@@ -4,6 +4,7 @@ using System;
 public partial class PlayerUIComponent : Node
 {
     [Export] public NodePath PlayerUiPath; // Drag PlayerUI in the Inspector
+    [Export] private PackedScene GameOverScenePath; // Drag GameOverScene in the Inspector
 
     private Label _healthLabel;
     private Label _energiaLabel;
@@ -35,6 +36,13 @@ public partial class PlayerUIComponent : Node
     {
 
     }
+    public void ShowGameOver()
+    {
+        
+        var gameOverScene = GameOverScenePath.Instantiate();
+        AddChild(gameOverScene);
+
+    }
     private void ThrowErrors()
     {
         if (_healthLabel == null)
@@ -46,5 +54,6 @@ public partial class PlayerUIComponent : Node
             GD.PrintErr("Energy label not found!");
         }
     }
+
 
 }

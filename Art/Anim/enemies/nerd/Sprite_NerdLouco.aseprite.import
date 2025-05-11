@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b8axkhsewqo43"
+path="res://.godot/imported/Sprite_NerdLouco.aseprite-5849d54df37f43b12e93ccf0615afc5b.res"
+
+[deps]
+
+source_file="res://Art/Anim/enemies/nerd/Sprite_NerdLouco.aseprite"
+dest_files=["res://.godot/imported/Sprite_NerdLouco.aseprite-5849d54df37f43b12e93ccf0615afc5b.res"]
+
+[params]
+

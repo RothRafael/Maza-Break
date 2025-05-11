@@ -1,19 +1,22 @@
 using Godot;
-using System;
 
 public partial class AnimationComponent : Node
 {
-    [Export] private AnimatedSprite2D _animatedSprite2D;
+    [Export] private AnimationPlayer _animationPlayer2D;
     [Export] private PlayerController _playerController;
-    [Export] private Node2D hands;
-    private const string Up = "Up", Down = "Down", Left = "Left", Right = "Right", Idle = "Idle";
+    [Export] private Sprite2D _sprite2D;
+    private const string Idle = "idle", Run = "run";
 
     public override void _Ready()
     {
         _playerController = GetParent<PlayerController>();
-        if (_animatedSprite2D == null)
+        if (_animationPlayer2D == null)
         {
-            GD.PrintErr("AnimatedSprite2D is not assigned in the inspector.");
+            GD.PrintErr("AnimationPlayer2D is not assigned in the inspector.");
+        }
+        if (_sprite2D == null)
+        {
+            GD.PrintErr("Sprite2D is not assigned in the inspector.");
         }
     }
 
@@ -24,35 +27,29 @@ public partial class AnimationComponent : Node
 
     public void UpdateAnimation()
     {
-        if (_animatedSprite2D == null || _playerController == null)
+        if (_animationPlayer2D == null || _playerController == null || _sprite2D == null)
         {
-            GD.PrintErr("AnimatedSprite2D or PlayerController is null.");
+            GD.PrintErr("AnimationPlayer2D, PlayerController, or Sprite2D is null.");
             return;
         }
 
-        if (_playerController.moveX > 0)
+        if (_playerController.moveX != 0 || _playerController.moveY != 0)
         {
-            _animatedSprite2D.Play(Right);
-            hands.ZIndex = 1;
+            _animationPlayer2D.Play(Run);
 
+            // Flip the sprite based on movement direction
+            if (_playerController.moveX < 0)
+            {
+                _sprite2D.FlipH = true;
+            }
+            else if (_playerController.moveX > 0)
+            {
+                _sprite2D.FlipH = false;
+            }
         }
-        else if (_playerController.moveX < 0)
+        else
         {
-            _animatedSprite2D.Play(Left);
-            hands.ZIndex = 1;
-        }
-        else if (_playerController.moveY > 0)
-        {
-            _animatedSprite2D.Play(Down);
-            hands.ZIndex = 1;
-        }
-        else if (_playerController.moveY < 0)
-        {
-            _animatedSprite2D.Play(Up);
-            hands.ZIndex = -1;
-        } else {
-            _animatedSprite2D.Play(Idle);
-            hands.ZIndex = 0;
+            _animationPlayer2D.Play(Idle);
         }
     }
 }

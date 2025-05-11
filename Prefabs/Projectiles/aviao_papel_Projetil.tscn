@@ -1,0 +1,117 @@
+[gd_scene load_steps=8 format=4 uid="uid://nt4juv0rxy36"]
+
+[ext_resource type="Script" uid="uid://dk327m4o338nc" path="res://Code/Projectiles/ProjectileTypes/PlayerGenericBullet.cs" id="1_af7uk"]
+[ext_resource type="PackedScene" uid="uid://bwfknu7dejh8g" path="res://Prefabs/Effects/aviao_papel_effect.tscn" id="2_5qa8c"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_5qa8c"]
+_data = PackedByteArray("AAADAAUAAAABAAAAEAAAABAAAAB0AAAAUklGRmwAAABXRUJQVlA4TGAAAAAvD8ADECdAmG00+UHudwLnQ5BtM6WJzP+nUcg2AjR/i5M4pY9CQFDk/2gB2H+Lq8yDQSRJTpZgYJBwhYAo4P8Z/75AQUT/M5+bei9JA3yStgFdj72qit4KoK8NANNUzY8=")
+size_override = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7yluu"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_cqryc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_5qa8c"]
+resource_name = "fly"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-3, 3), Vector2(-3, -1), Vector2(-3, 3), Vector2(-3, 8), Vector2(-3, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -4), Vector2(0, 0), Vector2(0, 5), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o2bmt"]
+_data = {
+&"RESET": SubResource("Animation_cqryc"),
+&"fly": SubResource("Animation_5qa8c")
+}
+
+[node name="AviaoPapel" type="Area2D"]
+z_index = -1
+script = ExtResource("1_af7uk")
+_ImpactEffect = ExtResource("2_5qa8c")
+Damage = 2
+lifeTime = 10.0
+pushForce = 100.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(-3, 3)
+texture = SubResource("PortableCompressedTexture2D_5qa8c")
+offset = Vector2(3, -3)
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://Art/Sprites/Guns/Aviao_Papel.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "8f52172006caa6bcaa23bc2c09a3307c"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7yluu")
+debug_color = Color(0, 0.6, 0.7, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o2bmt")
+}
+autoplay = "fly"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

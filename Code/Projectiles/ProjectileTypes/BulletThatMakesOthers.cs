@@ -36,7 +36,7 @@ public partial class BulletThatMakesOthers : ProjectileBase
     private void SpawnSubBullets()
     {
         // _soundComponent.PlaySound();
-        BulletFactory.CreateShotgunBullets(SubBulletScene, _bulletSpawnData, BulletCount);
+        BulletFactory.CreateBullet(SubBulletScene, _bulletSpawnData, BulletCount);
     }
     private void SetData()
     {

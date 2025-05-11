@@ -15,6 +15,10 @@ run/main_scene="uid://hcevbqaq3k3"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="uid://dtex6u8maubtx"
 
+[autoload]
+
+UiManager="*res://UI/UiManager.cs"
+
 [display]
 
 window/stretch/mode="viewport"
@@ -36,6 +40,10 @@ folder_colors={
 "res://Player/": "pink",
 "res://Prefabs/": "yellow"
 }
+
+[global_group]
+
+Death=""
 
 [input]
 

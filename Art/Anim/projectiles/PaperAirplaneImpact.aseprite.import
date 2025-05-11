@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cpkhkc5vxmrqa"
+path="res://.godot/imported/PaperAirplaneImpact.aseprite-8e9c22c65fd7f49d6ce6a4e8b33ff8e3.res"
+
+[deps]
+
+source_file="res://Art/Anim/projectiles/PaperAirplaneImpact.aseprite"
+dest_files=["res://.godot/imported/PaperAirplaneImpact.aseprite-8e9c22c65fd7f49d6ce6a4e8b33ff8e3.res"]
+
+[params]
+

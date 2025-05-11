@@ -25,14 +25,13 @@ public abstract partial class GunBase : Node2D, IGun
     }
 
     public virtual bool Shoot(Vector2 direction) {
-        if(PlayerStatus.Instance.canShoot(EnergyCost) && CanShoot())
+        if(CanShoot())
         {
             this.direction = direction.Normalized();
             return true;
         }
         return false;
     }
-
     public override void _Process(double delta)
     {
         timeSinceLastShot += (float)delta;

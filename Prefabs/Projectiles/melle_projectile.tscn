@@ -21,7 +21,7 @@ lifeTime = 0.1
 position = Vector2(4, 1.74846e-07)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_ud7uj")
-debug_color = Color(0.57, 0.53466, 0.3933, 0.0313726)
+debug_color = Color(0.867982, 0.297767, 0.448209, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

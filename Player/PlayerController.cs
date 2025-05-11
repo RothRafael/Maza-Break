@@ -17,14 +17,16 @@ public partial class PlayerController : CharacterBody2D
 	public float moveY;
 	public float stickX;
 	public float stickY;
+
 	
 
-
+	[Export] private Vector2 _handsOffsset;
 	private Node2D hands;
 
 	public override void _Ready()
 	{
 		hands = GetNode<Node2D>("Hands");
+		hands.Position = _handsOffsset;
 		// Initialize the camera	
 		_camera = GetNode<Node2D>("CamPivo");
 		// Set the camera to follow the player
@@ -44,7 +46,7 @@ public partial class PlayerController : CharacterBody2D
 		HandleShooting();
 
 		//Check collisions
-		PlayerStatus.Instance.playerPosition = GlobalPosition;
+		PlayerStatus.Instance.playerPosition = Position;	
 	}
 
 
@@ -90,6 +92,7 @@ public partial class PlayerController : CharacterBody2D
 		// Rotate the hand towards the input direction
 		hands.Rotation = inputDirection.Angle();
 		shootAngle = inputDirection;
+		PlayerStatus.Instance.lookDirection = inputDirection;
 	}
 
 

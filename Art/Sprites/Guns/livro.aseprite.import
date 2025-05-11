@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://co7s0q8gccgwh"
+path="res://.godot/imported/livro.aseprite-06b809581f0709c53219e670124c80b2.res"
+
+[deps]
+
+source_file="res://Art/Sprites/Guns/livro.aseprite"
+dest_files=["res://.godot/imported/livro.aseprite-06b809581f0709c53219e670124c80b2.res"]
+
+[params]
+

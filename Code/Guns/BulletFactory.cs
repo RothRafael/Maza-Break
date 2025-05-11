@@ -18,7 +18,7 @@ public abstract partial class BulletFactory : Node
         gunBase.GlobalPosition += offset;
         CreateBullets(BulletScene, gunBase, 1);
     }
-    public static void CreateShotgunBullets(PackedScene BulletScene, BulletSpawnData gunBase, int bulletCount)
+    public static void CreateBullet(PackedScene BulletScene, BulletSpawnData gunBase, int bulletCount)
     {
         CreateBullets(BulletScene, gunBase, bulletCount);
     }
@@ -34,8 +34,10 @@ public abstract partial class BulletFactory : Node
 
             // Set the bullet's properties
             spawnedBullet.Launch(spreadDirection, gunBase.BulletSpeed);
+
             spawnedBullet.Damage = GetCritDamage(gunBase.Damage, gunBase.CritChance);
             spawnedBullet.isCrit = IsCrit(spawnedBullet.Damage, gunBase.Damage);
+        
             spawnedBullet.pushForce = gunBase.PushForce;
 
             gunBase.Tree.Root.CallDeferred("add_child", spawnedBullet);
@@ -44,6 +46,18 @@ public abstract partial class BulletFactory : Node
             spawnedBullet.DisableCollision();
         }
     }
+    public static void CreateMeleeAttack(PackedScene BulletScene, BulletSpawnData gunBase, float rotation)
+    {
+        ProjectileBase spawnedBullet = BulletScene.Instantiate<ProjectileBase>();
+        spawnedBullet.Damage = GetCritDamage(gunBase.Damage, gunBase.CritChance);
+        spawnedBullet.isCrit = IsCrit(spawnedBullet.Damage, gunBase.Damage);
+        spawnedBullet.pushForce = gunBase.PushForce;
+        spawnedBullet.GlobalPosition = gunBase.GlobalPosition;
+        spawnedBullet.Rotation = rotation;
+        spawnedBullet.DisableCollision();
+        gunBase.Tree.Root.CallDeferred("add_child", spawnedBullet);
+    }
+     
     private static int GetCritDamage(int damage, int critChance)
     {
         if (critChance > 0)
@@ -52,12 +66,13 @@ public abstract partial class BulletFactory : Node
             int critRoll = random.Next(0, 100);
             if (critRoll < critChance)
             {
-                Debug.Print($"Critical hit! Damage: {damage * 2}");
+                // Debug.Print($"Critical hit! Damage: {damage * 2}");
                 return damage * 2;
             }
         }
         return damage;
     }
+    
     private static bool IsCrit(int damage, int baseDamage)
     {
         return damage > baseDamage;
@@ -72,22 +87,12 @@ public abstract partial class BulletFactory : Node
             Damage = gunBase.Damage,
             GlobalPosition = gunBase.GlobalPosition,
             Tree = gunBase.GetTree(),
-            PushForce = gunBase.pushForce
+            PushForce = gunBase.pushForce,
+            CritChance = gunBase.CritChance
 
         };
         return spawnData;
     }
-}
-
-public struct BulletSpawnData
-{
-    public float Spread;
-    public Vector2 Direction;
-    public float BulletSpeed;
-    public int Damage;
-    public float PushForce;
-    public int CritChance;
-    public Vector2 GlobalPosition;
-    public SceneTree Tree;
 
 }
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dxdwhk4u5mw26"
+path="res://.godot/imported/weaponSwing.aseprite-18c739663bdeebff118a0a6eaa113b74.res"
+
+[deps]
+
+source_file="res://Art/Anim/swing/weaponSwing.aseprite"
+dest_files=["res://.godot/imported/weaponSwing.aseprite-18c739663bdeebff118a0a6eaa113b74.res"]
+
+[params]
+

@@ -8,6 +8,8 @@ public partial class GunBolas : GunBase
     [Export] private int _bulletCount = 22;
     public int _spriteIndex = 1;
     private int maxIndex = 9;
+
+    
     private Sprite2D sprite;
     private SoundComponent _soundComponent;
     public override void _Ready()
@@ -32,31 +34,15 @@ public partial class GunBolas : GunBase
 
     private void CreateProjectile()
     {
+        
         timeSinceLastShot = 0f;
         _soundComponent.PlaySound();
-        BulletFactory.CreateBullet(_bulletScene, BulletFactory.CreateBulletSpawnData(this));
+        BulletFactory.CreateBullet(_bulletScene, BulletFactory.CreateBulletSpawnData(this), _bulletCount);
         CameraShakeComponent.Instance.Shake(1f, 0.1f);
-        ChangeSprite();
-
     }
     private void PlayAnim()
     {
         AnimationPlayer animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         animationPlayer?.Play("ShootAnim");
-    }
-    private void ChangeSprite()
-    {
-        // int totalFrames = sprite.Hframes * sprite.Vframes;
-
-        // if (totalFrames <= 1)
-        // {
-        //     GD.PrintErr("sprite deu ruim");
-        //     return;
-        // }
-
-        // _spriteIndex = (_spriteIndex + 1) % totalFrames;
-        // sprite.Frame = _spriteIndex;
-
-        // Debug.Print($"Sprite index changed to: {_spriteIndex}");
     }
 }

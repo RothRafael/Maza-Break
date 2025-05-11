@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://danv4ldehqg3p"
+path="res://.godot/imported/RaquetePingPong.aseprite-825c44da73a0d0589e45faa6362fc45b.res"
+
+[deps]
+
+source_file="res://Art/Sprites/Guns/RaquetePingPong.aseprite"
+dest_files=["res://.godot/imported/RaquetePingPong.aseprite-825c44da73a0d0589e45faa6362fc45b.res"]
+
+[params]
+

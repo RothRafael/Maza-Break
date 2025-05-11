@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cxgsn6bhrgq1g" path="res://Prefabs/Components/enemy_hit_numbers.tscn" id="8_0itnb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wy8al"]
-radius = 2.49027
+radius = 0.946733
 
 [sub_resource type="Animation" id="Animation_wy8al"]
 resource_name = "OnReciveDamage"
@@ -77,9 +77,6 @@ _data = {
 up_direction = Vector2(0, 1)
 script = ExtResource("1_gkosd")
 Health = 10
-Coins = 2
-isPushable = true
-_speed = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(6.425, 6.425)
@@ -96,16 +93,23 @@ libraries = {
 &"": SubResource("AnimationLibrary_mpwt4")
 }
 
-[node name="AnimComponent" parent="." instance=ExtResource("3_gkosd")]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
-[node name="CoinComponent" parent="." instance=ExtResource("4_mpwt4")]
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(1, -52.08)
 
-[node name="PathFindingComponent" parent="." node_paths=PackedStringArray("_nav") instance=ExtResource("5_5yfrg")]
+[node name="Components" type="Node2D" parent="."]
+
+[node name="AnimComponent" parent="Components" instance=ExtResource("3_gkosd")]
+animationPlayerPath = NodePath("../../AnimationPlayer2D")
+
+[node name="CoinComponent" parent="Components" instance=ExtResource("4_mpwt4")]
+
+[node name="PathFindingComponent" parent="Components" node_paths=PackedStringArray("_nav") instance=ExtResource("5_5yfrg")]
 script = ExtResource("6_46bdm")
-_nav = NodePath("../NavigationAgent2D")
+_nav = NodePath("../../NavigationAgent2D")
 
-[node name="HitNumbersComponent" type="Node" parent="."]
+[node name="HitNumbersComponent" type="Node" parent="Components"]
 script = ExtResource("7_46bdm")
 HitNumberScene = ExtResource("8_0itnb")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+HitCriticalColor = Color(1, 0, 0, 1)

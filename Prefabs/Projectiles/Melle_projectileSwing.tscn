@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=4 uid="uid://b4r2ftgoyxy1r"]
+
+[ext_resource type="Script" uid="uid://3nwqjxhtuuf4" path="res://Code/Projectiles/ProjectileTypes/MeleeProjectile.cs" id="1_elsgi"]
+[ext_resource type="PackedScene" uid="uid://valyk5lctf4t" path="res://Prefabs/Effects/GunImpact.tscn" id="2_tvyho"]
+[ext_resource type="PackedScene" uid="uid://b2em4slgetw7y" path="res://Prefabs/Components/sound_component.tscn" id="3_8l434"]
+[ext_resource type="AudioStream" uid="uid://dihhwl0ahihf1" path="res://Art/Sfx/Hit_Hurt11.wav" id="4_8vg6p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ud7uj"]
+size = Vector2(51.0001, 21.9998)
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_42dow"]
+_data = PackedByteArray("AAADAAUAAAABAAAABQAAACAAAACGAAAAUklGRn4AAABXRUJQVlA4THIAAAAvBMAHEC+gpm0DNhYQHTT6VTEjSXByMMbg2v2uwSoNQIDNaZKsr/kPAOJL0qO9fQMMIUl2NWuwLwH8BPAQIsH//jSBIaL/CtO2YbLbUxCOuOD8H+/j866ZlqhTdchLbaglWqQltkSN34i4y12+5Ue+5AQ=")
+size_override = Vector2(5, 32)
+
+[node name="MelleProjectile" type="Area2D"]
+script = ExtResource("1_elsgi")
+_ImpactEffect = ExtResource("2_tvyho")
+lifeTime = 0.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 0.499992)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_ud7uj")
+debug_color = Color(0.568627, 0.533333, 0.392157, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.12549)
+texture_filter = 1
+position = Vector2(9.00001, 0.500058)
+rotation = 1.5708
+texture = SubResource("PortableCompressedTexture2D_42dow")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://Art/Sprites/Guns/Taco.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "9244005a3e1f4bb5764a2e1dfc317a18"
+
+[node name="SoundComponent" parent="." node_paths=PackedStringArray("_audioStreamPlayer") instance=ExtResource("3_8l434")]
+_audioStreamPlayer = NodePath("../AudioStreamPlayer2D")
+_audioStream = Array[AudioStream]([ExtResource("4_8vg6p")])
+_volumeDb = 0.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(9.00001, 0.500058)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

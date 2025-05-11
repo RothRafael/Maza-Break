@@ -1,10 +1,10 @@
 using Godot;
 
-public interface IPlayerStatus : IDamagable
+public interface IPlayerStatus
 {
-    int Vida { get; set; }
-    int Energia { get; set; }
-    int Armor { get; set; }
+    int MaxVida { get; set; }
+    int MaxEnergia { get; set; }
+    int MaxArmor { get; set; }
     
 
 }

@@ -38,6 +38,22 @@ public partial class SoundComponent : Node
             _audioStreamPlayer.Play();
         }
     }
+    public void PlayRandomSoundBetweenIndexes(int startIndex, int endIndex)
+    {
+        if (_audioStreamPlayer != null && _audioStream != null && startIndex >= 0 && endIndex < _audioStream.Count && startIndex <= endIndex)
+        {
+            int randomIndex = (int)GD.RandRange(startIndex, endIndex + 1);
+            _audioStreamPlayer.Stream = _audioStream[randomIndex];
+
+            float randomPitch = (float)GD.RandRange(PitchRange.X, PitchRange.Y);
+            _audioStreamPlayer.PitchScale = randomPitch;
+            _audioStreamPlayer.Play();
+        }
+        else
+        {
+            GD.PrintErr("Invalid index range or AudioStreamPlayer2D/AudioStream is not assigned.");
+        }
+    }
     public void PlaySoundIncreasingPitch()
     {
         if (_audioStreamPlayer != null)

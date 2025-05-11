@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dccwycpb4o3aq"]
+
+[ext_resource type="PackedScene" uid="uid://be50ub5t3nc37" path="res://Prefabs/Guns/testing_gun.tscn" id="1_i16gp"]
+
+[node name="ShootComponent" type="Node2D"]
+position = Vector2(-3.14, 0)
+
+[node name="TestingGun" parent="." instance=ExtResource("1_i16gp")]

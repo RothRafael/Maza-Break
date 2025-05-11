@@ -33,6 +33,19 @@ public partial class CameraShakeComponent : Node
 
         Shake(intensity, duration);
     }
+    //Shake Horizontal x axis
+    public void ShakeH(float intensity, float duration)
+    {
+        if (_isShaking) return;
+        _shakeMagnitude = intensity;
+        _shakeDuration = duration;
+        _shakeElapsedTime = 0f;
+        _isShaking = true;
+        _originalPosition = _camera.Position;
+
+        Vector2 shakeOffset = new Vector2(intensity, 0);
+        _camera.Position += shakeOffset;
+    }
     public void StopShake()
     {
         _isShaking = false;
@@ -51,9 +64,9 @@ public partial class CameraShakeComponent : Node
             }
 
             float x = (float)GD.RandRange(-_shakeMagnitude, _shakeMagnitude);
-            float y = (float)GD.RandRange(-_shakeMagnitude, _shakeMagnitude);
+            // float y = (float)GD.RandRange(-_shakeMagnitude, _shakeMagnitude);
 
-            Vector2 shakeOffset = new Vector2(x, y);
+            Vector2 shakeOffset = new Vector2(x, 0);
             _camera.Position = _originalPosition + shakeOffset;
         }
     }

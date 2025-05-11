@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://7r16uatdlvai"]
+
+[ext_resource type="Script" uid="uid://dfrqtahw2kxml" path="res://UI/GameOverSceneScript.cs" id="1_gbqd5"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_gbqd5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_right = 1.001
+anchor_bottom = 1.0
+offset_right = -0.1521
+offset_bottom = 3.0
+color = Color(0.764706, 0.356863, 0.54902, 0.254902)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 530.0
+offset_top = 63.0
+offset_right = -530.0
+offset_bottom = -562.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "GAME OVER"
+
+[node name="Exit" type="Button" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 574.0
+offset_top = 264.0
+offset_right = -570.0
+offset_bottom = -376.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Quit
+"
+
+[node name="Retry" type="Button" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 572.0
+offset_top = 320.0
+offset_right = -572.0
+offset_bottom = -320.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Retry"
+
+[connection signal="button_up" from="Exit" to="." method="OnExitButtonPressed"]
+[connection signal="pressed" from="Exit" to="." method="OnExitButtonPressed"]
+[connection signal="button_up" from="Retry" to="." method="OnRestartButtonPressed"]
+[connection signal="pressed" from="Retry" to="." method="OnRestartButtonPressed"]

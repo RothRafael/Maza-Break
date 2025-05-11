@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bkrndv0wp35m2"
+path="res://.godot/imported/BolaPingPong.aseprite-b21fa56da3c767d81a5d4de12534b084.res"
+
+[deps]
+
+source_file="res://Art/Sprites/Projectiles/BolaPingPong.aseprite"
+dest_files=["res://.godot/imported/BolaPingPong.aseprite-b21fa56da3c767d81a5d4de12534b084.res"]
+
+[params]
+

@@ -4,6 +4,7 @@ using System;
 public partial class HitNumbersComponent : Node
 {
     [Export] public PackedScene HitNumberScene;
+    [Export] public Color HitCriticalColor;
 
     public override void _Ready()
     {
@@ -25,8 +26,15 @@ public partial class HitNumbersComponent : Node
         if (hitNumberInstance != null)
         {
             GetParent().AddChild(hitNumberInstance);
-            hitNumberInstance.GlobalPosition = position;
+            hitNumberInstance.Position = position;
             hitNumberInstance.GetNode<Label>("Label").Text = damage.ToString(); // Set the hit number text
+            hitNumberInstance.GetNode<Label>("Label").LabelSettings.FontColor = Colors.White; // Change color for critical hits
+
+        }
+
+        if(isCritical)
+        {
+            hitNumberInstance.GetNode<Label>("Label").LabelSettings.FontColor = HitCriticalColor; // Change color for critical hits
         }
         return hitNumberInstance;
     }

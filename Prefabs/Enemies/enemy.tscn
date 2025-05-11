@@ -1,0 +1,183 @@
+[gd_scene load_steps=15 format=3 uid="uid://csh1815vysfmt"]
+
+[ext_resource type="Script" uid="uid://bfkg1w6sisr3s" path="res://Code/Enemies/Enemy.cs" id="1_pak5r"]
+[ext_resource type="PackedScene" uid="uid://6cbapvxotyh0" path="res://Prefabs/enemieTextures/nerd.tscn" id="2_vabkg"]
+[ext_resource type="Script" uid="uid://bfl57jvn127sd" path="res://Code/Components/EnemyAnimationComponent.cs" id="3_savhp"]
+[ext_resource type="Texture2D" uid="uid://dtex6u8maubtx" path="res://Art/Logo/MazaBreakLogo.png" id="4_6etnd"]
+[ext_resource type="PackedScene" uid="uid://b670on8yucnse" path="res://Prefabs/Components/path_finding_component.tscn" id="4_vabkg"]
+[ext_resource type="Script" uid="uid://dm375pkhfk8eh" path="res://Code/Components/ShootComponentScript.cs" id="5_a6f4p"]
+[ext_resource type="PackedScene" uid="uid://dccwycpb4o3aq" path="res://Prefabs/Components/shootComponent.tscn" id="5_b2fau"]
+[ext_resource type="PackedScene" uid="uid://be50ub5t3nc37" path="res://Prefabs/Guns/testing_gun.tscn" id="6_2w20p"]
+
+[sub_resource type="Animation" id="Animation_2w20p"]
+resource_name = "Awake"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_b2fau"]
+resource_name = "Die"
+length = 4.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.76667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../CollisionShape2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_6etnd"]
+resource_name = "Hit"
+length = 0.2185
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.435, 0.605), Vector2(1, 1), Vector2(0.775, 1.44), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(2, 2, 2, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vabkg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vabkg"]
+_data = {
+&"Awake": SubResource("Animation_2w20p"),
+&"Die": SubResource("Animation_b2fau"),
+&"Hit": SubResource("Animation_6etnd"),
+&"RESET": SubResource("Animation_vabkg")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a6f4p"]
+radius = 6.0
+height = 14.0
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("_enemyAnimationComponent", "_pathFindingComponent", "_shootComponent")]
+script = ExtResource("1_pak5r")
+Health = 10
+Speed = 50.0
+fireRate = 0.445
+playerTexture = ExtResource("2_vabkg")
+_enemyAnimationComponent = NodePath("Components/EnemyAnimationComponent")
+_pathFindingComponent = NodePath("Components/PathFindingComponent")
+_shootComponent = NodePath("Components/ShootComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("4_6etnd")
+
+[node name="Components" type="Node2D" parent="."]
+
+[node name="ShootComponent" parent="Components" instance=ExtResource("5_b2fau")]
+script = ExtResource("5_a6f4p")
+
+[node name="Gun" parent="Components/ShootComponent" instance=ExtResource("6_2w20p")]
+
+[node name="EnemyAnimationComponent" type="Node" parent="Components" node_paths=PackedStringArray("_hitAnimationPlayer")]
+script = ExtResource("3_savhp")
+_hitAnimationPlayer = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Components/EnemyAnimationComponent"]
+libraries = {
+&"": SubResource("AnimationLibrary_vabkg")
+}
+autoplay = "Awake"
+
+[node name="PathFindingComponent" parent="Components" node_paths=PackedStringArray("_nav") instance=ExtResource("4_vabkg")]
+_nav = NodePath("../NavigationAgent2D")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Components"]
+path_postprocessing = 1
+simplify_epsilon = 3.824
+radius = 129.1
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_a6f4p")
