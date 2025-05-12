@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://dr3dvr11p5xxp"]
+[gd_scene load_steps=8 format=4 uid="uid://dr3dvr11p5xxp"]
 
 [ext_resource type="Script" uid="uid://c2qci4pg1ab02" path="res://Code/Guns/GunRaquete.cs" id="1_4a8ud"]
 [ext_resource type="PackedScene" uid="uid://bml0xl488mi8h" path="res://Prefabs/Projectiles/swing_projectile.tscn" id="2_1asqd"]
@@ -6,6 +6,8 @@
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_1asqd"]
 _data = PackedByteArray("AAADAAUAAAABAAAACwAAABAAAACQAAAAUklGRogAAABXRUJQVlA4THsAAAAvCsADEEegqJEU5nRgABmYwP8DE73YMBOBkJQmXaVwVuO3eEWRJDWXownSC//CcICAoMj/0QIA/3/ZYXFuRteqD+tSjsCojSRH9RoACyESGAgbIOz78h2C4y9twBDR/wlgfXseIFojbKpu7/RYOidUTQJfvgCadP/SxxwA")
 size_override = Vector2(11, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1asqd"]
 
 [sub_resource type="Animation" id="Animation_dgqd5"]
 length = 0.001
@@ -94,6 +96,11 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://Art/Sprites/Guns/RaquetePingPong.aseprite"
 }
 metadata/_aseprite_wizard_source_file_hash_ = "22faba550b663fa51d7149ebaebada8a"
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+shape = SubResource("RectangleShape2D_1asqd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

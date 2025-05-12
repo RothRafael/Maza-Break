@@ -29,6 +29,9 @@ public partial class GunRaquete : MeleeBaseSwing
     private void PlayAnim()
     {
         _animationPlayer.Play("Swing");
+    }
 
+    private void Parry() {
+        
     }
 }
