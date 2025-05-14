@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class GunRaquete : MeleeBaseSwing
 {
@@ -10,6 +11,7 @@ public partial class GunRaquete : MeleeBaseSwing
     private AnimationPlayer _animationPlayer;
     private bool _isSwinging = false;
 
+    private List<ProjectileBase> _projectilesToParry = new List<ProjectileBase>();
     public override void _Ready()
     {
         base._Ready();
@@ -31,7 +33,24 @@ public partial class GunRaquete : MeleeBaseSwing
         _animationPlayer.Play("Swing");
     }
 
-    private void Parry() {
-        
+    public void Parry() {
+        foreach (var projectile in _projectilesToParry)
+        {
+            // Check if the projectile is within the swing area
+            projectile.Launch(projectile._velocity * -1, 1f);
+        }
+        _projectilesToParry.Clear();
+    }
+
+    private void _on_area_2d_area_entered(Area2D area)
+    {
+        if (area is ProjectileBase projectileBase) {
+            // Check if the projectile is from an enemy
+            if (projectileBase.shooterFaction == Faction.Enemy)
+            {
+                projectileBase.shooterFaction = Faction.Player;
+                _projectilesToParry.Add(projectileBase);
+            }
+        }
     }
 }

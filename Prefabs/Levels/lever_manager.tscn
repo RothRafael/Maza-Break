@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba3ola6bx8r8e"]
+
+[ext_resource type="Script" uid="uid://jhflb5ana5qi" path="res://Code/LevelScripts/LevelManagerScript.cs" id="1_63qip"]
+[ext_resource type="Script" uid="uid://bjswyy0ghrm0q" path="res://Prefabs/Levels/RoomInfo.cs" id="2_a3voa"]
+[ext_resource type="Resource" uid="uid://crocpkw75hw7" path="res://Prefabs/Levels/Room2.tres" id="4_ari5l"]
+
+[node name="LeverManager" type="Node2D"]
+script = ExtResource("1_63qip")
+rooms = Array[ExtResource("2_a3voa")]([ExtResource("4_ari5l"), ExtResource("4_ari5l"), ExtResource("4_ari5l"), ExtResource("4_ari5l"), ExtResource("4_ari5l"), ExtResource("4_ari5l")])

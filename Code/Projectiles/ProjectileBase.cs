@@ -13,7 +13,7 @@ public partial class ProjectileBase : Area2D
     public bool isCollisionEnabled = true;
 
 
-    protected Vector2 _velocity;
+    public Vector2 _velocity;
     public float speed = 0;
     public virtual void Launch(Vector2 direction, float speed)
     {

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RoomInfo" load_steps=3 format=3 uid="uid://crocpkw75hw7"]
+
+[ext_resource type="PackedScene" uid="uid://w27j7nvmxvgx" path="res://Prefabs/Levels/RoomSmall.tscn" id="1_v7esj"]
+[ext_resource type="Script" uid="uid://bjswyy0ghrm0q" path="res://Prefabs/Levels/RoomInfo.cs" id="2_nhvjb"]
+
+[resource]
+script = ExtResource("2_nhvjb")
+nome = "roomSmall"
+roomScene = ExtResource("1_v7esj")
+pos = Vector2(0, 0)
+a = ""
