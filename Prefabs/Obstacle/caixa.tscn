@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://e1tncxl4bb7f"]
+
+[ext_resource type="Script" uid="uid://dx0rm57xqt6ob" path="res://Code/Obstacles/BoxObstacleScript.cs" id="1_amwvd"]
+[ext_resource type="Texture2D" uid="uid://bbbtevy76vv3y" path="res://Player/icon.svg" id="1_ru6e5"]
+[ext_resource type="PackedScene" uid="uid://c3shrxvkh4c4b" path="res://Prefabs/Effects/box_effect.tscn" id="2_ewylp"]
+[ext_resource type="PackedScene" uid="uid://bsiy8eg4ov4n1" path="res://Prefabs/Components/EffectComponent.tscn" id="3_jyxoo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ru6e5"]
+size = Vector2(16, 16)
+
+[node name="StaticBody2D" type="StaticBody2D" node_paths=PackedStringArray("effectComponent")]
+script = ExtResource("1_amwvd")
+boxDestroyedEffectScene = ExtResource("2_ewylp")
+effectComponent = NodePath("EffectComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ru6e5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("1_ru6e5")
+
+[node name="EffectComponent" parent="." instance=ExtResource("3_jyxoo")]

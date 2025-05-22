@@ -160,7 +160,6 @@ _sprite2D = NodePath("../../Sprite2D")
 
 [node name="MainCamera" type="Camera2D" parent="CamPivo"]
 scale = Vector2(1, 1.01082)
-zoom = Vector2(0.165, 0.165)
 limit_smoothed = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CamPivo/MainCamera"]

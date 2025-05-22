@@ -1,0 +1,132 @@
+[gd_scene load_steps=2 format=3 uid="uid://b74q723npb66r"]
+
+[ext_resource type="PackedScene" uid="uid://csh1815vysfmt" path="res://Prefabs/Enemies/enemy.tscn" id="1_a2vwc"]
+
+[node name="UmMonteDEinimigo" type="Node"]
+
+[node name="Enemy" parent="." instance=ExtResource("1_a2vwc")]
+fireRate = 0.3
+
+[node name="Enemy2" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(33, 0)
+fireRate = 0.3
+
+[node name="Enemy3" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(68, 0)
+fireRate = 0.3
+
+[node name="Enemy4" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(101, 0)
+fireRate = 0.3
+
+[node name="Enemy5" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(145, -1)
+fireRate = 0.3
+
+[node name="Enemy6" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(178, -1)
+fireRate = 0.3
+
+[node name="Enemy7" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(213, -1)
+fireRate = 0.3
+
+[node name="Enemy8" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(246, -1)
+fireRate = 0.3
+
+[node name="Enemy9" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(2, 30)
+fireRate = 0.3
+
+[node name="Enemy10" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(35, 30)
+fireRate = 0.3
+
+[node name="Enemy11" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(70, 30)
+fireRate = 0.3
+
+[node name="Enemy12" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(103, 30)
+fireRate = 0.3
+
+[node name="Enemy13" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(147, 29)
+fireRate = 0.3
+
+[node name="Enemy14" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(180, 29)
+fireRate = 0.3
+
+[node name="Enemy15" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(215, 29)
+fireRate = 0.3
+
+[node name="Enemy16" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(248, 29)
+fireRate = 0.3
+
+[node name="Enemy17" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(2, 61)
+fireRate = 0.3
+
+[node name="Enemy18" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(35, 61)
+fireRate = 0.3
+
+[node name="Enemy19" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(70, 61)
+fireRate = 0.3
+
+[node name="Enemy20" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(103, 61)
+fireRate = 0.3
+
+[node name="Enemy21" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(147, 60)
+fireRate = 0.3
+
+[node name="Enemy22" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(180, 60)
+fireRate = 0.3
+
+[node name="Enemy23" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(215, 60)
+fireRate = 0.3
+
+[node name="Enemy24" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(248, 60)
+fireRate = 0.3
+
+[node name="Enemy25" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(2, 89)
+fireRate = 0.3
+
+[node name="Enemy26" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(35, 89)
+fireRate = 0.3
+
+[node name="Enemy27" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(70, 89)
+fireRate = 0.3
+
+[node name="Enemy28" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(103, 89)
+fireRate = 0.3
+
+[node name="Enemy29" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(147, 88)
+fireRate = 0.3
+
+[node name="Enemy30" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(180, 88)
+fireRate = 0.3
+
+[node name="Enemy31" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(215, 88)
+fireRate = 0.3
+
+[node name="Enemy32" parent="." instance=ExtResource("1_a2vwc")]
+position = Vector2(248, 88)
+fireRate = 0.3

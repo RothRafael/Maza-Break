@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://cv4icd4rsrmbw"]
+
+[ext_resource type="PackedScene" uid="uid://nxn43b3e0ar3" path="res://Player/player.tscn" id="1_t2qwo"]
+[ext_resource type="PackedScene" uid="uid://csh1815vysfmt" path="res://Prefabs/Enemies/enemy.tscn" id="2_qlu5e"]
+[ext_resource type="Script" uid="uid://jhflb5ana5qi" path="res://Code/LevelScripts/LevelManagerScript.cs" id="3_1d1at"]
+[ext_resource type="PackedScene" uid="uid://bja3evqxbsoeq" path="res://Prefabs/Levels/roomManager.tscn" id="3_qlu5e"]
+
+[sub_resource type="Environment" id="Environment_t2qwo"]
+background_mode = 3
+tonemap_mode = 1
+glow_enabled = true
+glow_bloom = 0.16
+glow_blend_mode = 1
+
+[node name="MainScene" type="Node2D"]
+rotation = -0.0589229
+
+[node name="Player" parent="." instance=ExtResource("1_t2qwo")]
+position = Vector2(-41.5348, 109.745)
+CameraFollowMouse = 200
+
+[node name="World" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = SubResource("Environment_t2qwo")
+
+[node name="RoomManager" parent="World" instance=ExtResource("3_qlu5e")]
+script = ExtResource("3_1d1at")
+metadata/_edit_lock_ = true
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("2_qlu5e")]
+position = Vector2(-32, -144)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("2_qlu5e")]
+position = Vector2(48, -144)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("2_qlu5e")]
+position = Vector2(13, -43)

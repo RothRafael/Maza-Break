@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bja3evqxbsoeq"]
+
+[ext_resource type="PackedScene" uid="uid://b1hupf0dmu3pw" path="res://Prefabs/Levels/Room1.tscn" id="1_5qxbv"]
+
+[node name="Room" type="Node2D"]
+
+[node name="Room1" parent="." instance=ExtResource("1_5qxbv")]
+z_index = -1

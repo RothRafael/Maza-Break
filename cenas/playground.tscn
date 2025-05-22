@@ -1,0 +1,511 @@
+[gd_scene load_steps=7 format=3 uid="uid://hcevbqaq3k3"]
+
+[ext_resource type="PackedScene" uid="uid://ba3ola6bx8r8e" path="res://Prefabs/Levels/lever_manager.tscn" id="1_7kv3o"]
+[ext_resource type="PackedScene" uid="uid://nxn43b3e0ar3" path="res://Player/player.tscn" id="2_auyux"]
+[ext_resource type="PackedScene" uid="uid://e1tncxl4bb7f" path="res://Prefabs/Obstacle/caixa.tscn" id="3_75rpi"]
+[ext_resource type="PackedScene" uid="uid://duniompbc6kyk" path="res://Prefabs/Levels/TestLevel.tscn" id="4_auyux"]
+[ext_resource type="PackedScene" uid="uid://csh1815vysfmt" path="res://Prefabs/Enemies/enemy.tscn" id="5_75rpi"]
+
+[sub_resource type="Environment" id="Environment_8o34d"]
+background_mode = 3
+tonemap_mode = 1
+glow_enabled = true
+glow_bloom = 0.16
+glow_blend_mode = 1
+
+[node name="MainScene" type="Node2D"]
+
+[node name="LeverManager" parent="." instance=ExtResource("1_7kv3o")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="LeverManager"]
+environment = SubResource("Environment_8o34d")
+
+[node name="Player" parent="." instance=ExtResource("2_auyux")]
+position = Vector2(57, 246)
+CameraFollowMouse = 200
+
+[node name="TIles" type="Node" parent="."]
+
+[node name="Layer2" parent="TIles" instance=ExtResource("4_auyux")]
+
+[node name="box2" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(8, 136)
+
+[node name="box" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(8, 120)
+
+[node name="box3" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(8, 152)
+
+[node name="box4" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(8, 168)
+
+[node name="box5" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-6, 136)
+
+[node name="box6" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-6, 120)
+
+[node name="box7" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-6, 152)
+
+[node name="box8" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-6, 168)
+
+[node name="box9" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-22, 136)
+
+[node name="box10" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-22, 120)
+
+[node name="box11" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-22, 152)
+
+[node name="box12" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-22, 168)
+
+[node name="box13" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-38, 136)
+
+[node name="box14" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-38, 120)
+
+[node name="box15" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-38, 152)
+
+[node name="box16" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-38, 168)
+
+[node name="box17" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-54, 136)
+
+[node name="box18" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-54, 120)
+
+[node name="box19" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-54, 152)
+
+[node name="box20" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-54, 168)
+
+[node name="box21" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-70, 136)
+
+[node name="box22" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-70, 120)
+
+[node name="box23" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-70, 152)
+
+[node name="box24" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-70, 168)
+
+[node name="box25" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-86, 136)
+
+[node name="box26" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-86, 120)
+
+[node name="box27" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-86, 152)
+
+[node name="box28" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-86, 168)
+
+[node name="box29" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-102, 136)
+
+[node name="box30" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-102, 120)
+
+[node name="box31" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-102, 152)
+
+[node name="box32" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-102, 168)
+
+[node name="box33" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-118, 136)
+
+[node name="box34" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-118, 120)
+
+[node name="box35" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-118, 152)
+
+[node name="box36" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-118, 168)
+
+[node name="box37" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-56, 264)
+
+[node name="box38" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-56, 248)
+
+[node name="box39" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-56, 280)
+
+[node name="box40" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-56, 296)
+
+[node name="box41" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-56, 200)
+
+[node name="box42" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-56, 184)
+
+[node name="box43" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-56, 216)
+
+[node name="box44" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(-56, 232)
+
+[node name="box45" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(216, 264)
+
+[node name="box46" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(216, 248)
+
+[node name="box47" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(216, 280)
+
+[node name="box48" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(216, 296)
+
+[node name="box49" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(232, 264)
+
+[node name="box50" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(232, 248)
+
+[node name="box51" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(232, 280)
+
+[node name="box52" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(232, 296)
+
+[node name="box53" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(248, 264)
+
+[node name="box54" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(248, 248)
+
+[node name="box55" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(248, 280)
+
+[node name="box56" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(248, 296)
+
+[node name="box57" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(264, 264)
+
+[node name="box58" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(264, 248)
+
+[node name="box59" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(264, 280)
+
+[node name="box60" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(264, 296)
+
+[node name="box61" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(280, 264)
+
+[node name="box62" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(280, 248)
+
+[node name="box63" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(280, 280)
+
+[node name="box64" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(280, 296)
+
+[node name="box65" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(296, 264)
+
+[node name="box66" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(296, 248)
+
+[node name="box67" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(296, 280)
+
+[node name="box68" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(296, 296)
+
+[node name="box69" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(312, 264)
+
+[node name="box70" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(312, 248)
+
+[node name="box71" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(312, 280)
+
+[node name="box72" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(312, 296)
+
+[node name="box73" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(328, 264)
+
+[node name="box74" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(328, 248)
+
+[node name="box75" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(328, 280)
+
+[node name="box76" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(328, 296)
+
+[node name="box77" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(344, 264)
+
+[node name="box78" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(344, 248)
+
+[node name="box79" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(344, 280)
+
+[node name="box80" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(344, 296)
+
+[node name="box81" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(360, 264)
+
+[node name="box82" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(360, 248)
+
+[node name="box83" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(360, 280)
+
+[node name="box84" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(360, 296)
+
+[node name="box85" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(376, 264)
+
+[node name="box86" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(376, 248)
+
+[node name="box87" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(376, 280)
+
+[node name="box88" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(376, 296)
+
+[node name="box89" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(392, 264)
+
+[node name="box90" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(392, 248)
+
+[node name="box91" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(392, 280)
+
+[node name="box92" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(392, 296)
+
+[node name="box93" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(408, 264)
+
+[node name="box94" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(408, 248)
+
+[node name="box95" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(408, 280)
+
+[node name="box96" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(408, 296)
+
+[node name="box97" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(424, 264)
+
+[node name="box98" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(424, 248)
+
+[node name="box99" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(424, 280)
+
+[node name="box100" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(424, 296)
+
+[node name="box101" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(408, 200)
+
+[node name="box102" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(408, 184)
+
+[node name="box103" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(408, 216)
+
+[node name="box104" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(408, 232)
+
+[node name="box105" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(424, 200)
+
+[node name="box106" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(424, 184)
+
+[node name="box107" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(424, 216)
+
+[node name="box108" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(424, 232)
+
+[node name="box109" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(376, 200)
+
+[node name="box110" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(376, 184)
+
+[node name="box111" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(376, 216)
+
+[node name="box112" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(376, 232)
+
+[node name="box113" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(392, 200)
+
+[node name="box114" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(392, 184)
+
+[node name="box115" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(392, 216)
+
+[node name="box116" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(392, 232)
+
+[node name="box117" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(344, 200)
+
+[node name="box118" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(344, 184)
+
+[node name="box119" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(344, 216)
+
+[node name="box120" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(344, 232)
+
+[node name="box121" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(360, 200)
+
+[node name="box122" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(360, 184)
+
+[node name="box123" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(360, 216)
+
+[node name="box124" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(360, 232)
+
+[node name="box125" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(312, 200)
+
+[node name="box126" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(312, 184)
+
+[node name="box127" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(312, 216)
+
+[node name="box128" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(312, 232)
+
+[node name="box129" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(328, 200)
+
+[node name="box130" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(328, 184)
+
+[node name="box131" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(328, 216)
+
+[node name="box132" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(328, 232)
+
+[node name="box133" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(280, 200)
+
+[node name="box134" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(280, 184)
+
+[node name="box135" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(280, 216)
+
+[node name="box136" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(280, 232)
+
+[node name="box137" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(296, 200)
+
+[node name="box138" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(296, 184)
+
+[node name="box139" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(296, 216)
+
+[node name="box140" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(296, 232)
+
+[node name="box141" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(248, 200)
+
+[node name="box142" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(248, 184)
+
+[node name="box143" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(248, 216)
+
+[node name="box144" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(248, 232)
+
+[node name="box157" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(232, 232)
+
+[node name="box145" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(264, 200)
+
+[node name="box146" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(264, 184)
+
+[node name="box147" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(264, 216)
+
+[node name="box148" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(264, 232)
+
+[node name="box149" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(248, 136)
+
+[node name="box150" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(248, 120)
+
+[node name="box151" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(248, 152)
+
+[node name="box152" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(248, 168)
+
+[node name="box153" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(264, 136)
+
+[node name="box154" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(264, 120)
+
+[node name="box155" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(264, 152)
+
+[node name="box156" parent="TIles/Layer2" instance=ExtResource("3_75rpi")]
+position = Vector2(264, 168)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("5_75rpi")]
+position = Vector2(112, -96)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("5_75rpi")]
+position = Vector2(192, -96)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("5_75rpi")]
+position = Vector2(160, 167)

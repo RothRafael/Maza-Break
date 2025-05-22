@@ -8,8 +8,13 @@ public partial class MeleeBaseSwing: GunBase
 
     public override bool Shoot(Vector2 direction)
     {
+        if(!CanShoot())
+            return false;
+        
         _globalRotation = direction.Angle();
         SpawnProjectile();
+        
+        base.Shoot(direction);
         return true;
     }
     public void SpawnProjectile() {

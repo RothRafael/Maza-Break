@@ -2,80 +2,73 @@ using Godot;
 using Godot.Collections;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 [GlobalClass]
 public partial class LevelManagerScript : Node
 {
-    private RoomTree roomTree;
-    [Export] public Array<RoomInfo> rooms = new Array<RoomInfo>();
-    private HashSet<Vector2> usedPositions = new HashSet<Vector2>();
+    List<TileMapLayer> rooms = new List<TileMapLayer>();
 
-    private int x = 0;
-    private int y = 0;
-    private int distancia = 200;
+    private TileMapLayer currentRoom;
     public override void _Ready()
     {
-        ArrangeRooms();
+        // enemySpawner = GetNode<EnemySpawner>("EnemySpawner");
+        SearchRooms();
+        GetSpawnPoints();
     }
-    public void ArrangeRooms()
+    public override void _Process(double delta)
     {
-        foreach (RoomInfo room in rooms)
-        {
-            GD.Print(room.nome);
-            room.pos = getFreeRoomPosition(room);
 
-            TileMapLayer newRoom = room.roomScene.Instantiate<TileMapLayer>();
-            AddChild(newRoom);
-
-            newRoom.GlobalPosition = room.pos;
-            GD.Print(newRoom.GlobalPosition);
-        }
     }
-    public Vector2 getFreeRoomPosition(RoomInfo room)
+    public void GetSpawnPoints()
     {
-        Vector2 position = new Vector2();
+        foreach (var room in rooms)
+        {
+            // Get the used rectangle which includes position and size
+            var usedRect = room.GetUsedRect();
 
-        while (true)
-        {
-            position = new Vector2(x, y);
-            if (!isRoomFilled(position))
+            // Iterate over the actual tile positions in the used rect
+            for (int x = usedRect.Position.X; x < usedRect.Position.X + usedRect.Size.X; x++)
             {
-                break;
-            }
-            x += distancia;
-            if (x >= 1000)
-            {
-                x = 0;
-                y += 500;
-            }
-        }
-        return position;
-    }
-    public bool isRoomFilled(Vector2 position)
-    {
-        foreach (RoomInfo room in rooms)
-        {
-            if (room.pos == position)
-            {
-                return true;
+                for (int y = usedRect.Position.Y; y < usedRect.Position.Y + usedRect.Size.Y; y++)
+                {
+                    Vector2I tilePos = new Vector2I(x, y);
+                    // Get the tile data, check if it exists and has the custom data
+                    var data = room.GetCellTileData(tilePos);
+                    Random random = new Random();
+                    int randomNumber = random.Next(1, 101); // Generates a random number between 1 and 100
+                    if (data != null && data.GetCustomData("CanSpawn").AsBool() && randomNumber > 90)
+                    {
+                        GD.Print("Spawn point found at: " + tilePos);
+                        string path = "res://Prefabs/Obstacle/caixa.tscn";
+                        var scene = GD.Load<PackedScene>(path);
+                        var instance = scene.Instantiate();
+                        room.AddChild(instance);
+                        // Use MapToLocal to get the correct position relative to the TileMap
+                        ((Node2D)instance).Position = room.MapToLocal(tilePos);
+                    }
+                }
             }
         }
-        return false;
     }
-}
 
-public class RoomTree
-{
-    public RoomInfo Root { get; set; }
-
-    public RoomTree(RoomInfo root)
+    public void SearchRooms()
     {
-        Root = root;
+        rooms.Clear();
+        var tileMapLayers = GetChildren();
+        foreach (var layer in tileMapLayers)
+        {
+            if (layer is TileMapLayer tileMapLayer)
+            {
+                if (tileMapLayer.Name.ToString().StartsWith("Room"))
+                {
+                    rooms.Add(tileMapLayer);
+                }
+            }
+        }
+        GD.Print("Rooms found: " + rooms.Count);
     }
 
-    public void AddRoom(Room room, Room parent)
-    {
-
-    }
 }
 

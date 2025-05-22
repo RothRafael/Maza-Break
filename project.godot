@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MazaBreak"
-run/main_scene="uid://hcevbqaq3k3"
+run/main_scene="uid://cv4icd4rsrmbw"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="uid://dtex6u8maubtx"
 

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsiy8eg4ov4n1"]
+
+[ext_resource type="Script" uid="uid://cov4ovfi6svni" path="res://Code/Components/EffectComponentScript.cs" id="1_sad1v"]
+
+[node name="EffectComponent" type="Node"]
+script = ExtResource("1_sad1v")

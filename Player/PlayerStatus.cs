@@ -103,12 +103,23 @@ public partial class PlayerStatus : Node, IPlayerStatus, IDamagable
         return false;
     }
 
-    public async void SlowTime(float scale, float duration)
-    {
-        Engine.TimeScale = scale;
-        await ToSignal(GetTree().CreateTimer(duration * (1 / scale)), "timeout");
-        Engine.TimeScale = 1.0f;
-    }
+public async void SlowTime(float scale, float duration)
+{
+    Engine.TimeScale = scale;
+
+    // Create and play the tween to animate the time_scale
+    Tween timeTween = new Tween();
+    timeTween.TweenProperty(this, "time_scale", 1.0f, duration)
+        .SetTrans(Tween.TransitionType.Expo)
+        .SetEase(Tween.EaseType.InOut);
+    timeTween.Play();
+
+    // Await the timer
+    await ToSignal(GetTree().CreateTimer(duration * (1 / scale)), "timeout");
+
+    // Ensure the time scale is restored to normal after the effect duration
+    Engine.TimeScale = 1.0f;
+}
 
     // Getters
     public int GetVida() => Vida;

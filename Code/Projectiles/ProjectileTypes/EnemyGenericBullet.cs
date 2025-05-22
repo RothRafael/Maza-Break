@@ -6,11 +6,12 @@ public partial class EnemyGenericBullet : ProjectileBase
     [Export] private PackedScene _ImpactEffect;
     public override void _Ready()
     {
+        shooterFaction = Faction.Enemy;
         base._Ready();
     }
     private void _on_body_entered(Node2D body)
     {
-        if(body is Enemy enemy) return;
+        if(body is Enemy enemy && shooterFaction == Faction.Enemy) return;
 
         if(body.Name ==  "Player")
         {

@@ -20,11 +20,13 @@ public partial class GunRaquete : MeleeBaseSwing
 
     public override bool Shoot(Vector2 direction)
     {
-        if (_isSwinging)
+        if (_isSwinging || !CanShoot())
             return false;
 
         PlayAnim();
-        SpawnProjectile();
+        Parry(direction);
+
+        base.Shoot(direction);
         return true;
     }
 
@@ -33,24 +35,35 @@ public partial class GunRaquete : MeleeBaseSwing
         _animationPlayer.Play("Swing");
     }
 
-    public void Parry() {
+    public void Parry(Vector2 direction)
+    {
+        if (_projectilesToParry.Count == 0) return;
+        
         foreach (var projectile in _projectilesToParry)
         {
             // Check if the projectile is within the swing area
-            projectile.Launch(projectile._velocity * -1, 1f);
+            projectile.shooterFaction = Faction.Player;
+            projectile.Launch(direction, 1f);
         }
+        PlayerStatus.Instance.SlowTime(0.5f, 0.2f);
         _projectilesToParry.Clear();
     }
 
-    private void _on_area_2d_area_entered(Area2D area)
+    private void _on_area_enter(Area2D area)
     {
-        if (area is ProjectileBase projectileBase) {
-            // Check if the projectile is from an enemy
-            if (projectileBase.shooterFaction == Faction.Enemy)
+        if (area is ProjectileBase projectile)
+        {
+            if (projectile.shooterFaction == Faction.Enemy)
             {
-                projectileBase.shooterFaction = Faction.Player;
-                _projectilesToParry.Add(projectileBase);
+                _projectilesToParry.Add(projectile);
             }
+        }
+    }
+    private void _on_area_exited(Area2D area)
+    {
+        if (area is ProjectileBase projectile)
+        {
+            _projectilesToParry.Remove(projectile);
         }
     }
 }

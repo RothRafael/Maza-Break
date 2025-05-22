@@ -64,20 +64,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.982749, 1.56082]
 }
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.333333),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"Parry"
-}]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wp3bw"]
 _data = {
@@ -88,6 +74,7 @@ _data = {
 [node name="MeleeSwing" type="Node2D"]
 script = ExtResource("1_4a8ud")
 _swingScene = ExtResource("2_1asqd")
+fireRate = 0.385
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -123,5 +110,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_wp3bw")
 }
 
-[connection signal="area_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Sprite2D/Area2D" to="." method="_on_area_enter"]
+[connection signal="area_exited" from="Sprite2D/Area2D" to="." method="_on_area_exited"]
