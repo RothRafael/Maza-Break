@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://jv3g3svpcqb"]
+
+[ext_resource type="Script" uid="uid://83hxrnkxiktg" path="res://Code/Enemies/EnemiesManager.cs" id="1_t0ybg"]
+[ext_resource type="PackedScene" uid="uid://6cbapvxotyh0" path="res://Prefabs/enemieTextures/nerd.tscn" id="2_5pisy"]
+[ext_resource type="PackedScene" uid="uid://c366eis06daxj" path="res://Prefabs/enemieTextures/robo.tscn" id="3_iy7bb"]
+
+[node name="EnemiesManager" type="Node2D"]
+script = ExtResource("1_t0ybg")
+textureScenes = Array[PackedScene]([ExtResource("2_5pisy"), ExtResource("3_iy7bb")])

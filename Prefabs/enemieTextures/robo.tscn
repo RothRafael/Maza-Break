@@ -4,22 +4,6 @@
 _data = PackedByteArray("AAADAAUAAAABAAAAYAAAAGYAAACoAgAAUklGRqACAABXRUJQVlA4TJMCAAAvX0AZEF+goI0k5fiZwcH79/Aq1USSpCaP6SGk/KW8okaSlOVjBgfn/33u5j8AAAC867IuanTMrM4qVvTeQ7TNG/z/QY607XHbAJML4MvKgSqxU+nZW2l4Ba9dNk1u4KVjRRzDG7J8qtwSt4NIgPizJ01E/x24beNI8vXK+Yb6IYa8o7gnnXeU1iLryIdcphp8DwU96XwGuKNOndMgbvpBsX2FDKPMyEE9NdN+ZU+Gca0bOSaUcIWw6UOYZRypMJpOFhhop2ac42B2nOsDSSDVhiRT9RHSh1nSDWCdfNkCQLrAkKgC8BrgKMS9jY719LC7u7ap1M7u7uetY8LLY9cQkqjNOQzGG7umlj7nejudrchx7I/9saDjsvP0/kLQwc77YwlH5pyeko7L7pYkBR3saOeiDuf4HPcZx+rlfYHLxOrmzqq0A9FR5Fog6yhzAVg0QMYBYIIrMVPX0CrjaLQqcan58qXKOABV5jLQAo4/2SGb0aU96WyzUnebd0xwi1d95zCaTjqKMs5xMJt05N25+rBhH2ZJx0R3ssAQZuXufOXuopfL3Bgv6Shyq53d3fV2OumY5h67WueYd0xzJzv2x/64zPEx3ia67Dy9vxB0sPP+WMKRObenpOOyuyVJQQc72rmowzmuXt5nHM9xX+AysRp3VqUdTXQUuRZN1lHmArAAkHE0wARXYqauG60yDmhV4lLzqM44li9VmctACzj+u21395lYGMy5Sux6tLu7dpVgretu3KdtkOprzFWkdRDJxJurWKBFJVUcbdhYI1N9x4tjHwvWzETuY/SedyFopUWaL2p6DlMy1au7Y887UqrlErKp5XLOi2PBJ8rgjqRk6o7SgcMnG7EMBgvUSnaA+hVMAQA=")
 size_override = Vector2(96, 102)
 
-[sub_resource type="Animation" id="Animation_vci0a"]
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-
 [sub_resource type="Animation" id="Animation_eh183"]
 length = 0.1
 loop_mode = 1
@@ -36,6 +20,22 @@ tracks/0/keys = {
 "values": [6]
 }
 
+[sub_resource type="Animation" id="Animation_vci0a"]
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ti840"]
 _data = {
 &"Die": SubResource("Animation_eh183"),
@@ -47,7 +47,7 @@ texture_filter = 1
 texture = SubResource("PortableCompressedTexture2D_muxv2")
 hframes = 3
 vframes = 3
-frame = 6
+frame = 3
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }

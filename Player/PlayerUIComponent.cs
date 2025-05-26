@@ -16,7 +16,7 @@ public partial class PlayerUIComponent : Node
     {
         _playerStatus = PlayerStatus.Instance;
         var uiNode = GetNode<CanvasLayer>(PlayerUiPath);
-        var vboxContainer = uiNode.GetNode<Panel>("Panel").GetNode<VBoxContainer>("VBoxContainer");
+        var vboxContainer = uiNode.GetNode<Control>("Panel").GetNode<VBoxContainer>("VBoxContainer");
         _healthLabel = vboxContainer.GetNode<Label>("VidaLabel");
         _energiaLabel = vboxContainer.GetNode<Label>("EnergiaLabel");
         _armorLabel = vboxContainer.GetNode<Label>("ArmorLabel");
@@ -42,6 +42,24 @@ public partial class PlayerUIComponent : Node
         var gameOverScene = GameOverScenePath.Instantiate();
         AddChild(gameOverScene);
 
+    }
+
+    public void _on_h_slider_value_changed(float value)
+    {
+        EnemiesManager.instance.spawnDelay = (int)value;
+    }
+    public void _on_check_box_toggledGOD(bool isChecked)
+    {
+        if (isChecked)
+        {
+            _playerStatus.godMode = true;
+            GD.Print("God mode activated");
+        }
+        else
+        {
+            _playerStatus.godMode = false;
+            GD.Print("God mode deactivated");
+        }
     }
     private void ThrowErrors()
     {

@@ -1,13 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://csh1815vysfmt"]
+[gd_scene load_steps=16 format=3 uid="uid://csh1815vysfmt"]
 
 [ext_resource type="Script" uid="uid://bfkg1w6sisr3s" path="res://Code/Enemies/Enemy.cs" id="1_pak5r"]
-[ext_resource type="PackedScene" uid="uid://6cbapvxotyh0" path="res://Prefabs/enemieTextures/nerd.tscn" id="2_vabkg"]
 [ext_resource type="Script" uid="uid://bfl57jvn127sd" path="res://Code/Components/EnemyAnimationComponent.cs" id="3_savhp"]
 [ext_resource type="Texture2D" uid="uid://dtex6u8maubtx" path="res://Art/Logo/MazaBreakLogo.png" id="4_6etnd"]
 [ext_resource type="PackedScene" uid="uid://b670on8yucnse" path="res://Prefabs/Components/path_finding_component.tscn" id="4_vabkg"]
 [ext_resource type="Script" uid="uid://dm375pkhfk8eh" path="res://Code/Components/ShootComponentScript.cs" id="5_a6f4p"]
 [ext_resource type="PackedScene" uid="uid://dccwycpb4o3aq" path="res://Prefabs/Components/shootComponent.tscn" id="5_b2fau"]
 [ext_resource type="PackedScene" uid="uid://be50ub5t3nc37" path="res://Prefabs/Guns/testing_gun.tscn" id="6_2w20p"]
+[ext_resource type="AudioStream" uid="uid://dfv8yh186j4q8" path="res://Art/Sfx/death/morreu.wav" id="7_wome5"]
+[ext_resource type="PackedScene" uid="uid://corofyu066ivf" path="res://Prefabs/Components/coin_component.tscn" id="9_wome5"]
 
 [sub_resource type="Animation" id="Animation_2w20p"]
 resource_name = "Awake"
@@ -56,6 +57,21 @@ tracks/1/keys = {
 "method": &"queue_free"
 }]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_wome5")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_6etnd"]
 resource_name = "Hit"
@@ -136,17 +152,19 @@ _data = {
 radius = 6.0
 height = 14.0
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("_enemyAnimationComponent", "_pathFindingComponent", "_shootComponent")]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("_enemyAnimationComponent", "_pathFindingComponent", "_shootComponent", "_coinComponent")]
 script = ExtResource("1_pak5r")
 Health = 10
 Speed = 50.0
 fireRate = 2.0
-playerTexture = ExtResource("2_vabkg")
+coinDropAmmount = 10
 _enemyAnimationComponent = NodePath("Components/EnemyAnimationComponent")
 _pathFindingComponent = NodePath("Components/PathFindingComponent")
 _shootComponent = NodePath("Components/ShootComponent")
+_coinComponent = NodePath("Components/CoinComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 texture_filter = 1
 scale = Vector2(0.105, 0.105)
 texture = ExtResource("4_6etnd")
@@ -154,6 +172,7 @@ texture = ExtResource("4_6etnd")
 [node name="Components" type="Node2D" parent="."]
 
 [node name="ShootComponent" parent="Components" instance=ExtResource("5_b2fau")]
+visible = false
 script = ExtResource("5_a6f4p")
 
 [node name="Gun" parent="Components/ShootComponent" instance=ExtResource("6_2w20p")]
@@ -174,10 +193,15 @@ _nav = NodePath("../NavigationAgent2D")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Components"]
 path_postprocessing = 1
 simplify_epsilon = 3.824
+avoidance_enabled = true
 radius = 129.1
 debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="CoinComponent" parent="Components" instance=ExtResource("9_wome5")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Components"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_a6f4p")

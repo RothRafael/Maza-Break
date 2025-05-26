@@ -6,15 +6,14 @@ public partial class GameOverSceneScript : Node
     public override void _Ready()
     {
         // Connect the button signal to the method
-        var restartButton = GetNode<Button>("RestartButton");
-        restartButton.Pressed += OnRestartButtonPressed;
+        GetTree().Paused = true;
     }
 
-    private void OnRestartButtonPressed()
+    private void _on_retry_pressed()
     {
         // Load the main scene
-        GD.Print("Restarting the game...");
-        GetTree().ChangeSceneToFile("res://cenas/cena_teste.tscn");
+        GD.Print("Play button pressed");
+        GetTree().ChangeSceneToFile("res://cenas/MainScene.tscn");
     }
     private void OnExitButtonPressed()
     {

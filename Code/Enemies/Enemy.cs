@@ -7,19 +7,20 @@ public partial class Enemy : CharacterBody2D, IDamagable, IPushable
     [Export] public int Health = 100;
     [Export] public float Speed = 100f;
     [Export] public float fireRate = 0.2f;
+    [Export] public int coinDropAmmount = 1;
     [Export] public bool isPushable { get; set; } = true;
     [Export] public float shootingRange = 10f;
     public IEnemyState CurrentState { get; set; }
     public bool isAlive = true;
-    [Export] public PackedScene playerTexture;
-
     // Components
     [Export] public EnemyAnimationComponent _enemyAnimationComponent;
     [Export] public PathFindingComponent _pathFindingComponent;
     [Export] public ShootComponentScript _shootComponent;
+    [Export] public CoinComponent _coinComponent;
 
     private Sprite2D sprite;
     public bool IsFlipped { get; set; } = false;
+
 
     public override void _Ready()
     {
@@ -48,6 +49,8 @@ public partial class Enemy : CharacterBody2D, IDamagable, IPushable
 
     public void TakeDamage(int damage)
     {
+        if(!isAlive) return;
+            
         Health -= damage;
 
         if (Health <= 0)
@@ -55,7 +58,7 @@ public partial class Enemy : CharacterBody2D, IDamagable, IPushable
             Die();
             return;
         }
-        _enemyAnimationComponent.PlayAnimation("Hit");
+        // _enemyAnimationComponent.PlayAnimation("Hit");
     }
     public void TakeDamage(int damage, bool isCritical)
     {
@@ -64,6 +67,7 @@ public partial class Enemy : CharacterBody2D, IDamagable, IPushable
     private void Die()
     {
         _enemyAnimationComponent.PlayAnimation("Die");
+        _coinComponent.SpawnCoins(coinDropAmmount, GlobalPosition);
         isAlive = false;
     }
     private void OnEnemyTimerTimeout()
@@ -72,15 +76,18 @@ public partial class Enemy : CharacterBody2D, IDamagable, IPushable
     }
     private void InstantiateComponents()
     {
-        sprite = playerTexture.Instantiate() as Sprite2D;
+        CurrentState = new SearchState();
+        CurrentState.Enter(this);
+    }
+    public void setTexture(Sprite2D texture)
+    {
+        sprite = texture;
         AddChild(sprite);
         sprite.Position = new Vector2(0, 0);
         sprite.Scale = new Vector2(1, 1);
 
         _enemyAnimationComponent.Initialize(sprite);
 
-        CurrentState = new SearchState();
-        CurrentState.Enter(this);
     }
     public void SetFlip(bool flip)
     {
@@ -92,4 +99,10 @@ public partial class Enemy : CharacterBody2D, IDamagable, IPushable
         // Implementar a lógica de tiro aqui
         _shootComponent.Shoot();
     }
+    public void InitializeEnemy(EnemyData enemyData)
+    {
+        var enemyInitializer = new EnemyInitializer();
+        enemyInitializer.InitializeSelf(this, enemyData);
+    }
+
 }

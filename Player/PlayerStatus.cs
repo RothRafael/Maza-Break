@@ -30,7 +30,7 @@ public partial class PlayerStatus : Node, IPlayerStatus, IDamagable
     [Export] private float timeSinceLastHit = 0f;
     [Export] private float timeSinceLastShot = 0f;
     [Export] private float armorRestoreDelay = 0f;
-
+    public bool godMode = false;
 
     public override void _Process(double delta)
     {
@@ -62,6 +62,11 @@ public partial class PlayerStatus : Node, IPlayerStatus, IDamagable
 
     public void TakeDamage(int damage)
     {
+        if (godMode)
+        {
+            GD.Print("GDMODE");
+            return; // Ignore damage in god mode
+        }   
         // GD.Print($"Player took {damage} damage. Health: {Vida}, Armor: {Armor}");
 
         if (Armor > 0)
@@ -143,7 +148,26 @@ public async void SlowTime(float scale, float duration)
         // GD.Print($"Player took {damage} damage. Critical: {isCritical}");
         TakeDamage(damage);
     }
-    private void Die(){
+    private void _on_god_box(bool isGodMode)
+    {
+        GD.Print($"God mode toggled: {isGodMode}");
+        
+        godMode = isGodMode;
+        if (godMode)
+        {
+            GD.Print("God mode activated.");
+            Armor = MaxArmor; // Restore armor to max
+            Vida = MaxVida; // Restore health to max
+            Energia = MaxEnergia; // Restore energy to max
+            UpdateUI();
+        }
+        else
+        {
+            GD.Print("God mode deactivated.");
+        }
+    }
+    private void Die()
+    {
         GD.Print("Player has died.");
         _isDead = true;
         playerUIComponent.ShowGameOver();

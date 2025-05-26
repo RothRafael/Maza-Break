@@ -4,6 +4,10 @@ using System;
 public partial class CoinComponent : Node
 {
     [Export] private PackedScene _coinScene;
+    public void SpawnCoins(int amount, Vector2 position)
+    {
+        InstantiateCoin(amount, position);
+    }
     public void InstantiateCoin(int ammount, Vector2 position)
     {
         for (int i = 0; i < ammount; i++)

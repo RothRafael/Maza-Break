@@ -1,12 +1,15 @@
-[gd_scene load_steps=18 format=4 uid="uid://nxn43b3e0ar3"]
+[gd_scene load_steps=21 format=4 uid="uid://nxn43b3e0ar3"]
 
 [ext_resource type="Script" uid="uid://drba0mm7uiabu" path="res://Player/PlayerController.cs" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://despxdvd1k6ia" path="res://Player/WeaponOnHandScript.cs" id="2_fhl08"]
 [ext_resource type="Script" uid="uid://ydw7gb0a3e14" path="res://Code/Components/CameraShakeComponent.cs" id="3_btcbx"]
 [ext_resource type="Script" uid="uid://cwdkhjj1oh81c" path="res://Player/PlayerStatus.cs" id="4_gwnis"]
+[ext_resource type="PackedScene" uid="uid://be50ub5t3nc37" path="res://Prefabs/Guns/testing_gun.tscn" id="5_5htga"]
+[ext_resource type="PackedScene" uid="uid://d1yd730ot173r" path="res://Prefabs/Guns/Gunbolas_de_sinuca.tscn" id="5_apopc"]
 [ext_resource type="Script" uid="uid://cff3komtleqiw" path="res://Code/Components/PlayerCollectComponent.cs" id="5_k53q1"]
 [ext_resource type="PackedScene" uid="uid://dr3dvr11p5xxp" path="res://Prefabs/Guns/melee_swing.tscn" id="6_apopc"]
 [ext_resource type="PackedScene" uid="uid://cctvvgja4ot8p" path="res://Prefabs/Guns/aviao_papel.tscn" id="7_5htga"]
+[ext_resource type="PackedScene" uid="uid://csa5yvj8u1lm4" path="res://Prefabs/Projectiles/SuperBullet.tscn" id="7_p5o4e"]
 [ext_resource type="Script" uid="uid://cjmdhd38c7ojj" path="res://Player/PlayerUIComponent.cs" id="8_od3ui"]
 [ext_resource type="PackedScene" uid="uid://7r16uatdlvai" path="res://UI/GameOverScene.tscn" id="10_apopc"]
 [ext_resource type="Script" uid="uid://cncxota7ubsva" path="res://Code/Components/AnimationComponent.cs" id="10_x3vf3"]
@@ -123,6 +126,12 @@ position = Vector2(-2, 2)
 visible = false
 position = Vector2(-2, 2)
 
+[node name="TestingGun" parent="Hands" instance=ExtResource("5_5htga")]
+_bulletScene = ExtResource("7_p5o4e")
+Damage = 5
+
+[node name="BolasDeSinuca" parent="Hands" instance=ExtResource("5_apopc")]
+
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
 
@@ -165,16 +174,17 @@ limit_smoothed = true
 [node name="CanvasLayer" type="CanvasLayer" parent="CamPivo/MainCamera"]
 layer = 9
 
-[node name="Panel" type="Panel" parent="CamPivo/MainCamera/CanvasLayer"]
+[node name="Panel" type="ColorRect" parent="CamPivo/MainCamera/CanvasLayer"]
 offset_right = 146.0
 offset_bottom = 94.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+color = Color(0.292078, 0.233081, 0.511468, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CamPivo/MainCamera/CanvasLayer/Panel"]
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
 offset_right = 69.0
-grow_vertical = 2
+offset_bottom = 77.0
 alignment = 1
 
 [node name="VidaLabel" type="Label" parent="CamPivo/MainCamera/CanvasLayer/Panel/VBoxContainer"]
@@ -188,6 +198,112 @@ text = "eNERGIA"
 [node name="ArmorLabel" type="Label" parent="CamPivo/MainCamera/CanvasLayer/Panel/VBoxContainer"]
 layout_mode = 2
 text = "ARMOR"
+
+[node name="Panel2" type="ColorRect" parent="CamPivo/MainCamera/CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -171.0
+offset_bottom = 166.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+color = Color(0.292078, 0.233081, 0.511468, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CamPivo/MainCamera/CanvasLayer/Panel2"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 12.0
+offset_right = -12.0
+offset_bottom = 66.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="HSlider" type="HSlider" parent="CamPivo/MainCamera/CanvasLayer/Panel2/VBoxContainer"]
+layout_mode = 2
+min_value = 0.5
+max_value = 10.0
+value = 0.5
+
+[node name="HSlider2" type="HSlider" parent="CamPivo/MainCamera/CanvasLayer/Panel2/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CamPivo/MainCamera/CanvasLayer/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="CamPivo/MainCamera/CanvasLayer/Panel2/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CamPivo/MainCamera/CanvasLayer/Panel2/HBoxContainer/CheckBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -7.5
+offset_right = 7.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "God"
+horizontal_alignment = 1
+
+[node name="CheckBox2" type="CheckBox" parent="CamPivo/MainCamera/CanvasLayer/Panel2/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CamPivo/MainCamera/CanvasLayer/Panel2/HBoxContainer/CheckBox2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -7.5
+offset_right = 7.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "God"
+horizontal_alignment = 1
+
+[node name="CheckBox3" type="CheckBox" parent="CamPivo/MainCamera/CanvasLayer/Panel2/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CamPivo/MainCamera/CanvasLayer/Panel2/HBoxContainer/CheckBox3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -7.5
+offset_right = 7.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "God"
+horizontal_alignment = 1
+
+[node name="CheckBox4" type="CheckBox" parent="CamPivo/MainCamera/CanvasLayer/Panel2/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CamPivo/MainCamera/CanvasLayer/Panel2/HBoxContainer/CheckBox4"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -7.5
+offset_right = 7.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "God"
+horizontal_alignment = 1
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
@@ -206,4 +322,6 @@ autoplay = "idle"
 speed_scale = 1.5
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="value_changed" from="CamPivo/MainCamera/CanvasLayer/Panel2/VBoxContainer/HSlider" to="Components/UiComponent" method="_on_h_slider_value_changed"]
+[connection signal="toggled" from="CamPivo/MainCamera/CanvasLayer/Panel2/HBoxContainer/CheckBox" to="Components/PlayerStatus" method="_on_god_box"]
 [connection signal="body_entered" from="Area2D" to="Components/CollectComponent" method="_on_area_2d_body_entered"]

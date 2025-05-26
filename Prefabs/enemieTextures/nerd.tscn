@@ -4,22 +4,6 @@
 _data = PackedByteArray("AAADAAUAAAABAAAAwAAAAIAAAABqAwAAUklGRmIDAABXRUJQVlA4TFUDAAAvv8AfEG+gppEU6ARgAP9KkHEdb01QgA21kWxQapDJ9Z/8q5AqwCjDUBvbNvT3BSXovxCZGozslyA3/wEAAPj/QR5yaVw2B9Jmd2gp2cn7min3CXSe/W8kN/+/egH8XWL1VyAWq1yrvsVgegVCqdrFYtVqBhpR6UrF3qlV6WyXXn+EyGqr/5fZYJBHlg4R/Wfgtm0cpWt3T971CPoHanHFGJAhUzx3ljibdY+iucG07vPEIwSGy+UmEEwOQFQRRW7uXHOJYKQTVaEqplhuA6jGKKm5YeKmqYLzc2egKlGVOfWpQlUlCkrlNgyBqqog/a6LqkBFCuU2tBUbClByA1SjRjH5udO3xzVRI5K9oCdxJfFUcqeLRxWV1A1YE05sZ23kcrmj2hNF8nNF7FYudC7AULHc3SogdJB0Lrn+ouuBMrmNgYQbvb3UW04NHjrr+kt7PSgj98V17g7IwF20e84iFR8GF4K7x0TJuS+5fr2U/uPobHAuOGeTxW8Fv1VryuSmW8O9S3241B+m/1f+hkK5yQz3trzSQTbIhrtMTNPfe//e+2Ev2etgB6R753I8cuGO9/6x42SvndwZXi68eX/f+0uczvjT199cnTkults9u+mzcjc7TGr1MlM3/3n52/V2r1Yvmo4m46+/nY32qFqvRTv+7bfZ/Kher7aZL5dtc1C1F9A2XK2XAUAEULVeBN6yowzxbC/ke+3IZ5bhU/D+n48yNQOmdV/18SCYmiECJIJRbweoxihcMaoSVbnSZhgCXZeg3r2jqkKBirfHNVFjxQ1RRaXaDVuTPVEI1zt2q4DQQSrFQMKN3l7qLXO9OGeds6j1y+7smrCGqVJuDfcudcH2h5QJF1w13PObysPAFF08DQgoCJ8KAMBcark5E968v++9zXq3DzeYQhyP3JOb3vvBcUbyWyuJioKMP339zdVZMgZ4GqyFCErR7DBJxEwX4z6EICLFVk/d/Oflb9fbvVSO5y74z16IarEvbzqajL/+djbaSz57M7nnv/pKVaUYi3b822+z+VH63os3625Vsmub+XLZNgfJLNxHP4QIOVsSoG04mZ9+eegH20FRbEcARMiw/unXR374quQCYUsYlM5vD/1nX0UpSe5tXbgNFpHp36NFAA==")
 size_override = Vector2(192, 128)
 
-[sub_resource type="Animation" id="Animation_ytlxf"]
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
 [sub_resource type="Animation" id="Animation_c6rjv"]
 length = 0.1
 loop_mode = 1
@@ -34,6 +18,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_ytlxf"]
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hb3j4"]

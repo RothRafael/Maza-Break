@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=4 uid="uid://dr8bsunfv2uuc"]
+
+[ext_resource type="Script" uid="uid://dk327m4o338nc" path="res://Code/Projectiles/ProjectileTypes/PlayerGenericBullet.cs" id="1_ul61l"]
+[ext_resource type="PackedScene" uid="uid://valyk5lctf4t" path="res://Prefabs/Effects/GunImpact.tscn" id="2_qm4d8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hrjqd"]
+radius = 8.0
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_hrjqd"]
+_data = PackedByteArray("AAADAAUAAAABAAAAEAAAABAAAAD0AAAAUklGRuwAAABXRUJQVlA4TOAAAAAvD8ADEFfBoG0kR75eAR7ox/E0loaCtm0Ylz/M0thR1LaR5Jm9X0ti+SNYbsM4kmwl+/X6cScMIiccjh6A6wbwt/jmARoCEgIZFAQsHOpqdlnqJAiC0AizZJLAFMqgz1pRtA950ZfhNM0ySQCsBqr51QyAuLJmr7t+/9tQbyjCQSRJitTTc8x898zo3+FCrISI/k8AwqtXVlbVnKpDlxdJPnZqSdonRUT43htRd6FY+TkqoCPFyYMCqHwqBCl9RgWQvWjjOYfZX2nw3iSWbbiR5KmOYI2+61RVZRHD/fsjPA==")
+size_override = Vector2(16, 16)
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_ul61l")
+_ImpactEffect = ExtResource("2_qm4d8")
+lifeTime = 4.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hrjqd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_hrjqd")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://Art/Sprites/Projectiles/BaseProjectile.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "553b60f65e7a5dffc607e97d7c54f9bc"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
