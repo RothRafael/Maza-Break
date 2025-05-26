@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://nxn43b3e0ar3"]
+[gd_scene load_steps=22 format=4 uid="uid://nxn43b3e0ar3"]
 
 [ext_resource type="Script" uid="uid://drba0mm7uiabu" path="res://Player/PlayerController.cs" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://despxdvd1k6ia" path="res://Player/WeaponOnHandScript.cs" id="2_fhl08"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cjmdhd38c7ojj" path="res://Player/PlayerUIComponent.cs" id="8_od3ui"]
 [ext_resource type="PackedScene" uid="uid://7r16uatdlvai" path="res://UI/GameOverScene.tscn" id="10_apopc"]
 [ext_resource type="Script" uid="uid://cncxota7ubsva" path="res://Code/Components/AnimationComponent.cs" id="10_x3vf3"]
+[ext_resource type="PackedScene" uid="uid://tj6avlpffleu" path="res://Prefabs/Effects/playerStep.tscn" id="14_gu6f8"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_x3vf3"]
 _data = PackedByteArray("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")
@@ -84,6 +85,13 @@ y_sort_enabled = true
 script = ExtResource("1_4ntmi")
 speed = 150.0
 _handsOffsset = Vector2(9, 5)
+
+[node name="particles" type="Node2D" parent="."]
+position = Vector2(0.5, 12.5)
+
+[node name="GPUParticles2D" parent="particles" instance=ExtResource("14_gu6f8")]
+z_index = -1
+position = Vector2(0, -2)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -159,16 +167,19 @@ script = ExtResource("8_od3ui")
 PlayerUiPath = NodePath("../../CamPivo/MainCamera/CanvasLayer")
 GameOverScenePath = ExtResource("10_apopc")
 
-[node name="AnimationComponent" type="Node" parent="Components" node_paths=PackedStringArray("_animationPlayer2D", "_playerController", "_sprite2D")]
+[node name="AnimationComponent" type="Node" parent="Components" node_paths=PackedStringArray("_animationPlayer2D", "_playerController", "_sprite2D", "_footstepsParticles")]
 script = ExtResource("10_x3vf3")
 _animationPlayer2D = NodePath("../../AnimationPlayer")
 _playerController = NodePath("../..")
 _sprite2D = NodePath("../../Sprite2D")
+_footstepsParticles = NodePath("../../particles/GPUParticles2D")
 
 [node name="CamPivo" type="Node2D" parent="."]
 
 [node name="MainCamera" type="Camera2D" parent="CamPivo"]
+z_index = 2
 scale = Vector2(1, 1.01082)
+zoom = Vector2(1.84, 1.84)
 limit_smoothed = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CamPivo/MainCamera"]

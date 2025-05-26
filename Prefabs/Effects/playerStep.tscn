@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://tj6avlpffleu"]
+
+[sub_resource type="Curve" id="Curve_n3c4h"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.970588, 0.764045), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kamqx"]
+curve = SubResource("Curve_n3c4h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ycurp"]
+lifetime_randomness = 0.38
+particle_flag_disable_z = true
+scale_min = 4.45
+scale_max = 6.45
+scale_curve = SubResource("CurveTexture_kamqx")
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+modulate = Color(1, 1, 1, 0.32549)
+amount = 2
+lifetime = 0.18
+process_material = SubResource("ParticleProcessMaterial_ycurp")

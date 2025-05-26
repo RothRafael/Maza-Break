@@ -42,7 +42,7 @@ _data = {
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.168539), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_kamqx"]
+[sub_resource type="CurveTexture" id="CurveTexture_erl2n"]
 curve = SubResource("Curve_erl2n")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hpobi"]
@@ -57,7 +57,7 @@ emission_ring_cone_angle = 90.0
 gravity = Vector3(0, -12.42, 0)
 scale_min = 0.0
 scale_max = 8.9
-scale_curve = SubResource("CurveTexture_kamqx")
+scale_curve = SubResource("CurveTexture_erl2n")
 
 [node name="BoxEffect" type="Node2D"]
 
