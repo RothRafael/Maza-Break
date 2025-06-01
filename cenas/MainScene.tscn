@@ -14,10 +14,6 @@ glow_blend_mode = 1
 
 [node name="MainScene" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_t2qwo")]
-position = Vector2(-41.5348, 109.745)
-CameraFollowMouse = 200
-
 [node name="World" type="Node" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
@@ -28,4 +24,8 @@ script = ExtResource("3_1d1at")
 metadata/_edit_lock_ = true
 
 [node name="EnemiesManager" parent="." instance=ExtResource("4_1d1at")]
-spawnDelay = 4.0
+spawnDelay = 60.0
+
+[node name="Player" parent="." instance=ExtResource("1_t2qwo")]
+position = Vector2(192, 344)
+CameraFollowMouse = 200

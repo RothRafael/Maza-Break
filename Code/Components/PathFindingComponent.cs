@@ -19,6 +19,12 @@ public partial class PathFindingComponent : Node
     {
         _nav.TargetPosition = target;
     }
+    public void SetTargetOrbit(Vector2 target, float orbitRadius)
+    {
+        Vector2 direction = (target - _characterBody2D.GlobalPosition).Normalized();
+        Vector2 orbitPosition = target - direction * orbitRadius;
+        _nav.TargetPosition = orbitPosition;
+    }
 
     public Vector2 GetNextPathPoint()
     {
@@ -28,7 +34,7 @@ public partial class PathFindingComponent : Node
     public override void _Process(double delta)
     {
         base._Process(delta);
-        
+
         if (_nav.IsNavigationFinished() || !_characterBody2D.isAlive)
         {
             _characterBody2D.Velocity = Vector2.Zero;
@@ -37,19 +43,20 @@ public partial class PathFindingComponent : Node
 
         bool shouldFlip = _nav.TargetPosition.X < _characterBody2D.GlobalPosition.X;
 
-if (shouldFlip != _characterBody2D.IsFlipped)
-{
-    _characterBody2D.SetFlip(shouldFlip);
-}
+        if (shouldFlip != _characterBody2D.IsFlipped)
+        {
+            _characterBody2D.SetFlip(shouldFlip);
+        }
 
-        
+
         Vector2 nextPathPoint = GetNextPathPoint();
         Vector2 direction = (nextPathPoint - _characterBody2D.GlobalPosition).Normalized();
-        _characterBody2D.Velocity = direction * _characterBody2D.Speed ; // Adjust speed as needed
+        _characterBody2D.Velocity = direction * _characterBody2D.Speed; // Adjust speed as needed
         _characterBody2D.MoveAndSlide();
-        
-        
+
+
     }
+
     public bool HasReachedTarget()
     {
         return _nav.IsNavigationFinished();

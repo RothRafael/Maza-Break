@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://nxn43b3e0ar3"]
+[gd_scene load_steps=25 format=4 uid="uid://nxn43b3e0ar3"]
 
 [ext_resource type="Script" uid="uid://drba0mm7uiabu" path="res://Player/PlayerController.cs" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://despxdvd1k6ia" path="res://Player/WeaponOnHandScript.cs" id="2_fhl08"]
@@ -20,10 +20,25 @@ _data = PackedByteArray("AAADAAUAAAABAAAAgAAAAIAAAACeCAAAUklGRpYIAABXRUJQVlA4TIk
 size_override = Vector2(128, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ntmi"]
-size = Vector2(15, 11)
+size = Vector2(15, 14)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k53q1"]
 radius = 16.0
+
+[sub_resource type="Animation" id="Animation_dkpta"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_5htga"]
 length = 0.05
@@ -75,25 +90,65 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p5o4e"]
 _data = {
+&"RESET": SubResource("Animation_dkpta"),
 &"dead": SubResource("Animation_5htga"),
 &"idle": SubResource("Animation_x3vf3"),
 &"run": SubResource("Animation_apopc")
 }
 
+[sub_resource type="Animation" id="Animation_gu6f8"]
+resource_name = "hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.166667, 0.3, 0.466667, 0.6, 0.7, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Components/PlayerStatus")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"_on_god_box"
+}, {
+"args": [false],
+"method": &"_on_god_box"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dkpta"]
+_data = {
+&"hit": SubResource("Animation_gu6f8")
+}
+
 [node name="Player" type="CharacterBody2D"]
+z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_4ntmi")
 speed = 150.0
 _handsOffsset = Vector2(9, 5)
 
 [node name="particles" type="Node2D" parent="."]
-position = Vector2(0.5, 12.5)
+z_index = -1
+position = Vector2(-5.5, 12.5)
 
 [node name="GPUParticles2D" parent="particles" instance=ExtResource("14_gu6f8")]
-z_index = -1
 position = Vector2(0, -2)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 texture_filter = 1
 texture = SubResource("PortableCompressedTexture2D_x3vf3")
 hframes = 4
@@ -119,7 +174,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "caacb27cc202228e4049b18bf69305d2"
 
 [node name="Colision" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0.5, 6.5)
+position = Vector2(0.5, 8)
 shape = SubResource("RectangleShape2D_4ntmi")
 debug_color = Color(0.6708, 0.387, 0.86, 0.701961)
 
@@ -153,11 +208,12 @@ _shakeMagnitude = 15.0
 _shakeElapsedTime = 10.0
 _shakeDecay = 10.0
 
-[node name="PlayerStatus" type="Node" parent="Components" node_paths=PackedStringArray("playerUIComponent") groups=["Death"]]
+[node name="PlayerStatus" type="Node" parent="Components" node_paths=PackedStringArray("playerUIComponent", "_animationComponent") groups=["Death"]]
 script = ExtResource("4_gwnis")
 ArmorRestoreRate = 1.0
 playerUIComponent = NodePath("../UiComponent")
 armorRestoreDelay = 3.0
+_animationComponent = NodePath("../AnimationComponent")
 
 [node name="CollectComponent" type="Node" parent="Components"]
 script = ExtResource("5_k53q1")
@@ -167,9 +223,10 @@ script = ExtResource("8_od3ui")
 PlayerUiPath = NodePath("../../CamPivo/MainCamera/CanvasLayer")
 GameOverScenePath = ExtResource("10_apopc")
 
-[node name="AnimationComponent" type="Node" parent="Components" node_paths=PackedStringArray("_animationPlayer2D", "_playerController", "_sprite2D", "_footstepsParticles")]
+[node name="AnimationComponent" type="Node" parent="Components" node_paths=PackedStringArray("_animationPlayer2D", "_hitAnimationPlayer2D", "_playerController", "_sprite2D", "_footstepsParticles")]
 script = ExtResource("10_x3vf3")
 _animationPlayer2D = NodePath("../../AnimationPlayer")
+_hitAnimationPlayer2D = NodePath("../../hitAnimationPlayer")
 _playerController = NodePath("../..")
 _sprite2D = NodePath("../../Sprite2D")
 _footstepsParticles = NodePath("../../particles/GPUParticles2D")
@@ -331,6 +388,12 @@ libraries = {
 }
 autoplay = "idle"
 speed_scale = 1.5
+
+[node name="hitAnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationPlayer")
+libraries = {
+&"": SubResource("AnimationLibrary_dkpta")
+}
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="value_changed" from="CamPivo/MainCamera/CanvasLayer/Panel2/VBoxContainer/HSlider" to="Components/UiComponent" method="_on_h_slider_value_changed"]

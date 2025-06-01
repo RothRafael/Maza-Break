@@ -30,11 +30,14 @@ public partial class PlayerStatus : Node, IPlayerStatus, IDamagable
     [Export] private float timeSinceLastHit = 0f;
     [Export] private float timeSinceLastShot = 0f;
     [Export] private float armorRestoreDelay = 0f;
+
+    [Export] private AnimationComponent _animationComponent;
     public bool godMode = false;
 
     public override void _Process(double delta)
     {
-        if(_isDead) {
+        if (_isDead)
+        {
             ProcessMode = ProcessModeEnum.Disabled;
         }
         ManageArmor(delta);
@@ -66,7 +69,7 @@ public partial class PlayerStatus : Node, IPlayerStatus, IDamagable
         {
             GD.Print("GDMODE");
             return; // Ignore damage in god mode
-        }   
+        }
         // GD.Print($"Player took {damage} damage. Health: {Vida}, Armor: {Armor}");
 
         if (Armor > 0)
@@ -78,6 +81,7 @@ public partial class PlayerStatus : Node, IPlayerStatus, IDamagable
                 Vida += (int)Armor;
                 Armor = 0;
             }
+            
         }
         else
         {
@@ -91,6 +95,7 @@ public partial class PlayerStatus : Node, IPlayerStatus, IDamagable
         }
         Vida = Mathf.Max(Vida, 0);
         timeSinceLastHit = 0f;
+        _animationComponent.PlayHitAnimation();
         UpdateUI();
     }
 
@@ -108,23 +113,23 @@ public partial class PlayerStatus : Node, IPlayerStatus, IDamagable
         return false;
     }
 
-public async void SlowTime(float scale, float duration)
-{
-    Engine.TimeScale = scale;
+    public async void SlowTime(float scale, float duration)
+    {
+        Engine.TimeScale = scale;
 
-    // Create and play the tween to animate the time_scale
-    Tween timeTween = new Tween();
-    timeTween.TweenProperty(this, "time_scale", 1.0f, duration)
-        .SetTrans(Tween.TransitionType.Expo)
-        .SetEase(Tween.EaseType.InOut);
-    timeTween.Play();
+        // Create and play the tween to animate the time_scale
+        Tween timeTween = new Tween();
+        timeTween.TweenProperty(this, "time_scale", 1.0f, duration)
+            .SetTrans(Tween.TransitionType.Expo)
+            .SetEase(Tween.EaseType.InOut);
+        timeTween.Play();
 
-    // Await the timer
-    await ToSignal(GetTree().CreateTimer(duration * (1 / scale)), "timeout");
+        // Await the timer
+        await ToSignal(GetTree().CreateTimer(duration * (1 / scale)), "timeout");
 
-    // Ensure the time scale is restored to normal after the effect duration
-    Engine.TimeScale = 1.0f;
-}
+        // Ensure the time scale is restored to normal after the effect duration
+        Engine.TimeScale = 1.0f;
+    }
 
     // Getters
     public int GetVida() => Vida;
@@ -151,20 +156,9 @@ public async void SlowTime(float scale, float duration)
     private void _on_god_box(bool isGodMode)
     {
         GD.Print($"God mode toggled: {isGodMode}");
-        
+
         godMode = isGodMode;
-        if (godMode)
-        {
-            GD.Print("God mode activated.");
-            Armor = MaxArmor; // Restore armor to max
-            Vida = MaxVida; // Restore health to max
-            Energia = MaxEnergia; // Restore energy to max
-            UpdateUI();
-        }
-        else
-        {
-            GD.Print("God mode deactivated.");
-        }
+
     }
     private void Die()
     {

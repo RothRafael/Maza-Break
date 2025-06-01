@@ -3,6 +3,7 @@ using Godot;
 public partial class AnimationComponent : Node
 {
     [Export] private AnimationPlayer _animationPlayer2D;
+    [Export] private AnimationPlayer _hitAnimationPlayer2D;
     [Export] private PlayerController _playerController;
     [Export] private Sprite2D _sprite2D;
     [Export] private GpuParticles2D _footstepsParticles;
@@ -69,5 +70,14 @@ public partial class AnimationComponent : Node
         {
             _animationPlayer2D.Play(Idle);
         }
+    }
+    public void PlayHitAnimation()
+    {
+        if (_animationPlayer2D == null)
+        {
+            GD.PrintErr("AnimationPlayer2D is not assigned in the inspector.");
+            return;
+        }
+        _hitAnimationPlayer2D.Play("hit");
     }
 }

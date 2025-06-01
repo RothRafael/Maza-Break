@@ -10,6 +10,8 @@ curve = SubResource("Curve_n3c4h")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ycurp"]
 lifetime_randomness = 0.38
 particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.0
 scale_min = 4.45
 scale_max = 6.45
 scale_curve = SubResource("CurveTexture_kamqx")
