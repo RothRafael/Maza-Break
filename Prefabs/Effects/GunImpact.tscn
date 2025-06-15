@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=4 uid="uid://valyk5lctf4t"]
+[gd_scene load_steps=14 format=4 uid="uid://duud3ng7wsgxx"]
 
 [ext_resource type="Script" uid="uid://crdxf8oh0k7em" path="res://Code/Effects/GunImpactScript.cs" id="1_kamqx"]
 [ext_resource type="PackedScene" uid="uid://b2em4slgetw7y" path="res://Prefabs/Components/sound_component.tscn" id="1_tvlko"]
 [ext_resource type="AudioStream" uid="uid://dihhwl0ahihf1" path="res://Art/Sfx/Hit_Hurt11.wav" id="2_kamqx"]
+[ext_resource type="Texture2D" uid="uid://brg65rn40pymr" path="res://Art/Sprites/effects/Light.png" id="4_cpqxm"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_8apvf"]
 _data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAACMAAAAUklGRoQAAABXRUJQVlA4THgAAAAvH8AHEA8w//M///Mf8HBU23ZT3RR6VQCREAGUJ4khMyINKUhg2Mv/FA0R/Vfbtg3jNjnljl70YkzGZMqnfKuL4uiy9uji5jyd4Rt35V50/3b/eP96/2wEcR0q6aZuCkjFiYMTwAwDcMczOXECgaSSCnChQx0SMwI=")
@@ -213,6 +214,8 @@ scale_max = 8.9
 scale_curve = SubResource("CurveTexture_kamqx")
 
 [node name="Node2D" type="Node2D"]
+z_index = 2
+y_sort_enabled = true
 script = ExtResource("1_kamqx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -260,3 +263,9 @@ _volumeDb = -11.84
 PitchRange = Vector2(0.8, 1.2)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.135, 0.135)
+color = Color(1, 0.286275, 0.113725, 1)
+shadow_enabled = true
+texture = ExtResource("4_cpqxm")

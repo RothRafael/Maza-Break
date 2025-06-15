@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Room" load_steps=2 format=3 uid="uid://b26xptubsqv4i"]
+
+[ext_resource type="Script" uid="uid://cj45vvnibp8mg" path="res://Prefabs/Levels/LevelTeste1/Room.cs" id="1_ulk13"]
+
+[resource]
+script = ExtResource("1_ulk13")
+n = 0
+s = 1
+l = 0
+o = 0
+nome = "sala0"
+descricao = ""
+isClear = false
+baseLayer = 0
+wallLayer = 1
+enemies = PackedInt32Array(1, 1, 1)

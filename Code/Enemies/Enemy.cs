@@ -64,7 +64,7 @@ public partial class Enemy : CharacterBody2D, IDamagable, IPushable
     {
         TakeDamage(damage);
     }
-    private void Die()
+    public void Die()
     {
         _enemyAnimationComponent.PlayAnimation("Die");
         _coinComponent.SpawnCoins(coinDropAmmount, GlobalPosition);

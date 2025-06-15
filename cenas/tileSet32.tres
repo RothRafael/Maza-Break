@@ -1,20 +1,20 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://b7b8mp5hk80ag"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://b7b8mp5hk80ag"]
 
 [ext_resource type="Texture2D" uid="uid://ch7i7bcghpg0u" path="res://Art/tileMaps/map-sheet-32.png" id="1_gskw5"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_gskw5"]
-vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
-agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_pclbe"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lnipq"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_qhafe"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
 agent_radius = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnipq"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qhafe"]
 texture = ExtResource("1_gskw5")
 separation = Vector2i(16, 16)
 texture_region_size = Vector2i(32, 32)
@@ -25,14 +25,15 @@ texture_region_size = Vector2i(32, 32)
 1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_lnipq")
 1:0/0/custom_data_0 = true
 2:0/0 = 0
+2:0/0/custom_data_0 = true
 0:1/0 = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-14:14/0 = 0
+0:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_pclbe")
 1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -9.6, -16, -9.6)
+2:1/0 = 0
+2:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_qhafe")
+2:1/0/custom_data_0 = true
+2:2/0 = 0
 
 [resource]
 tile_size = Vector2i(32, 32)
@@ -40,4 +41,4 @@ physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
 custom_data_layer_0/name = "CanSpawn"
 custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_lnipq")
+sources/4 = SubResource("TileSetAtlasSource_qhafe")

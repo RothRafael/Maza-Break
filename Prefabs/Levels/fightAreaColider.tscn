@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://5ffaljq1ww6e"]
+
+[ext_resource type="Script" uid="uid://d3xf6hvi08od7" path="res://Code/LevelScripts/PlayableAreaScript.cs" id="1_wut33"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lyp7f"]
+size = Vector2(91, 71)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_wut33")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lyp7f")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

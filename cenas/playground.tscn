@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://hcevbqaq3k3"]
 
-[ext_resource type="PackedScene" uid="uid://ba3ola6bx8r8e" path="res://Prefabs/Levels/lever_manager.tscn" id="1_7kv3o"]
+[ext_resource type="PackedScene" path="res://Prefabs/Levels/lever_manager.tscn" id="1_7kv3o"]
 [ext_resource type="PackedScene" uid="uid://nxn43b3e0ar3" path="res://Player/player.tscn" id="2_auyux"]
 [ext_resource type="PackedScene" uid="uid://e1tncxl4bb7f" path="res://Prefabs/Obstacle/caixa.tscn" id="3_75rpi"]
-[ext_resource type="PackedScene" uid="uid://duniompbc6kyk" path="res://Prefabs/Levels/TestLevel.tscn" id="4_auyux"]
+[ext_resource type="PackedScene" uid="uid://duniompbc6kyk" path="res://Prefabs/Levels/LevelTeste1/TestLevel.tscn" id="4_auyux"]
 [ext_resource type="PackedScene" uid="uid://csh1815vysfmt" path="res://Prefabs/Enemies/enemy.tscn" id="5_75rpi"]
 
 [sub_resource type="Environment" id="Environment_8o34d"]

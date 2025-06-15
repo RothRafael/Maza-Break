@@ -1,0 +1,21 @@
+[gd_scene load_steps=12 format=3 uid="uid://bja3evqxbsoeq"]
+
+[ext_resource type="Script" uid="uid://jhflb5ana5qi" path="res://Code/LevelScripts/LevelManagerScript.cs" id="1_uxaa3"]
+[ext_resource type="PackedScene" uid="uid://dydyttoonourg" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_base_1.tscn" id="2_uxaa3"]
+[ext_resource type="PackedScene" uid="uid://df4mv5ba30lk8" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_base_2.tscn" id="3_3dp1q"]
+[ext_resource type="PackedScene" uid="uid://cfqiuochxan10" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_wall_1.tscn" id="4_o1suv"]
+[ext_resource type="PackedScene" uid="uid://drfxf0rixds0" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_baseSpawn.tscn" id="4_ttab5"]
+[ext_resource type="PackedScene" uid="uid://cqhubidxmi3hy" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_wall_2.tscn" id="5_esva8"]
+[ext_resource type="Resource" uid="uid://b26xptubsqv4i" path="res://Prefabs/Levels/LevelTeste1/RoomResources/Sala0.tres" id="6_hacyg"]
+[ext_resource type="Script" uid="uid://cj45vvnibp8mg" path="res://Prefabs/Levels/LevelTeste1/Room.cs" id="6_xwnmn"]
+[ext_resource type="PackedScene" uid="uid://utec0fwn3883" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_wallSpawn.tscn" id="7_fil1l"]
+[ext_resource type="Resource" uid="uid://b7vem1s83bf61" path="res://Prefabs/Levels/LevelTeste1/RoomResources/Sala1.tres" id="7_xwnmn"]
+[ext_resource type="Resource" uid="uid://busswom7cb1af" path="res://Prefabs/Levels/LevelTeste1/RoomResources/sala2Spawn.tres" id="9_aqw0b"]
+
+[node name="RoomManager" type="Node2D"]
+z_index = -1
+y_sort_enabled = true
+script = ExtResource("1_uxaa3")
+baseRoomLayers = Array[PackedScene]([ExtResource("2_uxaa3"), ExtResource("3_3dp1q"), ExtResource("4_ttab5")])
+wallRoomLayers = Array[PackedScene]([ExtResource("4_o1suv"), ExtResource("5_esva8"), ExtResource("7_fil1l")])
+rooms = Array[ExtResource("6_xwnmn")]([ExtResource("9_aqw0b"), ExtResource("6_hacyg"), ExtResource("7_xwnmn")])

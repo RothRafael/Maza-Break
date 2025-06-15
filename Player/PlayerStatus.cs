@@ -33,7 +33,9 @@ public partial class PlayerStatus : Node, IPlayerStatus, IDamagable
 
     [Export] private AnimationComponent _animationComponent;
     public bool godMode = false;
-
+    [Export] public float teleportDelay = 0.5f;
+    private float lastTeleportTime = 0f;
+    public bool canTeleport = true;
     public override void _Process(double delta)
     {
         if (_isDead)
@@ -41,6 +43,16 @@ public partial class PlayerStatus : Node, IPlayerStatus, IDamagable
             ProcessMode = ProcessModeEnum.Disabled;
         }
         ManageArmor(delta);
+        // Teleport cooldown logic
+        if (!canTeleport)
+        {
+            lastTeleportTime += (float)delta;
+            if (lastTeleportTime >= teleportDelay)
+            {
+                canTeleport = true;
+                lastTeleportTime = 0f;
+            }
+        }
     }
 
     private void ManageArmor(double delta)

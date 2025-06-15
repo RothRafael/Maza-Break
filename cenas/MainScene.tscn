@@ -1,18 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://cv4icd4rsrmbw"]
+[gd_scene load_steps=8 format=3 uid="uid://cv4icd4rsrmbw"]
 
+[ext_resource type="Texture2D" uid="uid://dtex6u8maubtx" path="res://Art/Logo/MazaBreakLogo.png" id="1_p8xph"]
 [ext_resource type="PackedScene" uid="uid://nxn43b3e0ar3" path="res://Player/player.tscn" id="1_t2qwo"]
-[ext_resource type="Script" uid="uid://jhflb5ana5qi" path="res://Code/LevelScripts/LevelManagerScript.cs" id="3_1d1at"]
-[ext_resource type="PackedScene" uid="uid://bja3evqxbsoeq" path="res://Prefabs/Levels/roomManager.tscn" id="3_qlu5e"]
+[ext_resource type="PackedScene" uid="uid://bja3evqxbsoeq" path="res://Prefabs/Levels/LevelTeste1/roomManager.tscn" id="3_qlu5e"]
 [ext_resource type="PackedScene" uid="uid://jv3g3svpcqb" path="res://Prefabs/Enemies/enemies_manager.tscn" id="4_1d1at"]
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3ixv7"]
+panorama = ExtResource("1_p8xph")
+
+[sub_resource type="Sky" id="Sky_vxuvw"]
+sky_material = SubResource("PanoramaSkyMaterial_3ixv7")
+
 [sub_resource type="Environment" id="Environment_t2qwo"]
-background_mode = 3
+sky = SubResource("Sky_vxuvw")
 tonemap_mode = 1
+ssr_enabled = true
+ssao_enabled = true
+ssao_radius = 12.9
 glow_enabled = true
 glow_bloom = 0.16
 glow_blend_mode = 1
+fog_enabled = true
 
 [node name="MainScene" type="Node2D"]
+modulate = Color(0.741385, 0.741385, 0.741385, 1)
 
 [node name="World" type="Node" parent="."]
 
@@ -20,12 +31,10 @@ glow_blend_mode = 1
 environment = SubResource("Environment_t2qwo")
 
 [node name="RoomManager" parent="World" instance=ExtResource("3_qlu5e")]
-script = ExtResource("3_1d1at")
 metadata/_edit_lock_ = true
 
 [node name="EnemiesManager" parent="." instance=ExtResource("4_1d1at")]
-spawnDelay = 60.0
+spawnDelay = 1.0
 
 [node name="Player" parent="." instance=ExtResource("1_t2qwo")]
-position = Vector2(192, 344)
-CameraFollowMouse = 200
+position = Vector2(16, 216)

@@ -1,9 +1,6 @@
+using System.Collections.Generic;
 using Godot;
 using Godot.Collections;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
 [GlobalClass]
 public partial class LevelManagerScript : Node
@@ -11,12 +8,16 @@ public partial class LevelManagerScript : Node
     private static LevelManagerScript _instance;
     public static LevelManagerScript Instance => _instance;
 
-    [Export] public Array<TileMapLayer> baseRoomLayers = new Array<TileMapLayer>();
-    [Export] public Array<TileMapLayer> wallRoomLayers = new Array<TileMapLayer>();
+    [Export] public Array<PackedScene> baseRoomLayers = new Array<PackedScene>();
+    [Export] public Array<PackedScene> wallRoomLayers = new Array<PackedScene>();
     [Export] Array<Room> rooms = new Array<Room>();
 
-    // current room
+    private Array<TileMapLayer> CurrentRoomLayers = new Array<TileMapLayer>();
+
+    private string lastDoor;
+    private Room lastRoom;
     public Room currentRoom;
+    private PlayerController playerController;
     public override void _Ready()
     {
         if (_instance != null && _instance != this)
@@ -45,26 +46,120 @@ public partial class LevelManagerScript : Node
     }
     private void LoadFirstRoom()
     {
-        currentRoom = rooms.FirstOrDefault();
-        LoadRoom();
+        currentRoom = rooms[0];
+        LoadRoom(currentRoom, "null");
     }
-    private void LoadRoom()
+    private void LoadRoom(Room roomToLoad, string door)
     {
-        if (currentRoom == null) return;
+        if (roomToLoad == null) return;
 
-        int baseLayer = currentRoom.baseLayer;
-        int wallLayer = currentRoom.wallLayer;
+
+        DisableRoom(currentRoom);
+        lastRoom = currentRoom;
+        lastDoor = door;
+        currentRoom = roomToLoad;
+
+        GD.Print("Loading room: " + roomToLoad.nome);
+
+        int baseLayer = roomToLoad.baseLayer;
+        int wallLayer = roomToLoad.wallLayer;
         // Load base room layer
-        TileMapLayer baseLayerNode = baseRoomLayers[baseLayer];
-        TileMapLayer wallLayerNode = wallRoomLayers[wallLayer];
+        TileMapLayer baseLayerNode = baseRoomLayers[baseLayer].Instantiate() as TileMapLayer;
+        TileMapLayer wallLayerNode = wallRoomLayers[wallLayer].Instantiate() as TileMapLayer;
 
-        GetTree().Root.AddChild(baseLayerNode);
-        GetTree().Root.AddChild(wallLayerNode);
+        CurrentRoomLayers.Add(baseLayerNode);
+        CurrentRoomLayers.Add(wallLayerNode);
+
+        GetTree().Root.CallDeferred("add_child", baseLayerNode);
+        GetTree().Root.CallDeferred("add_child", wallLayerNode);
         baseLayerNode.Visible = true;
         wallLayerNode.Visible = true;
         baseLayerNode.ProcessMode = ProcessModeEnum.Inherit;
         wallLayerNode.ProcessMode = ProcessModeEnum.Inherit;
+
+        TeleportPlayerToRoom(currentRoom, door);
     }
+    public void NextRoom(string nome, PlayerController player)
+    {
+        if (!PlayerStatus.Instance.canTeleport) return;
+        playerController = player;
+
+        switch (nome)
+        {
+            case "N":
+                LoadRoom(rooms[currentRoom.n], "S");
+                break;
+            case "S":
+                LoadRoom(rooms[currentRoom.s], "N");
+                break;
+            case "L":
+                LoadRoom(rooms[currentRoom.l], "O");
+                break;
+            case "O":
+                LoadRoom(rooms[currentRoom.o], "L");
+                break;
+        }
+    }
+
+    private void DisableRoom(Room room)
+    {
+        if (room == null)
+        {
+            return;
+        }
+        foreach (var layer in CurrentRoomLayers)
+        {
+            layer.Visible = false;
+            layer.CallDeferred("set_process_mode", (int)ProcessModeEnum.Disabled);
+            layer.CallDeferred("queue_free");
+        }
+        CurrentRoomLayers.Clear();
+    }
+    private void TeleportPlayerToRoom(Room room, string door)
+    {
+        if (room == null) return;
+        PlayerStatus.Instance.canTeleport = false;
+
+
+        playerController.Position = CurrentRoomLayers[0].GetNode<Node2D>(door).Position;
+        EnemiesManager.instance.PlayerExitedRoom();
+        EnemiesManager.instance.PlayerEnteredRoom();
+        GD.Print("Teleporting player to room: " + room.nome + " at door: " + door);
+
+    }
+    public List<Vector2> GetSpawnPoints()
+    {
+        var spawnPoints = new List<Vector2>();
+
+        if (currentRoom != null && CurrentRoomLayers.Count >= 2)
+        {
+            var wallLayer = CurrentRoomLayers[1];
+
+            var usedRect = wallLayer.GetUsedRect();
+
+            for (int x = usedRect.Position.X; x < usedRect.Position.X + usedRect.Size.X; x++)
+            {
+                for (int y = usedRect.Position.Y; y < usedRect.Position.Y + usedRect.Size.Y; y++)
+                {
+                    var tilePos = new Vector2I(x, y);
+
+                    var wallData = wallLayer.GetCellTileData(tilePos);
+
+                    if (wallData != null && wallData.GetCustomData("CanSpawn").AsBool())
+                    {
+                        spawnPoints.Add(wallLayer.MapToLocal(tilePos));
+                    }
+                }
+            }
+        }
+
+        return spawnPoints;
+    }
+    public Room GetCurrentRoom()
+    {
+        return currentRoom;
+    }
+
 
     //     private void GenerateSpawnPoints()
     //     {

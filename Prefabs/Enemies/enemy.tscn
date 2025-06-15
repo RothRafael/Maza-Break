@@ -153,6 +153,8 @@ radius = 6.0
 height = 14.0
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("_enemyAnimationComponent", "_pathFindingComponent", "_shootComponent", "_coinComponent")]
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_pak5r")
 Health = 10
 Speed = 50.0

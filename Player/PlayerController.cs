@@ -2,7 +2,7 @@
 using Godot;
 
 
-
+[GlobalClass]
 public partial class PlayerController : CharacterBody2D
 {
 	[Export] private float speed;
@@ -18,7 +18,7 @@ public partial class PlayerController : CharacterBody2D
 	public float stickX;
 	public float stickY;
 
-	
+
 
 	[Export] private Vector2 _handsOffsset;
 	private Node2D hands;
@@ -46,7 +46,7 @@ public partial class PlayerController : CharacterBody2D
 		HandleShooting();
 
 		//Check collisions
-		PlayerStatus.Instance.playerPosition = Position;	
+		PlayerStatus.Instance.playerPosition = Position;
 	}
 
 
@@ -123,12 +123,18 @@ public partial class PlayerController : CharacterBody2D
 	public void HandleMouseOffset()
 	{
 		Vector2 mousePosition = GetGlobalMousePosition();
-		Vector2 offsetH = (mousePosition - GlobalPosition) / (GetViewportRect().Size.X / CameraFollowMouse);
-		Vector2 offsetV = (mousePosition - GlobalPosition) / (GetViewportRect().Size.Y / CameraFollowMouse);
+		Vector2 diff = mousePosition - GlobalPosition;
 
-		// Set the camera position to follow the mouse
-		_camera.Position = new Vector2(offsetH.X, offsetV.Y);
-		// Rotate the camera to face the mouse
+		// Compensate for 16:9 aspect ratio (move more horizontally)
+		float aspectCompensation = 16f / 9f;
+		diff[0] *= aspectCompensation;
+
+		Vector2 offset = diff / (GetViewportRect().Size.Length() / CameraFollowMouse);
+
+		// Undo compensation for actual camera movement
+		offset[0] /= aspectCompensation;
+
+		_camera.Position = offset;
 	}
 
 	public void ThrowErrors()

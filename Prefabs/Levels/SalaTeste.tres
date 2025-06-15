@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Sala" load_steps=2 format=3 uid="uid://b26xptubsqv4i"]
-
-[ext_resource type="Script" uid="uid://cj45vvnibp8mg" path="res://Prefabs/Levels/Sala.cs" id="1_e1v38"]
-
-[resource]
-script = ExtResource("1_e1v38")
-nome = ""
-descricao = ""
-enemies = PackedInt32Array(1, 1, 1)

@@ -9,9 +9,15 @@ public partial class PlayerUIComponent : Node
     private Label _healthLabel;
     private Label _energiaLabel;
     private Label _armorLabel;
+    private Label _coinText;
 
     private PlayerStatus _playerStatus;
+    public static PlayerUIComponent Instance { get; private set; }
 
+    public PlayerUIComponent()
+    {
+        Instance = this;
+    }
     public override void _Ready()
     {
         _playerStatus = PlayerStatus.Instance;
@@ -20,6 +26,7 @@ public partial class PlayerUIComponent : Node
         _healthLabel = vboxContainer.GetNode<Label>("VidaLabel");
         _energiaLabel = vboxContainer.GetNode<Label>("EnergiaLabel");
         _armorLabel = vboxContainer.GetNode<Label>("ArmorLabel");
+        _coinText = vboxContainer.GetNode<Label>("CoinsLabel");
         InitializeVariables();
         ThrowErrors();
 
@@ -60,6 +67,10 @@ public partial class PlayerUIComponent : Node
             _playerStatus.godMode = false;
             GD.Print("God mode deactivated");
         }
+    }
+    public void UpdateCoins(int n)
+    {
+        _coinText.Text = $"Coins: {n}";
     }
     private void ThrowErrors()
     {

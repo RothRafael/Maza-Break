@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://nxn43b3e0ar3"]
+[gd_scene load_steps=26 format=4 uid="uid://nxn43b3e0ar3"]
 
 [ext_resource type="Script" uid="uid://drba0mm7uiabu" path="res://Player/PlayerController.cs" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://despxdvd1k6ia" path="res://Player/WeaponOnHandScript.cs" id="2_fhl08"]
@@ -133,11 +133,15 @@ _data = {
 &"hit": SubResource("Animation_gu6f8")
 }
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gu6f8"]
+polygon = PackedVector2Array(-9, -12, 1, -14, 11, -11, 14, -2, 13, 9, -1, 13, -8, 10, -11, 4, -10, -11)
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_4ntmi")
 speed = 150.0
+CameraFollowMouse = 200
 _handsOffsset = Vector2(9, 5)
 
 [node name="particles" type="Node2D" parent="."]
@@ -155,7 +159,10 @@ hframes = 4
 vframes = 4
 frame = 13
 metadata/_aseprite_wizard_interface_config_ = {
-"pending_changes": {}
+"layer_section": true,
+"output_section": true,
+"pending_changes": {},
+"slice_section": true
 }
 metadata/_aseprite_wizard_config_ = {
 "embed_tex": true,
@@ -236,7 +243,7 @@ _footstepsParticles = NodePath("../../particles/GPUParticles2D")
 [node name="MainCamera" type="Camera2D" parent="CamPivo"]
 z_index = 2
 scale = Vector2(1, 1.01082)
-zoom = Vector2(1.84, 1.84)
+zoom = Vector2(1.525, 1.525)
 limit_smoothed = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CamPivo/MainCamera"]
@@ -244,7 +251,7 @@ layer = 9
 
 [node name="Panel" type="ColorRect" parent="CamPivo/MainCamera/CanvasLayer"]
 offset_right = 146.0
-offset_bottom = 94.0
+offset_bottom = 110.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 color = Color(0.292078, 0.233081, 0.511468, 1)
@@ -266,6 +273,10 @@ text = "eNERGIA"
 [node name="ArmorLabel" type="Label" parent="CamPivo/MainCamera/CanvasLayer/Panel/VBoxContainer"]
 layout_mode = 2
 text = "ARMOR"
+
+[node name="CoinsLabel" type="Label" parent="CamPivo/MainCamera/CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "0"
 
 [node name="Panel2" type="ColorRect" parent="CamPivo/MainCamera/CanvasLayer"]
 anchors_preset = 1
@@ -394,6 +405,9 @@ root_node = NodePath("../AnimationPlayer")
 libraries = {
 &"": SubResource("AnimationLibrary_dkpta")
 }
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_gu6f8")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="value_changed" from="CamPivo/MainCamera/CanvasLayer/Panel2/VBoxContainer/HSlider" to="Components/UiComponent" method="_on_h_slider_value_changed"]

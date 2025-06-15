@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf3lhxfst1qa2"]
+
+[ext_resource type="Script" uid="uid://b5h76ly4emsc7" path="res://Code/LevelScripts/AreaTransitionScript.cs" id="1_e3ydp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3ydp"]
+size = Vector2(90, 55.5)
+
+[node name="S" type="Node2D"]
+script = ExtResource("1_e3ydp")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_e3ydp")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_exited"]

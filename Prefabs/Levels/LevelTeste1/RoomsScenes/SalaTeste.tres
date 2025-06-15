@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dlnqe2rlvdgjn"]
+
+[ext_resource type="Script" uid="uid://cj45vvnibp8mg" path="res://Prefabs/Levels/LevelTeste1/Room.cs" id="1_xfjax"]
+
+[resource]
+script = ExtResource("1_xfjax")

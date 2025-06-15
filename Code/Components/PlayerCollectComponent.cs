@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+[GlobalClass]
 public partial class PlayerCollectComponent : Node
 {
     int n = 0;
@@ -11,6 +12,7 @@ public partial class PlayerCollectComponent : Node
             collectable.Collect();
             GD.Print("Collected: " + n);
             n++;
+            PlayerUIComponent.Instance.UpdateCoins(n);
         }
     }
 }

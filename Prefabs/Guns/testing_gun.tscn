@@ -1,13 +1,15 @@
-[gd_scene load_steps=11 format=4 uid="uid://be50ub5t3nc37"]
+[gd_scene load_steps=13 format=3 uid="uid://be50ub5t3nc37"]
 
 [ext_resource type="Script" uid="uid://bbfjbgfhi3hpq" path="res://Code/Guns/GunBolas.cs" id="1_fnkrm"]
 [ext_resource type="PackedScene" uid="uid://u22t8u5sfxyh" path="res://Prefabs/Projectiles/enemy_generic_bullet.tscn" id="2_vhrdk"]
+[ext_resource type="Texture2D" uid="uid://bmwpnwku5vd3" path="res://Art/Sprites/Guns/cascoCeva/CasoCevaBazuca.png" id="3_vhrdk"]
+[ext_resource type="Texture2D" uid="uid://d3phgx7w6prhk" path="res://Art/Sprites/Guns/cascoCeva/normal.png" id="4_1rl4n"]
 [ext_resource type="PackedScene" uid="uid://b2em4slgetw7y" path="res://Prefabs/Components/sound_component.tscn" id="4_xd1cf"]
 [ext_resource type="AudioStream" uid="uid://bfnfu1qf0khng" path="res://Art/Sfx/Laser.wav" id="6_1rl4n"]
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_fnkrm"]
-_data = PackedByteArray("AAADAAUAAAABAAAAEAAAAAkAAAB+AAAAUklGRnYAAABXRUJQVlA4TGkAAAAvDwACEDdAEEASRA7DDzHRPmQBJsOYXphBZNRBFmAyk12d+TOEk4FAIIlw1w0DAKwp03tL9QMFDaBEGxFI4B8AGzgSeKPBzf4hsENE/yegtFRapPN+DMAG1GIHAL30R1IPSaev9tJVWioA")
-size_override = Vector2(16, 9)
+[sub_resource type="CanvasTexture" id="CanvasTexture_fnkrm"]
+diffuse_texture = ExtResource("3_vhrdk")
+normal_texture = ExtResource("4_1rl4n")
 
 [sub_resource type="Animation" id="Animation_vhrdk"]
 length = 0.2
@@ -121,7 +123,7 @@ pushForce = 100.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = SubResource("PortableCompressedTexture2D_fnkrm")
+texture = SubResource("CanvasTexture_fnkrm")
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }
