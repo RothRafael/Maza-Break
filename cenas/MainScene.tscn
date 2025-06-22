@@ -1,9 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://cv4icd4rsrmbw"]
+[gd_scene load_steps=23 format=3 uid="uid://cv4icd4rsrmbw"]
 
 [ext_resource type="Texture2D" uid="uid://dtex6u8maubtx" path="res://Art/Logo/MazaBreakLogo.png" id="1_p8xph"]
 [ext_resource type="PackedScene" uid="uid://nxn43b3e0ar3" path="res://Player/player.tscn" id="1_t2qwo"]
+[ext_resource type="PackedScene" uid="uid://cfqiuochxan10" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_wall_1.tscn" id="3_c4cnb"]
+[ext_resource type="PackedScene" uid="uid://dydyttoonourg" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_base_1_NSLO.tscn" id="3_h462p"]
 [ext_resource type="PackedScene" uid="uid://bja3evqxbsoeq" path="res://Prefabs/Levels/LevelTeste1/roomManager.tscn" id="3_qlu5e"]
+[ext_resource type="Script" uid="uid://cj45vvnibp8mg" path="res://Prefabs/Levels/LevelTeste1/Room.cs" id="3_yk1n8"]
 [ext_resource type="PackedScene" uid="uid://jv3g3svpcqb" path="res://Prefabs/Enemies/enemies_manager.tscn" id="4_1d1at"]
+[ext_resource type="Resource" uid="uid://busswom7cb1af" path="res://Prefabs/Levels/LevelTeste1/RoomResources/sala2Spawn.tres" id="4_p8xph"]
+[ext_resource type="PackedScene" uid="uid://cqhubidxmi3hy" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_wall_2.tscn" id="4_xjrur"]
+[ext_resource type="Resource" uid="uid://b26xptubsqv4i" path="res://Prefabs/Levels/LevelTeste1/RoomResources/Sala0.tres" id="5_3ixv7"]
+[ext_resource type="PackedScene" uid="uid://utec0fwn3883" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_wallSpawn.tscn" id="5_8anxa"]
+[ext_resource type="PackedScene" uid="uid://drfxf0rixds0" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_baseSpawn.tscn" id="5_0275r"]
+[ext_resource type="PackedScene" uid="uid://d1o1p751r4ont" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_wall3Bradok.tscn" id="6_1u6m0"]
+[ext_resource type="PackedScene" uid="uid://0b76lwyuvqkx" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_base_3_LN.tscn" id="6_ms5pk"]
+[ext_resource type="PackedScene" uid="uid://dqbhbxiw56kkk" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_wall_4_Labirinto_nslo.tscn" id="11_fe1qg"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3ixv7"]
 panorama = ExtResource("1_p8xph")
@@ -22,6 +33,62 @@ glow_bloom = 0.16
 glow_blend_mode = 1
 fog_enabled = true
 
+[sub_resource type="Resource" id="Resource_yk1n8"]
+script = ExtResource("3_yk1n8")
+n = 0
+s = 1
+l = 4
+o = 3
+nome = "Room2"
+descricao = "Room2"
+isClear = false
+baseLayer = 1
+wallLayer = 0
+enemies = PackedInt32Array(1, 1, 1)
+metadata/_custom_type_script = "uid://cj45vvnibp8mg"
+
+[sub_resource type="Resource" id="Resource_p8xph"]
+script = ExtResource("3_yk1n8")
+n = 5
+s = 0
+l = 2
+o = 0
+nome = ""
+descricao = ""
+isClear = false
+baseLayer = 3
+wallLayer = 3
+enemies = PackedInt32Array(1, 1, 1)
+metadata/_custom_type_script = "uid://cj45vvnibp8mg"
+
+[sub_resource type="Resource" id="Resource_3ixv7"]
+script = ExtResource("3_yk1n8")
+n = 0
+s = 0
+l = 0
+o = 2
+nome = ""
+descricao = ""
+isClear = false
+baseLayer = 0
+wallLayer = 0
+enemies = PackedInt32Array(1, 1, 1)
+metadata/_custom_type_script = "uid://cj45vvnibp8mg"
+
+[sub_resource type="Resource" id="Resource_vxuvw"]
+script = ExtResource("3_yk1n8")
+n = 0
+s = 3
+l = 0
+o = 0
+nome = ""
+descricao = ""
+isClear = false
+baseLayer = 1
+wallLayer = 4
+enemies = PackedInt32Array(1, 1, 1)
+metadata/_custom_type_script = "uid://cj45vvnibp8mg"
+
 [node name="MainScene" type="Node2D"]
 modulate = Color(0.741385, 0.741385, 0.741385, 1)
 
@@ -31,10 +98,15 @@ modulate = Color(0.741385, 0.741385, 0.741385, 1)
 environment = SubResource("Environment_t2qwo")
 
 [node name="RoomManager" parent="World" instance=ExtResource("3_qlu5e")]
+baseRoomLayers = Array[PackedScene]([ExtResource("3_h462p"), ExtResource("3_h462p"), ExtResource("5_0275r"), ExtResource("6_ms5pk")])
+wallRoomLayers = Array[PackedScene]([ExtResource("3_c4cnb"), ExtResource("4_xjrur"), ExtResource("5_8anxa"), ExtResource("6_1u6m0"), ExtResource("11_fe1qg")])
+rooms = Array[ExtResource("3_yk1n8")]([ExtResource("4_p8xph"), ExtResource("5_3ixv7"), SubResource("Resource_yk1n8"), SubResource("Resource_p8xph"), SubResource("Resource_3ixv7"), SubResource("Resource_vxuvw")])
 metadata/_edit_lock_ = true
 
 [node name="EnemiesManager" parent="." instance=ExtResource("4_1d1at")]
 spawnDelay = 1.0
+maxEnemies = 5
+ChestPath = "res://Prefabs/Obstacle/Chest.tscn"
 
 [node name="Player" parent="." instance=ExtResource("1_t2qwo")]
 position = Vector2(16, 216)

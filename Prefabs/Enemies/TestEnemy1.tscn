@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dwrhujgwe8acw"]
+[gd_scene load_steps=12 format=3 uid="uid://dwrhujgwe8acw"]
 
 [ext_resource type="Script" uid="uid://bfkg1w6sisr3s" path="res://Code/Enemies/Enemy.cs" id="1_gkosd"]
 [ext_resource type="Texture2D" uid="uid://dowhy74ww2sbj" path="res://Art/Sprites/DemoFIles/rodrigosamder.png" id="2_5yfrg"]
 [ext_resource type="PackedScene" uid="uid://08q72ehkjt83" path="res://Prefabs/Components/anim_component.tscn" id="3_gkosd"]
 [ext_resource type="PackedScene" uid="uid://corofyu066ivf" path="res://Prefabs/Components/coin_component.tscn" id="4_mpwt4"]
 [ext_resource type="PackedScene" uid="uid://b670on8yucnse" path="res://Prefabs/Components/path_finding_component.tscn" id="5_5yfrg"]
-[ext_resource type="Script" uid="uid://bdu35wg4yuuri" path="res://Code/Components/PathFindingComponent.cs" id="6_46bdm"]
 [ext_resource type="Script" uid="uid://d2thd5f5imob7" path="res://Code/Components/HitNumbersComponent.cs" id="7_46bdm"]
 [ext_resource type="PackedScene" uid="uid://cxgsn6bhrgq1g" path="res://Prefabs/Components/enemy_hit_numbers.tscn" id="8_0itnb"]
 
@@ -106,7 +105,6 @@ animationPlayerPath = NodePath("../../AnimationPlayer2D")
 [node name="CoinComponent" parent="Components" instance=ExtResource("4_mpwt4")]
 
 [node name="PathFindingComponent" parent="Components" node_paths=PackedStringArray("_nav") instance=ExtResource("5_5yfrg")]
-script = ExtResource("6_46bdm")
 _nav = NodePath("../../NavigationAgent2D")
 
 [node name="HitNumbersComponent" type="Node" parent="Components"]

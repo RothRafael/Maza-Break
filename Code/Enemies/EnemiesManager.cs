@@ -10,14 +10,17 @@ public partial class EnemiesManager : Node2D
     [Export] private int maxEnemies = 10;
     [Export] private int _spawnDistance = 300;
     [Export] private bool _canSpawn = false;
-    [Export] private bool _playerEnterLevel = false;
+    [Export] public bool _playerEnterLevel = false;
     [Export] string path = "res://Prefabs/Enemies/enemy.tscn";
 
     // Texture paths
     [Export] private String textureFolderPath = "res://Prefabs/enemieTextures/";
+    [Export] private String ChestPath = "res://Prefabs/Obstacles/Chest.tscn";
     [Export] private Array<PackedScene> textureScenes = new Array<PackedScene>();
     private double _timeElapsed = 0;
     private List<Enemy> _enemies = new List<Enemy>();
+    private int spawnedEnemiesCount = 0;
+    private bool sceneHasChest = false;
 
     private List<Vector2> spawnPoints = new List<Vector2>();
     public override void _Ready()
@@ -32,12 +35,12 @@ public partial class EnemiesManager : Node2D
 
     public override void _Process(double delta)
     {
-        if (!_canSpawn) return;
+        if (!_canSpawn || !_playerEnterLevel) return;
 
-        if (!_playerEnterLevel)
+        if (!sceneHasChest && spawnedEnemiesCount >= maxEnemies)
         {
-            CheckPlayerPosition();
-            return;
+            SpawnChest();
+            sceneHasChest = true;
         }
 
         _timeElapsed += delta;
@@ -50,9 +53,11 @@ public partial class EnemiesManager : Node2D
     public void PlayerEnteredRoom()
     {
         GD.Print("Player entered room, spawning enemies...");
-        _enemies.Clear(); // Clear existing enemies
         _timeElapsed = 0; // Reset spawn timer
         _canSpawn = true;
+        _playerEnterLevel = true;
+        sceneHasChest = false; // Reset chest state
+        spawnedEnemiesCount = 0; // Reset enemy count
         spawnPoints = LevelManagerScript.Instance.GetSpawnPoints();
     }
     public void PlayerExitedRoom()
@@ -60,22 +65,26 @@ public partial class EnemiesManager : Node2D
         GD.Print("Player exited room, stopping enemy spawn...");
         _canSpawn = false;
         _playerEnterLevel = false;
+        spawnedEnemiesCount = 0;
+        sceneHasChest = false;
         KillAllEnemies();
     }
     public void SpawnEnemy()
     {
         Room currentRoom = LevelManagerScript.Instance.GetCurrentRoom();
-        if(_enemies.Count >= maxEnemies)
+        if (_enemies.Count >= maxEnemies)
         {
             GD.Print("Max enemies reached, not spawning more.");
             return;
         }
+
         if (spawnPoints.Count > 0)
         {
             GD.Print("Spawning enemy...");
             Vector2 spawnPoint = GetRandomSpawnPoint(spawnPoints);
             var enemyInstance = CreateEnemyInstance(spawnPoint);
             AddEnemyToScene(enemyInstance, spawnPoint);
+            spawnedEnemiesCount++;
         }
     }
 
@@ -94,7 +103,6 @@ public partial class EnemiesManager : Node2D
                 return result;
             }
         }
-        // After 100 tries, just return the last picked spawn point regardless of distance
         return result;
     }
 
@@ -107,10 +115,10 @@ public partial class EnemiesManager : Node2D
 
     private void AddEnemyToScene(Enemy enemyInstance, Vector2 spawnPoint)
     {
-        PickRandomTexture(enemyInstance);
-        AddChild(enemyInstance);
         ((Node2D)enemyInstance).Position = spawnPoint;
         _enemies.Add(enemyInstance);
+        PickRandomTexture(enemyInstance);
+        AddChild(enemyInstance);
 
     }
     public void KillAllEnemies()
@@ -147,5 +155,36 @@ public partial class EnemiesManager : Node2D
 
         GD.Print("Picked texture: " + textureInstance.Texture.ResourcePath);
 
+    }
+    public void EnemieDied(Enemy enemy)
+    {
+        if (_enemies.Contains(enemy))
+        {
+
+        }
+    }
+    private void SpawnChest()
+    {
+        GD.Print("Spawning chest...");
+        var chestScene = GD.Load<PackedScene>(ChestPath);
+        if (chestScene != null)
+        {
+            var chestInstance = chestScene.Instantiate();
+            if (chestInstance is Node2D chestNode)
+            {
+                // Set the position of the chest to a random spawn point
+                chestNode.Position = GetRandomSpawnPoint(spawnPoints);
+                AddChild(chestNode);
+                GD.Print("Chest spawned successfully.");
+            }
+            else
+            {
+                GD.PrintErr("Chest instance is not a Node2D.");
+            }
+        }
+        else
+        {
+            GD.PrintErr("Failed to load chest scene.");
+        }
     }
 }

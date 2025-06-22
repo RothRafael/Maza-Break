@@ -18,6 +18,7 @@ public partial class LevelManagerScript : Node
     private Room lastRoom;
     public Room currentRoom;
     private PlayerController playerController;
+    private bool _playerIsInRoom = false;
     public override void _Ready()
     {
         if (_instance != null && _instance != this)
@@ -99,6 +100,15 @@ public partial class LevelManagerScript : Node
                 LoadRoom(rooms[currentRoom.o], "L");
                 break;
         }
+        if (!EnemiesManager.instance._playerEnterLevel)
+        {
+            EnemiesManager.instance.PlayerEnteredRoom();
+        }
+        else
+        {
+            EnemiesManager.instance.PlayerExitedRoom();
+            EnemiesManager.instance.PlayerEnteredRoom();
+        }
     }
 
     private void DisableRoom(Room room)
@@ -122,7 +132,6 @@ public partial class LevelManagerScript : Node
 
 
         playerController.Position = CurrentRoomLayers[0].GetNode<Node2D>(door).Position;
-        EnemiesManager.instance.PlayerExitedRoom();
         EnemiesManager.instance.PlayerEnteredRoom();
         GD.Print("Teleporting player to room: " + room.nome + " at door: " + door);
 
@@ -155,10 +164,25 @@ public partial class LevelManagerScript : Node
 
         return spawnPoints;
     }
+    public void LevelFinished()
+    {
+        GD.Print("Level Finished!");
+        SpawnChest();
+    }
+    public void SpawnChest()
+    {
+        if (currentRoom == null) return;
+
+        string path = "res://Prefabs/Obstacle/Chest.tscn";
+        var scene = GD.Load<PackedScene>(path);
+        var instance = scene.Instantiate();
+
+    }
     public Room GetCurrentRoom()
     {
         return currentRoom;
     }
+
 
 
     //     private void GenerateSpawnPoints()

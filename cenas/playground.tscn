@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://hcevbqaq3k3"]
+[gd_scene load_steps=6 format=3 uid="uid://hcevbqaq3k3"]
 
-[ext_resource type="PackedScene" path="res://Prefabs/Levels/lever_manager.tscn" id="1_7kv3o"]
 [ext_resource type="PackedScene" uid="uid://nxn43b3e0ar3" path="res://Player/player.tscn" id="2_auyux"]
 [ext_resource type="PackedScene" uid="uid://e1tncxl4bb7f" path="res://Prefabs/Obstacle/caixa.tscn" id="3_75rpi"]
 [ext_resource type="PackedScene" uid="uid://duniompbc6kyk" path="res://Prefabs/Levels/LevelTeste1/TestLevel.tscn" id="4_auyux"]
@@ -15,14 +14,11 @@ glow_blend_mode = 1
 
 [node name="MainScene" type="Node2D"]
 
-[node name="LeverManager" parent="." instance=ExtResource("1_7kv3o")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="LeverManager"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8o34d")
 
 [node name="Player" parent="." instance=ExtResource("2_auyux")]
 position = Vector2(57, 246)
-CameraFollowMouse = 200
 
 [node name="TIles" type="Node" parent="."]
 

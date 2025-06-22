@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource("1_1xjk2")
-n = 0
-s = 2
-l = 99
-o = 99
+n = 99
+s = 1
+l = 3
+o = 4
 nome = "SalaTEste2"
 descricao = "sala para testes"
 isClear = false

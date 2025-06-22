@@ -26,7 +26,6 @@ public partial class GunBolas : GunBase
         if (base.Shoot(direction) == false)
             return false;
 
-        PlayAnim();
         CreateProjectile();
 
         return true;
@@ -39,10 +38,5 @@ public partial class GunBolas : GunBase
         _soundComponent.PlaySound();
         BulletFactory.CreateBullet(_bulletScene, BulletFactory.CreateBulletSpawnData(this), _bulletCount);
         CameraShakeComponent.Instance.Shake(1f, 0.1f);
-    }
-    private void PlayAnim()
-    {
-        AnimationPlayer animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-        animationPlayer?.Play("ShootAnim");
     }
 }

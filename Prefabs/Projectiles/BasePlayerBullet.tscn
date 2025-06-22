@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=4 uid="uid://dr8bsunfv2uuc"]
+[gd_scene load_steps=4 format=4 uid="uid://dr8bsunfv2uuc"]
 
-[ext_resource type="Script" uid="uid://dk327m4o338nc" path="res://Code/Projectiles/ProjectileTypes/PlayerGenericBullet.cs" id="1_ul61l"]
-[ext_resource type="PackedScene" uid="uid://valyk5lctf4t" path="res://Prefabs/Effects/GunImpact.tscn" id="2_qm4d8"]
+[ext_resource type="Script" uid="uid://bg5k20slk5e8q" path="res://Code/Projectiles/ProjectileTypes/EnemyGenericBullet.cs" id="1_ul61l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hrjqd"]
 radius = 8.0
@@ -12,7 +11,6 @@ size_override = Vector2(16, 16)
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_ul61l")
-_ImpactEffect = ExtResource("2_qm4d8")
 lifeTime = 4.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

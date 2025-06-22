@@ -17,6 +17,7 @@ public partial class Enemy : CharacterBody2D, IDamagable, IPushable
     [Export] public PathFindingComponent _pathFindingComponent;
     [Export] public ShootComponentScript _shootComponent;
     [Export] public CoinComponent _coinComponent;
+    [Export] public HitNumbersComponent _hitNumbersComponent;
 
     private Sprite2D sprite;
     public bool IsFlipped { get; set; } = false;
@@ -49,6 +50,10 @@ public partial class Enemy : CharacterBody2D, IDamagable, IPushable
 
     public void TakeDamage(int damage)
     {
+        
+    }
+    public void TakeDamage(int damage, bool isCritical)
+    {
         if(!isAlive) return;
             
         Health -= damage;
@@ -58,17 +63,15 @@ public partial class Enemy : CharacterBody2D, IDamagable, IPushable
             Die();
             return;
         }
-        // _enemyAnimationComponent.PlayAnimation("Hit");
-    }
-    public void TakeDamage(int damage, bool isCritical)
-    {
-        TakeDamage(damage);
+        // _hitNumbersComponent.CreateHitNumber(GlobalPosition, damage, isCritical);
+        _enemyAnimationComponent.PlayAnimation("Hit");
     }
     public void Die()
     {
         _enemyAnimationComponent.PlayAnimation("Die");
         _coinComponent.SpawnCoins(coinDropAmmount, GlobalPosition);
         isAlive = false;
+        EnemiesManager.instance.EnemieDied(this);
     }
     private void OnEnemyTimerTimeout()
     {

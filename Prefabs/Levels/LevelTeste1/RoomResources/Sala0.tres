@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_ulk13")
-n = 0
-s = 1
+n = 2
+s = 0
 l = 0
 o = 0
 nome = "sala0"

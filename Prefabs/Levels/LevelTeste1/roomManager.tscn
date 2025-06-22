@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://bja3evqxbsoeq"]
 
 [ext_resource type="Script" uid="uid://jhflb5ana5qi" path="res://Code/LevelScripts/LevelManagerScript.cs" id="1_uxaa3"]
-[ext_resource type="PackedScene" uid="uid://dydyttoonourg" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_base_1.tscn" id="2_uxaa3"]
-[ext_resource type="PackedScene" uid="uid://df4mv5ba30lk8" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_base_2.tscn" id="3_3dp1q"]
+[ext_resource type="PackedScene" uid="uid://dydyttoonourg" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_base_1_NSLO.tscn" id="2_uxaa3"]
+[ext_resource type="PackedScene" uid="uid://df4mv5ba30lk8" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_base_2_NS.tscn" id="3_3dp1q"]
 [ext_resource type="PackedScene" uid="uid://cfqiuochxan10" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_wall_1.tscn" id="4_o1suv"]
 [ext_resource type="PackedScene" uid="uid://drfxf0rixds0" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_baseSpawn.tscn" id="4_ttab5"]
 [ext_resource type="PackedScene" uid="uid://cqhubidxmi3hy" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_wall_2.tscn" id="5_esva8"]
