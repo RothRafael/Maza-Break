@@ -103,9 +103,11 @@ public partial class LevelManagerScript : Node
         if (!EnemiesManager.instance._playerEnterLevel)
         {
             EnemiesManager.instance.PlayerEnteredRoom();
+            GD.Print("Player entered room: " + currentRoom.nome);
         }
         else
         {
+            GD.Print("Player re-entered room: " + currentRoom.nome);
             EnemiesManager.instance.PlayerExitedRoom();
             EnemiesManager.instance.PlayerEnteredRoom();
         }

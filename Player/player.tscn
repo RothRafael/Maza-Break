@@ -154,7 +154,7 @@ polygon = PackedVector2Array(-9, -12, 1, -14, 11, -11, 14, -2, 13, 9, -1, 13, -8
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_4ntmi")
-speed = 400.0
+speed = 250.0
 CameraFollowMouse = 200
 _handsOffsset = Vector2(9, 5)
 

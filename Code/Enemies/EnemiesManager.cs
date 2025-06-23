@@ -59,12 +59,13 @@ public partial class EnemiesManager : Node2D
         sceneHasChest = false; // Reset chest state
         spawnedEnemiesCount = 0; // Reset enemy count
         spawnPoints = LevelManagerScript.Instance.GetSpawnPoints();
+        _enemies.Clear(); // Clear existing enemies
     }
     public void PlayerExitedRoom()
     {
         GD.Print("Player exited room, stopping enemy spawn...");
-        _canSpawn = false;
-        _playerEnterLevel = false;
+        _canSpawn = true;
+        _playerEnterLevel = true;
         spawnedEnemiesCount = 0;
         sceneHasChest = false;
         KillAllEnemies();

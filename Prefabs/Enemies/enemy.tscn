@@ -159,7 +159,7 @@ y_sort_enabled = true
 script = ExtResource("1_pak5r")
 Health = 10
 Speed = 50.0
-fireRate = 2.0
+fireRate = 5.0
 coinDropAmmount = 10
 _enemyAnimationComponent = NodePath("Components/EnemyAnimationComponent")
 _pathFindingComponent = NodePath("Components/PathFindingComponent")
@@ -179,6 +179,7 @@ texture = ExtResource("4_6etnd")
 script = ExtResource("5_a6f4p")
 
 [node name="Gun" parent="Components/ShootComponent" instance=ExtResource("6_2w20p")]
+BulletSpeed = 170
 
 [node name="EnemyAnimationComponent" type="Node" parent="Components" node_paths=PackedStringArray("_hitAnimationPlayer")]
 script = ExtResource("3_savhp")
