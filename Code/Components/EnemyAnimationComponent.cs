@@ -3,7 +3,7 @@ using System;
 
 public partial class EnemyAnimationComponent : Node
 {
-    private AnimationPlayer _textureAnimationPlayer;
+    [Export] private AnimationPlayer _textureAnimationPlayer;
     [Export] private AnimationPlayer _hitAnimationPlayer;
     private bool isDying = false;
 

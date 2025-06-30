@@ -1,5 +1,4 @@
 using Godot;
-using System.Diagnostics;
 
 public partial class Enemy : CharacterBody2D, IDamagable, IPushable
 {
@@ -19,9 +18,8 @@ public partial class Enemy : CharacterBody2D, IDamagable, IPushable
     [Export] public CoinComponent _coinComponent;
     [Export] public HitNumbersComponent _hitNumbersComponent;
 
-    private Sprite2D sprite;
+    [Export] private Sprite2D sprite;
     public bool IsFlipped { get; set; } = false;
-
 
     public override void _Ready()
     {
@@ -36,7 +34,7 @@ public partial class Enemy : CharacterBody2D, IDamagable, IPushable
         }
     }
 
-    public void Push(Vector2 direction, float force)
+    public virtual void Push(Vector2 direction, float force)
     {
         if (isPushable && isAlive)
         {
@@ -47,12 +45,11 @@ public partial class Enemy : CharacterBody2D, IDamagable, IPushable
         }
     }
 
-
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         
     }
-    public void TakeDamage(int damage, bool isCritical)
+    public virtual void TakeDamage(int damage, bool isCritical)
     {
         if(!isAlive) return;
             
@@ -66,23 +63,23 @@ public partial class Enemy : CharacterBody2D, IDamagable, IPushable
         // _hitNumbersComponent.CreateHitNumber(GlobalPosition, damage, isCritical);
         _enemyAnimationComponent.PlayAnimation("Hit");
     }
-    public void Die()
+    public virtual void Die()
     {
         _enemyAnimationComponent.PlayAnimation("Die");
         _coinComponent.SpawnCoins(coinDropAmmount, GlobalPosition);
         isAlive = false;
         EnemiesManager.instance.EnemieDied(this);
     }
-    private void OnEnemyTimerTimeout()
+    public virtual void OnEnemyTimerTimeout()
     {
         QueueFree();
     }
-    private void InstantiateComponents()
+    public virtual void InstantiateComponents()
     {
         CurrentState = new SearchState();
         CurrentState.Enter(this);
     }
-    public void setTexture(Sprite2D texture)
+    public virtual void setTexture(Sprite2D texture)
     {
         sprite = texture;
         AddChild(sprite);
@@ -92,17 +89,17 @@ public partial class Enemy : CharacterBody2D, IDamagable, IPushable
         _enemyAnimationComponent.Initialize(sprite);
 
     }
-    public void SetFlip(bool flip)
+    public virtual void SetFlip(bool flip)
     {
         IsFlipped = flip;
         sprite.FlipH = flip;
     }
-    public void Shoot()
+    public virtual void Shoot()
     {
         // Implementar a lógica de tiro aqui
         _shootComponent.Shoot();
     }
-    public void InitializeEnemy(EnemyData enemyData)
+    public virtual void InitializeEnemy(EnemyData enemyData)
     {
         var enemyInitializer = new EnemyInitializer();
         enemyInitializer.InitializeSelf(this, enemyData);

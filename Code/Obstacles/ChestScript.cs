@@ -4,6 +4,7 @@ using System;
 public partial class ChestScript : ObstacleBaseScript
 {
     [Export] private string GunPrefabFolder = "res://Prefabs/Guns/";
+    [Export] private AnimationPlayer anim;
 
     public override void DoAction()
     {
@@ -13,7 +14,8 @@ public partial class ChestScript : ObstacleBaseScript
         {
             coinSpawner.SpawnAtCloseToPosition(Position, 10);
         }
-        QueueFree();
+        anim.Play("Open");
+        
     }
 
     public class DefaultCoinSpawner : CoinSpawner

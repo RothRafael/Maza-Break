@@ -45,7 +45,7 @@ public partial class LevelManagerScript : Node
             // NextRoom();
         }
     }
-    private void LoadFirstRoom()
+    public void LoadFirstRoom()
     {
         currentRoom = rooms[0];
         LoadRoom(currentRoom, "null");

@@ -64,7 +64,7 @@ public partial class CameraShakeComponent : Node
             }
 
             float x = (float)GD.RandRange(-_shakeMagnitude, _shakeMagnitude);
-            // float y = (float)GD.RandRange(-_shakeMagnitude, _shakeMagnitude);
+            float y = (float)GD.RandRange(-_shakeMagnitude, _shakeMagnitude);
 
             Vector2 shakeOffset = new Vector2(x, 0);
             _camera.Position = _originalPosition + shakeOffset;

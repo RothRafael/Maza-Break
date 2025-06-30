@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://dr3dvr11p5xxp"]
+[gd_scene load_steps=9 format=4 uid="uid://dr3dvr11p5xxp"]
 
 [ext_resource type="Script" uid="uid://c2qci4pg1ab02" path="res://Code/Guns/GunRaquete.cs" id="1_4a8ud"]
 [ext_resource type="PackedScene" uid="uid://bml0xl488mi8h" path="res://Prefabs/Projectiles/swing_projectile.tscn" id="2_1asqd"]
+[ext_resource type="AudioStream" uid="uid://32q26tmkuvcl" path="res://Art/Sfx/swing-whoosh-110410.mp3" id="3_dgqd5"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_1asqd"]
 _data = PackedByteArray("AAADAAUAAAABAAAACwAAABAAAACQAAAAUklGRogAAABXRUJQVlA4THsAAAAvCsADEEegqJEU5nRgABmYwP8DE73YMBOBkJQmXaVwVuO3eEWRJDWXownSC//CcICAoMj/0QIA/3/ZYXFuRteqD+tSjsCojSRH9RoACyESGAgbIOz78h2C4y9twBDR/wlgfXseIFojbKpu7/RYOidUTQJfvgCadP/SxxwA")
@@ -36,6 +37,17 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(3, 12)]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_1asqd"]
 resource_name = "Swing"
@@ -64,6 +76,21 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.982749, 1.56082]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0762563,
+"stream": ExtResource("3_dgqd5")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wp3bw"]
 _data = {
@@ -75,6 +102,9 @@ _data = {
 script = ExtResource("1_4a8ud")
 _swingScene = ExtResource("2_1asqd")
 fireRate = 0.385
+BulletSpeed = 2
+CritChance = 40
+pushForce = 800.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -109,6 +139,8 @@ shape = SubResource("RectangleShape2D_1asqd")
 libraries = {
 &"": SubResource("AnimationLibrary_wp3bw")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="area_entered" from="Sprite2D/Area2D" to="." method="_on_area_enter"]
 [connection signal="area_exited" from="Sprite2D/Area2D" to="." method="_on_area_exited"]

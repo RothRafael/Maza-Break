@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://csh1815vysfmt"]
+[gd_scene load_steps=18 format=3 uid="uid://csh1815vysfmt"]
 
 [ext_resource type="Script" uid="uid://bfkg1w6sisr3s" path="res://Code/Enemies/Enemy.cs" id="1_pak5r"]
 [ext_resource type="PackedScene" uid="uid://cxgsn6bhrgq1g" path="res://Prefabs/Components/enemy_hit_numbers.tscn" id="3_ix2lq"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dccwycpb4o3aq" path="res://Prefabs/Components/shootComponent.tscn" id="5_b2fau"]
 [ext_resource type="PackedScene" uid="uid://be50ub5t3nc37" path="res://Prefabs/Guns/testing_gun.tscn" id="6_2w20p"]
 [ext_resource type="AudioStream" uid="uid://dfv8yh186j4q8" path="res://Art/Sfx/death/morreu.wav" id="7_wome5"]
+[ext_resource type="AudioStream" uid="uid://b2al32lykdlfo" path="res://Art/Sfx/hitHurt.wav" id="8_041ty"]
 [ext_resource type="PackedScene" uid="uid://corofyu066ivf" path="res://Prefabs/Components/coin_component.tscn" id="9_wome5"]
 
 [sub_resource type="Animation" id="Animation_2w20p"]
@@ -101,6 +102,21 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(2, 2, 2, 1), Color(1, 1, 1, 1)]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_041ty")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_vabkg"]
 length = 0.001

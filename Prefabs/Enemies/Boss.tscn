@@ -1,0 +1,307 @@
+[gd_scene load_steps=20 format=3 uid="uid://bphfxsspn1uwm"]
+
+[ext_resource type="Script" uid="uid://dlen76ciq3faf" path="res://Code/Enemies/BossScript.cs" id="1_ngjam"]
+[ext_resource type="Texture2D" uid="uid://ftcjs1yhiaxp" path="res://Art/Sprites/Enemies/BossNerd.png" id="2_ngjam"]
+[ext_resource type="PackedScene" uid="uid://dccwycpb4o3aq" path="res://Prefabs/Components/shootComponent.tscn" id="3_wxysk"]
+[ext_resource type="Script" uid="uid://dm375pkhfk8eh" path="res://Code/Components/ShootComponentScript.cs" id="4_ochch"]
+[ext_resource type="PackedScene" uid="uid://be50ub5t3nc37" path="res://Prefabs/Guns/testing_gun.tscn" id="5_pfllv"]
+[ext_resource type="PackedScene" uid="uid://b7krc00rxfp8j" path="res://Prefabs/Enemies/Boss_bullet.tscn" id="6_gvxhi"]
+[ext_resource type="Script" uid="uid://bfl57jvn127sd" path="res://Code/Components/EnemyAnimationComponent.cs" id="6_pt5re"]
+[ext_resource type="AudioStream" uid="uid://dfv8yh186j4q8" path="res://Art/Sfx/death/morreu.wav" id="7_ogv02"]
+[ext_resource type="AudioStream" uid="uid://b2al32lykdlfo" path="res://Art/Sfx/hitHurt.wav" id="8_n7rl8"]
+[ext_resource type="PackedScene" uid="uid://b670on8yucnse" path="res://Prefabs/Components/path_finding_component.tscn" id="9_j6dl7"]
+[ext_resource type="PackedScene" uid="uid://corofyu066ivf" path="res://Prefabs/Components/coin_component.tscn" id="10_3odat"]
+[ext_resource type="PackedScene" uid="uid://cxgsn6bhrgq1g" path="res://Prefabs/Components/enemy_hit_numbers.tscn" id="11_qckuh"]
+
+[sub_resource type="Animation" id="Animation_2w20p"]
+resource_name = "Awake"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.76667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_b2fau"]
+resource_name = "Die"
+length = 4.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../CollisionShape2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0999999),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_ogv02")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/2/use_blend = true
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../..:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.133333, 0.333333, 0.533333, 0.7, 0.9, 1.1, 1.3, 1.5, 1.7, 2.26667, 2.46667, 2.66667, 2.83333, 3.03333, 3.23333, 3.43333, 3.63333, 3.83333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 2.44346, 6.28319, 0.0, 2.44346, 6.28319, 0.0, 2.44346, 6.28319, 0.0, 2.44346, 6.28319, 0.0, 2.44346, 6.28319, 0.0, 2.44346, 6.28319]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../..:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.566667, 3.76667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3.76667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"OnAnimationFinished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_6etnd"]
+resource_name = "Hit"
+length = 0.2185
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.435, 0.605), Vector2(1, 1), Vector2(0.775, 1.44), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(2, 2, 2, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_n7rl8")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="Animation" id="Animation_vabkg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../..:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vabkg"]
+_data = {
+&"Awake": SubResource("Animation_2w20p"),
+&"Die": SubResource("Animation_b2fau"),
+&"Hit": SubResource("Animation_6etnd"),
+&"RESET": SubResource("Animation_vabkg")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a6f4p"]
+radius = 24.0
+height = 48.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gvxhi"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 41.46
+angle_min = -455.9
+angle_max = 134.1
+inherit_velocity_ratio = 0.184
+velocity_pivot = Vector3(-0.83, 0.9, 0)
+direction = Vector3(1.745, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_max = 80.23
+angular_velocity_min = -20.93
+angular_velocity_max = 26.59
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -43.55
+radial_accel_max = 41.26
+damping_min = 16.905
+damping_max = 74.498
+scale_min = 0.0
+color = Color(1, 0.815686, 0.407843, 1)
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("_enemyAnimationComponent", "_pathFindingComponent", "_shootComponent", "_coinComponent", "_hitNumbersComponent", "sprite")]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_ngjam")
+fireRate = 0.01
+coinDropAmmount = 10
+isPushable = false
+shootingRange = 104.415
+_enemyAnimationComponent = NodePath("Components/EnemyAnimationComponent")
+_pathFindingComponent = NodePath("Components/PathFindingComponent")
+_shootComponent = NodePath("Components/ShootComponent")
+_coinComponent = NodePath("Components/CoinComponent")
+_hitNumbersComponent = NodePath("Components/EnemyHitNumbers")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+texture_filter = 1
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("2_ngjam")
+
+[node name="Components" type="Node2D" parent="."]
+position = Vector2(27, 0)
+
+[node name="ShootComponent" parent="Components" node_paths=PackedStringArray("_gun") instance=ExtResource("3_wxysk")]
+script = ExtResource("4_ochch")
+_gun = NodePath("Gun")
+
+[node name="Gun" parent="Components/ShootComponent" instance=ExtResource("5_pfllv")]
+_bulletScene = ExtResource("6_gvxhi")
+fireRate = 0.01
+BulletSpeed = 170
+
+[node name="EnemyAnimationComponent" type="Node" parent="Components" node_paths=PackedStringArray("_textureAnimationPlayer", "_hitAnimationPlayer")]
+script = ExtResource("6_pt5re")
+_textureAnimationPlayer = NodePath("AnimationPlayer")
+_hitAnimationPlayer = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Components/EnemyAnimationComponent"]
+libraries = {
+&"": SubResource("AnimationLibrary_vabkg")
+}
+autoplay = "Awake"
+
+[node name="PathFindingComponent" parent="Components" node_paths=PackedStringArray("_nav") instance=ExtResource("9_j6dl7")]
+_nav = NodePath("../NavigationAgent2D")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Components"]
+path_postprocessing = 1
+simplify_epsilon = 3.824
+avoidance_enabled = true
+radius = 129.1
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="CoinComponent" parent="Components" instance=ExtResource("10_3odat")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Components"]
+
+[node name="EnemyHitNumbers" parent="Components" instance=ExtResource("11_qckuh")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_a6f4p")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 88
+lifetime = 0.74
+fixed_fps = 150
+trail_enabled = true
+trail_lifetime = 0.01
+trail_sections = 2
+process_material = SubResource("ParticleProcessMaterial_gvxhi")

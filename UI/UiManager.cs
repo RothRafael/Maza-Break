@@ -7,6 +7,8 @@ public partial class UiManager : Node
     private static UiManager _instance;
     public static UiManager Instance => _instance;
 
+    [Export] private PackedScene _bossDefeatedUiScene;
+
     public override void _Ready()
     {
         base._Ready();
@@ -27,4 +29,16 @@ public partial class UiManager : Node
         var ui = _uiScene.Instantiate();
         AddChild(ui);
     }
-}
+    public void ShowBossDefeatedMessage()
+    {
+        GD.Print("Boss defeated! Displaying message...");
+        var tree = GetTree();
+        foreach (Node child in tree.Root.GetChildren())
+        {
+            child.QueueFree();
+        }
+        var bossDefeatedUi = _bossDefeatedUiScene.Instantiate();
+        tree.Root.AddChild(bossDefeatedUi);
+    }
+    }
+

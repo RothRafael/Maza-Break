@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://bh1a27hcs0klu"]
+[gd_scene load_steps=10 format=4 uid="uid://bh1a27hcs0klu"]
 
 [ext_resource type="Script" uid="uid://dpnh5rfjho7q8" path="res://Code/Obstacles/ChestScript.cs" id="1_u5ihv"]
+[ext_resource type="AudioStream" uid="uid://bffss4uohti8n" path="res://Art/Sfx/chest.wav" id="2_7vcoo"]
+[ext_resource type="AudioStream" uid="uid://dihhwl0ahihf1" path="res://Art/Sfx/Hit_Hurt11.wav" id="3_gek2x"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_u5ihv"]
 _data = PackedByteArray("AAADAAUAAAABAAAAMAAAADAAAAAcAgAAUklGRhQCAABXRUJQVlA4TAgCAAAvL8ALEF+gJADQBkkKLP2DfLAr8eVqKIokNcIJf4TgHwE3OX8xkCo1kSQph1LOv4jzAB+/A/7P5j8AwPXdnxMJQ7v+zRzfu9+/A5NBBoQKcrTtjdsoV0CRvfsL2RfIHdJu4MM2iwDWmRlKtSteYJZ237qpdTsBhHyEiP4zcNu2kXp7qQf94ue/dVwTmeCKTHBFX5dlcZxuQXfMP9nGKTmB4d5jzqNfvIBoFZzakhMnZu4FZIKVuyzMPHIKBW5XhJOMiTcEK5n546OdMJ/eMbObxylRa+1LW0couG0NmFVUZNJNAYrIJJPKtmBWQ44QFNVJatVtwSxVteoRglJXRGRb0I4eru+yWF8i+u97992ZT3/67Pzzq5sHn96xGz9dXbr7Sf57+cmTR79k8kumu6j76coZkeOM7qLup467kVM5I3oaEz/57lSEiJ4SZyb3J2S9fXczcmt7AFa66959b1YBAAWeVWRSqCiAZ+tsgj3gegMyDQBcZxMAb9YbeHbz8J2BsgOsN0wzAF3n3SwDnqu6N7QCYe8dRMQhA+LW+4N5YffQdQ56n3Sj6869IICj7hySx777JomD7jEkzFF3TgFPrjcX8YIA4hvf2wkCgMNF88MJIuB6zypOEOC6qhQR1z0E1ntWQwKKhatVi+pk3XvmAUBVnaWqVg0o1Xauu6pEJ4e2Bw4tGB0n")
@@ -8,9 +10,6 @@ size_override = Vector2(48, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyb3x"]
 size = Vector2(16, 16)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_u5ihv"]
-polygon = PackedVector2Array(-6, -16, -6, -14, 2, -13, 4, -15, 7, -15, 9, -12, 14, -10, 16, -5, 14, -2, 14, 12, 8, 15, -9, 14, -14, 11, -15, -2, -15, -2, -15, -2, -15, -2, -17, -8, -8, -8, -9, -12)
 
 [sub_resource type="Animation" id="Animation_mblf8"]
 length = 0.8
@@ -27,16 +26,93 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.133333, 0.733333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.12, 1.12), Vector2(0.855, 0.855)]
+}
+
+[sub_resource type="Animation" id="Animation_u5ihv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7vcoo"]
+resource_name = "Open"
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_7vcoo")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_gek2x")
+}],
+"times": PackedFloat32Array(0.0333333)
+}
+tracks/1/use_blend = true
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7vcoo"]
 _data = {
+&"Open": SubResource("Animation_7vcoo"),
+&"RESET": SubResource("Animation_u5ihv"),
 &"default": SubResource("Animation_mblf8")
 }
 
-[node name="Chest" type="StaticBody2D"]
+[node name="Chest" type="StaticBody2D" node_paths=PackedStringArray("anim")]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_u5ihv")
+anim = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -64,12 +140,10 @@ metadata/_aseprite_wizard_source_file_hash_ = "1f1f47f8dfdc52822e753f043cde28a2"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_eyb3x")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-modulate = Color(1, 1, 1, 0.215686)
-occluder = SubResource("OccluderPolygon2D_u5ihv")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_7vcoo")
 }
 autoplay = "default"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

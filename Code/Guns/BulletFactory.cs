@@ -54,7 +54,7 @@ public abstract partial class BulletFactory : Node
         spawnedBullet.pushForce = gunBase.PushForce;
         spawnedBullet.GlobalPosition = gunBase.GlobalPosition;
         spawnedBullet.Rotation = rotation;
-        spawnedBullet.DisableCollision();
+        // spawnedBullet.DisableCollision();
         gunBase.Tree.Root.CallDeferred("add_child", spawnedBullet);
     }
      

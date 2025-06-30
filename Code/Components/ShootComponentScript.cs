@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Security.Cryptography;
 
 public partial class ShootComponentScript : Node2D
 {
@@ -12,17 +13,30 @@ public partial class ShootComponentScript : Node2D
     }
     public override void _Process(double delta)
     {
+
+    }
+    public void Shoot()
+    {
         var _playerPos = PlayerStatus.Instance.playerPosition;
         var _enemyPos = GetParent().GetParent<Enemy>().GlobalPosition;
 
         _direction = (_playerPos - _enemyPos).Normalized();
         Rotation = _direction.Angle();
-    }
-    public void Shoot()
-    {
         if (_gun != null)
         {
             _gun.Shoot(_direction);
+        }
+        else
+        {
+            GD.PrintErr("Gun not found");
+        }
+    }
+    public void Shoot(float angle)
+    {
+        var direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)).Normalized();
+        if (_gun != null)
+        {
+            _gun.Shoot(direction);
         }
         else
         {

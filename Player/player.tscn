@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://nxn43b3e0ar3"]
+[gd_scene load_steps=26 format=4 uid="uid://nxn43b3e0ar3"]
 
 [ext_resource type="Script" uid="uid://drba0mm7uiabu" path="res://Player/PlayerController.cs" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://despxdvd1k6ia" path="res://Player/WeaponOnHandScript.cs" id="2_fhl08"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cjmdhd38c7ojj" path="res://Player/PlayerUIComponent.cs" id="8_od3ui"]
 [ext_resource type="PackedScene" uid="uid://7r16uatdlvai" path="res://UI/GameOverScene.tscn" id="10_apopc"]
 [ext_resource type="Script" uid="uid://cncxota7ubsva" path="res://Code/Components/AnimationComponent.cs" id="10_x3vf3"]
+[ext_resource type="PackedScene" uid="uid://bbvl5nwpu5lo" path="res://UI/FimDoJogo.tscn" id="11_gu6f8"]
 [ext_resource type="AudioStream" uid="uid://dihhwl0ahihf1" path="res://Art/Sfx/Hit_Hurt11.wav" id="12_5htga"]
 [ext_resource type="Texture2D" uid="uid://cfipv2pu5a5gm" path="res://Art/Sprites/effects/Sem título.png" id="12_p5o4e"]
 [ext_resource type="PackedScene" uid="uid://tj6avlpffleu" path="res://Prefabs/Effects/playerStep.tscn" id="14_gu6f8"]
@@ -154,7 +155,7 @@ polygon = PackedVector2Array(-9, -12, 1, -14, 11, -11, 14, -2, 13, 9, -1, 13, -8
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_4ntmi")
-speed = 250.0
+speed = 170.0
 CameraFollowMouse = 200
 _handsOffsset = Vector2(9, 5)
 
@@ -205,6 +206,8 @@ script = ExtResource("2_fhl08")
 
 [node name="MeleeSwing" parent="Hands" instance=ExtResource("6_apopc")]
 position = Vector2(-2, 2)
+isAutomatic = true
+fireRate = 0.66
 
 [node name="AviaoPapel" parent="Hands" instance=ExtResource("7_5htga")]
 visible = false
@@ -225,6 +228,7 @@ _shakeDecay = 10.0
 
 [node name="PlayerStatus" type="Node" parent="Components" node_paths=PackedStringArray("playerUIComponent", "_animationComponent") groups=["Death"]]
 script = ExtResource("4_gwnis")
+MaxVida = 40
 ArmorRestoreRate = 1.0
 playerUIComponent = NodePath("../UiComponent")
 armorRestoreDelay = 3.0
@@ -237,6 +241,7 @@ script = ExtResource("5_k53q1")
 script = ExtResource("8_od3ui")
 PlayerUiPath = NodePath("../../CamPivo/MainCamera/CanvasLayer")
 GameOverScenePath = ExtResource("10_apopc")
+bossDefeatedUi = ExtResource("11_gu6f8")
 
 [node name="AnimationComponent" type="Node" parent="Components" node_paths=PackedStringArray("_animationPlayer2D", "_hitAnimationPlayer2D", "_playerController", "_sprite2D", "_footstepsParticles")]
 script = ExtResource("10_x3vf3")

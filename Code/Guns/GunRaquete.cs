@@ -4,9 +4,6 @@ using System.Collections.Generic;
 
 public partial class GunRaquete : MeleeBaseSwing
 {
-    [Export] private float _swingSpeed = 0.5f;
-    [Export] private float _swingAngle = 45f; // Angle in degrees
-    [Export] private float _swingDistance = 100f; // Distance in pixels
 
     private AnimationPlayer _animationPlayer;
     private bool _isSwinging = false;
@@ -20,13 +17,13 @@ public partial class GunRaquete : MeleeBaseSwing
 
     public override bool Shoot(Vector2 direction)
     {
-        if (_isSwinging || !CanShoot())
+        if (_isSwinging || !CanShoot() || timeSinceLastShot < fireRate)
             return false;
 
+        base.Shoot(direction);
         PlayAnim();
         Parry(direction);
-
-        base.Shoot(direction);
+        timeSinceLastShot = 0f;
         return true;
     }
 
@@ -38,14 +35,14 @@ public partial class GunRaquete : MeleeBaseSwing
     public void Parry(Vector2 direction)
     {
         if (_projectilesToParry.Count == 0) return;
-        
+
         foreach (var projectile in _projectilesToParry)
         {
             // Check if the projectile is within the swing area
             projectile.shooterFaction = Faction.Player;
             projectile.Launch(direction, 1f);
         }
-        PlayerStatus.Instance.SlowTime(0.5f, 0.2f);
+        // PlayerStatus.Instance.SlowTime(0.5f, 0.2f);
         _projectilesToParry.Clear();
     }
 
@@ -66,4 +63,5 @@ public partial class GunRaquete : MeleeBaseSwing
             _projectilesToParry.Remove(projectile);
         }
     }
+    
 }

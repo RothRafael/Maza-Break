@@ -14,6 +14,8 @@ public partial class PlayerUIComponent : Node
     private PlayerStatus _playerStatus;
     public static PlayerUIComponent Instance { get; private set; }
 
+    [Export] public PackedScene bossDefeatedUi; // Drag BossDefeatedUi in the Inspector
+
     public PlayerUIComponent()
     {
         Instance = this;
@@ -71,6 +73,14 @@ public partial class PlayerUIComponent : Node
     public void UpdateCoins(int n)
     {
         _coinText.Text = $"Coins: {n}";
+    }
+
+    public void ShowBossDefeatedMessage()
+    {
+        GD.Print("Boss defeated! Displaying message...");
+        var tree = GetTree();
+        var bossDefeatedNode = bossDefeatedUi.Instantiate();
+        tree.Root.AddChild(bossDefeatedNode);
     }
     private void ThrowErrors()
     {

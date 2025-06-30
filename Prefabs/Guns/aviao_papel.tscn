@@ -13,6 +13,7 @@ size_override = Vector2(16, 16)
 script = ExtResource("1_2877b")
 _bulletScene = ExtResource("2_2877b")
 _bulletCount = 1
+isAutomatic = true
 fireRate = 0.3
 Damage = 2
 Spread = 3

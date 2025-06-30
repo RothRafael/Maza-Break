@@ -59,4 +59,5 @@ text = "Retry"
 [connection signal="button_up" from="Exit" to="." method="OnExitButtonPressed"]
 [connection signal="pressed" from="Exit" to="." method="OnExitButtonPressed"]
 [connection signal="button_down" from="Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Retry" to="." method="OnRetryPressed"]
 [connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]

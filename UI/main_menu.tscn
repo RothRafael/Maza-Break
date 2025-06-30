@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://luhvsdqlx6fj"]
+[gd_scene load_steps=5 format=3 uid="uid://luhvsdqlx6fj"]
 
 [ext_resource type="Texture2D" uid="uid://dtex6u8maubtx" path="res://Art/Logo/MazaBreakLogo.png" id="1_p8ccj"]
 [ext_resource type="Script" uid="uid://bc21jpgjuqtn4" path="res://UI/MainMenuScript.cs" id="1_tk8dj"]
+[ext_resource type="Texture2D" uid="uid://bt87byu33k4mr" path="res://Art/Logo/capaJogo.jpg" id="2_4cwpn"]
 [ext_resource type="Script" uid="uid://bjjo25gblhgo2" path="res://UI/SignalCustom.cs" id="3_d8nwk"]
 
 [node name="MainMenu" type="Node2D"]
@@ -17,24 +18,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+[node name="ColorRect" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.466181, 0.466181, 0.466181, 1)
+texture = ExtResource("2_4cwpn")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 32.0
-offset_top = 16.0
-offset_right = -888.0
-offset_bottom = -472.0
+offset_left = 496.0
+offset_top = 8.0
+offset_right = -424.0
+offset_bottom = -480.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_p8ccj")
@@ -45,11 +46,12 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.993
 anchor_bottom = 0.975
-offset_left = -11.0
-offset_top = 200.0
-offset_right = -831.936
-offset_bottom = -95.8
+offset_left = 288.0
+offset_top = 312.0
+offset_right = -532.936
+offset_bottom = 16.2
 grow_vertical = 2
+scale = Vector2(1.98499, 1.83273)
 tooltip_text = "isso eh o menu meu mano
 "
 
@@ -59,11 +61,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 40
-text = "PLAY
-"
+text = "Jogar"
 script = ExtResource("3_d8nwk")
 
 [node name="Button2" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(250, 100.49)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -72,6 +74,7 @@ theme_override_font_sizes/font_size = 40
 text = "OPÇÕES"
 
 [node name="Button3" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(250, 100.49)
 layout_mode = 2
 size_flags_horizontal = 4

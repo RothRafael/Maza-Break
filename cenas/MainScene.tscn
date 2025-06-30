@@ -1,20 +1,26 @@
-[gd_scene load_steps=23 format=3 uid="uid://cv4icd4rsrmbw"]
+[gd_scene load_steps=29 format=3 uid="uid://cv4icd4rsrmbw"]
 
 [ext_resource type="Texture2D" uid="uid://dtex6u8maubtx" path="res://Art/Logo/MazaBreakLogo.png" id="1_p8xph"]
 [ext_resource type="PackedScene" uid="uid://nxn43b3e0ar3" path="res://Player/player.tscn" id="1_t2qwo"]
-[ext_resource type="PackedScene" uid="uid://cfqiuochxan10" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_wall_1.tscn" id="3_c4cnb"]
+[ext_resource type="PackedScene" uid="uid://cfqiuochxan10" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_wall_0_BOSS.tscn" id="3_c4cnb"]
 [ext_resource type="PackedScene" uid="uid://dydyttoonourg" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_base_1_NSLO.tscn" id="3_h462p"]
 [ext_resource type="PackedScene" uid="uid://bja3evqxbsoeq" path="res://Prefabs/Levels/LevelTeste1/roomManager.tscn" id="3_qlu5e"]
 [ext_resource type="Script" uid="uid://cj45vvnibp8mg" path="res://Prefabs/Levels/LevelTeste1/Room.cs" id="3_yk1n8"]
 [ext_resource type="PackedScene" uid="uid://jv3g3svpcqb" path="res://Prefabs/Enemies/enemies_manager.tscn" id="4_1d1at"]
+[ext_resource type="PackedScene" uid="uid://drfxf0rixds0" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_base_2Spawn.tscn" id="4_1u6m0"]
 [ext_resource type="Resource" uid="uid://busswom7cb1af" path="res://Prefabs/Levels/LevelTeste1/RoomResources/sala2Spawn.tres" id="4_p8xph"]
-[ext_resource type="PackedScene" uid="uid://cqhubidxmi3hy" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_wall_2.tscn" id="4_xjrur"]
-[ext_resource type="Resource" uid="uid://b26xptubsqv4i" path="res://Prefabs/Levels/LevelTeste1/RoomResources/Sala0.tres" id="5_3ixv7"]
-[ext_resource type="PackedScene" uid="uid://utec0fwn3883" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_wallSpawn.tscn" id="5_8anxa"]
-[ext_resource type="PackedScene" uid="uid://drfxf0rixds0" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_baseSpawn.tscn" id="5_0275r"]
-[ext_resource type="PackedScene" uid="uid://d1o1p751r4ont" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_wall3Bradok.tscn" id="6_1u6m0"]
+[ext_resource type="PackedScene" uid="uid://cqhubidxmi3hy" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_wall_1.tscn" id="4_xjrur"]
+[ext_resource type="PackedScene" uid="uid://utec0fwn3883" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_wall_2Spawn.tscn" id="5_8anxa"]
+[ext_resource type="PackedScene" uid="uid://d1o1p751r4ont" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_wall_3Bradok.tscn" id="6_1u6m0"]
+[ext_resource type="PackedScene" uid="uid://df4mv5ba30lk8" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_base_4_NS.tscn" id="6_h462p"]
 [ext_resource type="PackedScene" uid="uid://0b76lwyuvqkx" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_base_3_LN.tscn" id="6_ms5pk"]
+[ext_resource type="PackedScene" uid="uid://doqmcgq4qd0dt" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_base_5_O.tscn" id="7_x5acd"]
+[ext_resource type="PackedScene" uid="uid://dylt6tma30v0p" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_base_6_SO.tscn" id="8_ms5pk"]
+[ext_resource type="PackedScene" uid="uid://bpw5kt634vsn3" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_base_7_SL.tscn" id="9_fe1qg"]
+[ext_resource type="PackedScene" uid="uid://ddkapx7no5xry" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_base_8_N.tscn" id="10_8e5c0"]
 [ext_resource type="PackedScene" uid="uid://dqbhbxiw56kkk" path="res://Prefabs/Levels/LevelTeste1/RoomsScenes/tile_wall_4_Labirinto_nslo.tscn" id="11_fe1qg"]
+[ext_resource type="Script" uid="uid://c8mc8flindvb2" path="res://UI/UiManager.cs" id="18_fe1qg"]
+[ext_resource type="PackedScene" uid="uid://bbvl5nwpu5lo" path="res://UI/FimDoJogo.tscn" id="19_8e5c0"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3ixv7"]
 panorama = ExtResource("1_p8xph")
@@ -33,64 +39,72 @@ glow_bloom = 0.16
 glow_blend_mode = 1
 fog_enabled = true
 
-[sub_resource type="Resource" id="Resource_yk1n8"]
+[sub_resource type="Resource" id="Resource_h462p"]
 script = ExtResource("3_yk1n8")
-n = 0
-s = 1
-l = 4
-o = 3
-nome = "Room2"
-descricao = "Room2"
+n = 2
+s = 0
+l = 0
+o = 0
+nome = "room1"
+descricao = ""
 isClear = false
-baseLayer = 1
-wallLayer = 0
+baseLayer = 4
+wallLayer = 1
+isBossRoom = false
 enemies = PackedInt32Array(1, 1, 1)
 metadata/_custom_type_script = "uid://cj45vvnibp8mg"
 
-[sub_resource type="Resource" id="Resource_p8xph"]
+[sub_resource type="Resource" id="Resource_ms5pk"]
 script = ExtResource("3_yk1n8")
-n = 5
-s = 0
+n = 0
+s = 1
+l = 0
+o = 3
+nome = ""
+descricao = ""
+isClear = false
+baseLayer = 6
+wallLayer = 3
+isBossRoom = false
+enemies = PackedInt32Array(1, 1, 1)
+metadata/_custom_type_script = "uid://cj45vvnibp8mg"
+
+[sub_resource type="Resource" id="Resource_fe1qg"]
+script = ExtResource("3_yk1n8")
+n = 0
+s = 4
 l = 2
 o = 0
 nome = ""
 descricao = ""
 isClear = false
-baseLayer = 3
-wallLayer = 3
+baseLayer = 7
+wallLayer = 4
+isBossRoom = false
 enemies = PackedInt32Array(1, 1, 1)
 metadata/_custom_type_script = "uid://cj45vvnibp8mg"
 
-[sub_resource type="Resource" id="Resource_3ixv7"]
+[sub_resource type="Resource" id="Resource_8e5c0"]
 script = ExtResource("3_yk1n8")
-n = 0
+n = 3
 s = 0
-l = 0
-o = 2
-nome = ""
-descricao = ""
-isClear = false
-baseLayer = 0
-wallLayer = 0
-enemies = PackedInt32Array(1, 1, 1)
-metadata/_custom_type_script = "uid://cj45vvnibp8mg"
-
-[sub_resource type="Resource" id="Resource_vxuvw"]
-script = ExtResource("3_yk1n8")
-n = 0
-s = 3
 l = 0
 o = 0
 nome = ""
 descricao = ""
 isClear = false
-baseLayer = 1
-wallLayer = 4
+baseLayer = 8
+wallLayer = 0
+isBossRoom = false
 enemies = PackedInt32Array(1, 1, 1)
 metadata/_custom_type_script = "uid://cj45vvnibp8mg"
 
 [node name="MainScene" type="Node2D"]
 modulate = Color(0.741385, 0.741385, 0.741385, 1)
+
+[node name="UI" type="Node" parent="."]
+script = ExtResource("18_fe1qg")
+_bossDefeatedUiScene = ExtResource("19_8e5c0")
 
 [node name="World" type="Node" parent="."]
 
@@ -98,12 +112,13 @@ modulate = Color(0.741385, 0.741385, 0.741385, 1)
 environment = SubResource("Environment_t2qwo")
 
 [node name="RoomManager" parent="World" instance=ExtResource("3_qlu5e")]
-baseRoomLayers = Array[PackedScene]([ExtResource("3_h462p"), ExtResource("3_h462p"), ExtResource("5_0275r"), ExtResource("6_ms5pk")])
+baseRoomLayers = Array[PackedScene]([ExtResource("3_h462p"), ExtResource("3_h462p"), ExtResource("4_1u6m0"), ExtResource("6_ms5pk"), ExtResource("6_h462p"), ExtResource("7_x5acd"), ExtResource("8_ms5pk"), ExtResource("9_fe1qg"), ExtResource("10_8e5c0")])
 wallRoomLayers = Array[PackedScene]([ExtResource("3_c4cnb"), ExtResource("4_xjrur"), ExtResource("5_8anxa"), ExtResource("6_1u6m0"), ExtResource("11_fe1qg")])
-rooms = Array[ExtResource("3_yk1n8")]([ExtResource("4_p8xph"), ExtResource("5_3ixv7"), SubResource("Resource_yk1n8"), SubResource("Resource_p8xph"), SubResource("Resource_3ixv7"), SubResource("Resource_vxuvw")])
+rooms = [ExtResource("4_p8xph"), SubResource("Resource_h462p"), SubResource("Resource_ms5pk"), SubResource("Resource_fe1qg"), SubResource("Resource_8e5c0")]
 metadata/_edit_lock_ = true
 
 [node name="EnemiesManager" parent="." instance=ExtResource("4_1d1at")]
+position = Vector2(-85, 84)
 spawnDelay = 1.0
 maxEnemies = 5
 ChestPath = "res://Prefabs/Obstacle/Chest.tscn"

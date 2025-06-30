@@ -12,6 +12,7 @@ public partial class Room : Resource
     [Export] public bool isClear = false;
     [Export] public int baseLayer;
     [Export ]public int wallLayer;
+    [Export] public bool isBossRoom = false;
     [Export] int[] enemies = { 1, 1, 1 };
 
 

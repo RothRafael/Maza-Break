@@ -73,6 +73,13 @@ public partial class EnemiesManager : Node2D
     public void SpawnEnemy()
     {
         Room currentRoom = LevelManagerScript.Instance.GetCurrentRoom();
+        if (currentRoom.isBossRoom)
+        {
+            GD.Print("Cannot spawn enemies in boss room.");
+            KillAllEnemies();
+            return;
+        }
+
         if (_enemies.Count >= maxEnemies)
         {
             GD.Print("Max enemies reached, not spawning more.");

@@ -6,10 +6,9 @@ public partial class GameOverSceneScript : Node
     public override void _Ready()
     {
         // Connect the button signal to the method
-        GetTree().Paused = true;
     }
 
-    private void _on_retry_pressed()
+    private void OnRetryPressed()
     {
         // Load the main scene
         GD.Print("Play button pressed");

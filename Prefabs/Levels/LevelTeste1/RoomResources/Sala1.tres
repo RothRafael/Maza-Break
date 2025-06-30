@@ -13,4 +13,5 @@ descricao = "sala para testes"
 isClear = false
 baseLayer = 1
 wallLayer = 0
+isBossRoom = false
 enemies = PackedInt32Array(1, 1, 1)

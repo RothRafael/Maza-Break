@@ -1,13 +1,14 @@
-[gd_scene load_steps=6 format=4 uid="uid://bml0xl488mi8h"]
+[gd_scene load_steps=7 format=4 uid="uid://bml0xl488mi8h"]
 
-[ext_resource type="Script" uid="uid://og7a2figbkk8" path="res://Code/Projectiles/ProjectileBase.cs" id="1_20p2k"]
+[ext_resource type="Script" uid="uid://dk327m4o338nc" path="res://Code/Projectiles/ProjectileTypes/PlayerGenericBullet.cs" id="1_20p2k"]
+[ext_resource type="AudioStream" uid="uid://v8at37gknah3" path="res://Art/Sfx/Pingpong/pingpong-02.wav" id="2_85r0y"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_mstjt"]
 _data = PackedByteArray("AAADAAUAAAABAAAAUgAAACoAAADGAAAAUklGRr4AAABXRUJQVlA4TLEAAAAvUUAKEBcgEEjyFx1jDYFAkj/nHs///Af8BeDWths3egjQwaAfhBNqwe+/GID0nkf0fwKAcp6Ykp5QkuQPXU0G/MsWRw0OeUoxaQ4oSYp2LERqBmplx1N8ZQs/pBgiV4CkZlCTASmdkgM4aKJUCwb60WwjpiiJV/nkpVgdG7lhlE3G4QvAV/ztzAc/OqVnlOSPpaRY2J6mjC3KhkO2ESwlNnwjdmzDn1JvlBvsbOdzPh0A")
 size_override = Vector2(82, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mstjt"]
-size = Vector2(20, 38)
+size = Vector2(32.5, 51.5)
 
 [sub_resource type="Animation" id="Animation_20p2k"]
 length = 0.4
@@ -23,6 +24,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_85r0y")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_85r0y"]
 _data = {
@@ -32,8 +48,10 @@ _data = {
 [node name="SwingProjectile" type="Area2D"]
 script = ExtResource("1_20p2k")
 lifeTime = 0.155
+pushForce = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
 texture_filter = 1
 position = Vector2(16.5, -0.5)
 rotation = 1.5708
@@ -60,7 +78,7 @@ metadata/_aseprite_wizard_config_ = {
 metadata/_aseprite_wizard_source_file_hash_ = "e5713b42a47b4b1dd818b4477a238c69"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(16.5, -0.5)
+position = Vector2(16, -7)
 shape = SubResource("RectangleShape2D_mstjt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -68,3 +86,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_85r0y")
 }
 autoplay = "default"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
