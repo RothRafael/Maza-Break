@@ -118,7 +118,6 @@ rooms = [ExtResource("4_p8xph"), SubResource("Resource_h462p"), SubResource("Res
 metadata/_edit_lock_ = true
 
 [node name="EnemiesManager" parent="." instance=ExtResource("4_1d1at")]
-position = Vector2(-85, 84)
 spawnDelay = 1.0
 maxEnemies = 5
 ChestPath = "res://Prefabs/Obstacle/Chest.tscn"

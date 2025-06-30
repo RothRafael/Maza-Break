@@ -231,7 +231,7 @@ damping_max = 74.498
 scale_min = 0.0
 color = Color(1, 0.815686, 0.407843, 1)
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("_enemyAnimationComponent", "_pathFindingComponent", "_shootComponent", "_coinComponent", "_hitNumbersComponent", "sprite")]
+[node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("_enemyAnimationComponent", "_pathFindingComponent", "_shootComponent", "_coinComponent", "_hitNumbersComponent", "sprite")]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_ngjam")

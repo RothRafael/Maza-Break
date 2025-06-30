@@ -132,10 +132,11 @@ public partial class EnemiesManager : Node2D
     public void KillAllEnemies()
     {
         GD.Print("Killing all enemies...");
-        foreach (var enemy in _enemies)
+        foreach (Node child in GetChildren())
         {
-            if (enemy != null && enemy.IsInsideTree())
+            if (child is Enemy enemy)
             {
+                enemy.Die();
                 enemy.QueueFree();
             }
         }

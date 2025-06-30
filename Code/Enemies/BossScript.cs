@@ -10,6 +10,7 @@ public partial class BossScript : Enemy
         base._Ready();
         CurrentState = new BossEnterRoomState();
         CurrentState.Enter(this);
+        EnemiesManager.instance.KillAllEnemies();
     }
 
     public void EnterPhase(int newPhase)
